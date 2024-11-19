@@ -20,5 +20,4 @@ public class DatabaseHandler {
         // To be implemented later
         return null;
     }
-    
 }
