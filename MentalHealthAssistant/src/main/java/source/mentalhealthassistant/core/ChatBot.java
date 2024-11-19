@@ -14,7 +14,7 @@ public class ChatBot {
 
     public String getResponse(String userInput){
         // TODO
-        return "";
+        return "hello this is the chatbot speaking";
     }
 
     public boolean loadCommonResponses(){
