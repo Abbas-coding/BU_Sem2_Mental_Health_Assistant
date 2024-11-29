@@ -16,6 +16,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - howdy
 
 - intent: goodbye
   examples: |
@@ -69,6 +70,11 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - I'm feeling fantastic
+    - I feel amazing
+    - I'm in a great mood
+    - I feel wonderful
+    - I’m having a great day
 
 - intent: mood_unhappy
   examples: |
@@ -86,6 +92,11 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+    - I'm feeling down
+    - I'm not happy
+    - I feel bad
+    - I'm feeling blue
+    - I feel miserable
 
 - intent: bot_challenge
   examples: |
@@ -102,6 +113,11 @@ nlu:
     - I'm feeling [angry](mood)
     - I feel [relaxed](mood)
     - I'm [excited](mood) because of the good news.
+    - I am [stressed](mood)
+    - I feel [great](mood)
+    - I feel [down](mood)
+    - I'm [frustrated](mood)
+    - I'm [calm](mood)
 
 - intent: suggest_coping_mechanisms
   examples: |
@@ -110,6 +126,12 @@ nlu:
     - Can you suggest something to make me feel better?
     - What can I do for [stress](mood)?
     - I'm [sad](mood), what should I do?
+    - suggest a coping mechanism
+    - how can I feel better?
+    - help me feel better
+    - give me advice on how to cope
+    - what can I do to feel better?
+    - how can I improve my mood?
 
 - intent: set_reminder
   examples: |
@@ -118,6 +140,12 @@ nlu:
     - Can you remind me to exercise tomorrow?
     - Schedule a mindfulness reminder every [Monday](time).
     - Set a daily reminder to check my mood.
+    - remind me to exercise at 5 PM
+    - set a reminder to drink water
+    - remind me to walk after dinner
+    - set an alarm for my yoga session at 7 AM
+    - remind me to meditate at 9 PM
+    - remind me to call mom tomorrow at noon
 
 - intent: seek_support
   examples: |
@@ -125,10 +153,46 @@ nlu:
     - Can you give me a helpline number?
     - Who can I contact for mental health help?
     - I'm feeling lonely; what should I do?
-
+    - where can I get help
+    - I need support
+    - provide helpline numbers
+    - tell me where I can get professional help
+    - give me resources for support
+    
 - intent: ask_for_resources
   examples: |
     - Do you have resources for anxiety?
     - Can you provide tips for stress management?
     - Where can I learn about mindfulness?
     - Do you know any good mental health websites?
+ 
+- intent: save_data
+  examples: |
+    - Save my data
+    - I want to save this information
+    - Can you save this for me?
+    - Store this data
+    - Please save it
+    - please save my information
+    - store my data
+    - save my mood and activity
+    - remember my details
+    - record my preferences
+
+  # New Intent: Ask for Activities
+- intent: ask_for_activities
+  examples: |
+    - What should I do today?
+    - Suggest an activity
+    - Give me something to do
+    - What activity can I try?
+    - Help me plan my day
+
+  # New Intent: Ask for Resources
+- intent: ask_for_resources
+  examples: |
+    - Can you provide some resources?
+    - Where can I find more information?
+    - I need more details
+    - Give me some links to resources
+    - Can you suggest helpful websites?

@@ -13,11 +13,14 @@ intents:
   - set_reminder
   - seek_support
   - ask_for_resources
-
+  - save_data
+  - ask_for_activities
+ 
 entities:
   - mood
   - activity
   - time
+  - resources
 
 slots:
   mood:
@@ -37,6 +40,12 @@ slots:
     mappings:
       - type: from_entity
         entity: time
+
+  resources:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: resources
 
 responses:
   utter_greet:
@@ -70,11 +79,25 @@ responses:
   utter_seek_support:
     - text: "Here are some helpline numbers you can reach out to: [Example Helpline](tel:123-456-789)."
 
+  utter_save_data:
+    - text: "Your data has been saved successfully."
+
+  utter_mood_resources:
+    - text: "Here are some resources you may find helpful: [Mindfulness](https://www.mindful.org), [Therapist Locator](https://www.psychologytoday.com/therapists)"
+  
+  utter_ask_for_activities:
+    - text: "You can try activities like going for a walk, reading a book, or doing some yoga."
+ 
+  utter_ask_for_resources:
+    - text: "Here are some links: [Mental Health Resources](https://www.mentalhealth.gov), [Crisis Helplines](https://www.crisistextline.org)"
+    
 actions:
   - action_log_mood
   - action_suggest_coping
   - action_set_reminder
   - action_save_data
+  - action_ask_for_activities
+  - action_ask_for_resources
 
 session_config:
   session_expiration_time: 90

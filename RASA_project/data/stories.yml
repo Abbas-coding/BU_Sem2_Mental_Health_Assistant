@@ -52,8 +52,62 @@ stories:
   - intent: suggest_coping_mechanisms
   - action: action_suggest_coping
 
-- story: save data example
+- story: Save data story
   steps:
-  - intent: greet
-  - action: utter_greet
+  - intent: save_data
   - action: action_save_data
+  - action: utter_happy
+
+- story: happy mood conversation
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: log_mood
+      entities:
+        - mood: happy
+    - action: utter_log_mood
+    - intent: suggest_coping_mechanisms
+    - action: utter_suggest_coping_mechanisms
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: sad mood conversation
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: log_mood
+      entities:
+        - mood: sad
+    - action: utter_log_mood
+    - intent: suggest_coping_mechanisms
+    - action: utter_suggest_coping_mechanisms
+    - intent: save_data
+    - action: action_save_data
+    - action: utter_save_data
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: activity suggestion
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_for_activities
+    - action: utter_ask_for_activities
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: seek help and save data
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: seek_support
+    - action: utter_seek_support
+    - intent: save_data
+    - action: action_save_data
+    - action: utter_save_data
+    - intent: goodbye
+    - action: utter_goodbye
+
+
+
+

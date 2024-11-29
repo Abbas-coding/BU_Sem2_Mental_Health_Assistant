@@ -1,37 +1,112 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-import os
-from datetime import datetime
+from rasa_sdk.events import SlotSet
+from rasa_sdk.events import EventType  # Import EventType here
+import json
+
+class ActionLogMood(Action):
+    def name(self) -> Text:
+        return "action_log_mood"
+
+    async def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        mood = tracker.get_slot("mood")
+        if mood:
+            dispatcher.utter_message(text=f"Got it! I've logged your mood as {mood}.")
+            # Save mood to a text file (or database in the future)
+            with open("mood_logs.txt", "a") as file:
+                file.write(f"Mood: {mood}\n")
+            return [SlotSet("mood", mood)]
+        else:
+            dispatcher.utter_message(text="I couldn't detect your mood. Please try again.")
+            return []
+
+class ActionSuggestCoping(Action):
+    def name(self) -> Text:
+        return "action_suggest_coping"
+
+    async def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(
+            text="Here are some suggestions: mindfulness exercises, journaling, or a short walk."
+        )
+        return []
+
+class ActionSetReminder(Action):
+    def name(self) -> Text:
+        return "action_set_reminder"
+
+    async def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        activity = tracker.get_slot("activity")
+        time = tracker.get_slot("time")
+        if activity and time:
+            dispatcher.utter_message(
+                text=f"Reminder set! I'll remind you to {activity} at {time}."
+            )
+            # Save reminder to a text file
+            with open("reminders.txt", "a") as file:
+                file.write(f"Reminder: {activity} at {time}\n")
+            return []
+        else:
+            dispatcher.utter_message(
+                text="I couldn't set the reminder. Make sure you specify the activity and time."
+            )
+            return []
 
 class ActionSaveData(Action):
-
     def name(self) -> Text:
         return "action_save_data"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        # Get the latest user message and bot response
-        user_message = tracker.latest_message.get('text')  # User's input
-        intent = tracker.latest_message.get('intent').get('name')  # Detected intent
-        bot_response = tracker.latest_bot_utterance.get('text')  # Bot's reply (if any)
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[EventType]:
+        # Retrieve user data
+        user_data = {
+            "messages": [],
+            "intents": [],
+            "entities": [],
+            "slots": tracker.slots,
+        }
 
-        # Format the data to save
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        data_to_save = f"Time: {timestamp}\nUser: {user_message}\nIntent: {intent}\nBot: {bot_response}\n\n"
+        # Iterate over conversation events
+        for event in tracker.events:
+            if event["event"] == "user":
+                user_data["messages"].append({"type": "user", "text": event["text"]})
+                user_data["intents"].append(event.get("parse_data", {}).get("intent", {}).get("name", ""))
+                user_data["entities"].extend(event.get("parse_data", {}).get("entities", []))
+            elif event["event"] == "bot":
+                user_data["messages"].append({"type": "bot", "text": event["text"]})
 
-        # Define the file path
-        file_path = "chat_data.txt"
+        # Save user data to a file
+        with open("conversation_log.json", "w") as file:
+            json.dump(user_data, file, indent=4)
 
-        # Append the data to the file
-        try:
-            with open(file_path, "a") as file:
-                file.write(data_to_save)
-            dispatcher.utter_message(text="Your data has been saved!")
-        except Exception as e:
-            dispatcher.utter_message(text="An error occurred while saving data.")
-            print(f"Error: {e}")
+        # Inform the user that data has been saved
+        dispatcher.utter_message(text="Your data has been saved successfully.")
 
         return []
+
+class ActionAskForActivities(Action):
+    def name(self):
+        return "action_ask_for_activities"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="You can try activities like going for a walk, reading a book, or doing some yoga.")
+        return []
+
+class ActionAskForResources(Action):
+    def name(self):
+        return "action_ask_for_resources"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="Here are some links: [Mental Health Resources](https://www.mentalhealth.gov), [Crisis Helplines](https://www.crisistextline.org)")
+        return []
+
