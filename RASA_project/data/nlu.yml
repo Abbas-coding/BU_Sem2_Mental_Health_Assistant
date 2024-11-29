@@ -1,0 +1,134 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - Absolutely
+    - Definitely
+    - Of course
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - Nope
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: log_mood
+  examples: |
+    - I feel [sad](mood)
+    - I'm feeling [happy](mood)
+    - I feel [anxious](mood)
+    - I'm feeling [angry](mood)
+    - I feel [relaxed](mood)
+    - I'm [excited](mood) because of the good news.
+
+- intent: suggest_coping_mechanisms
+  examples: |
+    - How can I calm down?
+    - I need help with my anxiety.
+    - Can you suggest something to make me feel better?
+    - What can I do for [stress](mood)?
+    - I'm [sad](mood), what should I do?
+
+- intent: set_reminder
+  examples: |
+    - Remind me to meditate every morning.
+    - Set a reminder for journaling at 8 PM.
+    - Can you remind me to exercise tomorrow?
+    - Schedule a mindfulness reminder every [Monday](time).
+    - Set a daily reminder to check my mood.
+
+- intent: seek_support
+  examples: |
+    - I need someone to talk to.
+    - Can you give me a helpline number?
+    - Who can I contact for mental health help?
+    - I'm feeling lonely; what should I do?
+
+- intent: ask_for_resources
+  examples: |
+    - Do you have resources for anxiety?
+    - Can you provide tips for stress management?
+    - Where can I learn about mindfulness?
+    - Do you know any good mental health websites?

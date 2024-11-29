@@ -1,0 +1,59 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: log mood story
+  steps:
+  - intent: log_mood
+  - action: action_log_mood
+  - slot_was_set:
+    - mood: "sad"
+  - action: utter_suggest_coping_mechanisms
+
+- story: set reminder story
+  steps:
+  - intent: set_reminder
+  - action: action_set_reminder
+
+- story: seek support story
+  steps:
+  - intent: seek_support
+  - action: utter_seek_support
+
+- story: suggest coping mechanisms
+  steps:
+  - intent: suggest_coping_mechanisms
+  - action: action_suggest_coping
+
+- story: save data example
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_save_data

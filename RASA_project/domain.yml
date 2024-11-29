@@ -1,0 +1,81 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - log_mood
+  - suggest_coping_mechanisms
+  - set_reminder
+  - seek_support
+  - ask_for_resources
+
+entities:
+  - mood
+  - activity
+  - time
+
+slots:
+  mood:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: mood
+
+  activity:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: activity
+
+  time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you feeling today?"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_happy:
+    - text: "Great, carry on!"
+
+  utter_goodbye:
+    - text: "Goodbye! Take care of yourself."
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  utter_log_mood:
+    - text: "Got it! I've logged your mood as {mood}. Would you like some suggestions to feel better?"
+
+  utter_suggest_coping_mechanisms:
+    - text: "You could try a mindfulness exercise, some journaling, or even a short walk."
+
+  utter_set_reminder:
+    - text: "Alright! I'll remind you to {activity} at {time}."
+
+  utter_seek_support:
+    - text: "Here are some helpline numbers you can reach out to: [Example Helpline](tel:123-456-789)."
+
+actions:
+  - action_log_mood
+  - action_suggest_coping
+  - action_set_reminder
+  - action_save_data
+
+session_config:
+  session_expiration_time: 90
+  carry_over_slots_to_new_session: true
