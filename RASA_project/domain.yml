@@ -15,6 +15,16 @@ intents:
   - ask_for_resources
   - save_data
   - ask_for_activities
+  - ask_for_therapy
+  - ask_for_symptoms
+  - ask_for_mood_tracking
+  - ask_for_loneliness_support
+  - ask_for_anxiety_relief
+  - ask_for_stress_relief
+  - ask_for_depression_help
+  - ask_for_guilt_relief
+  - ask_for_mood_resources
+
  
 entities:
   - mood
@@ -91,6 +101,30 @@ responses:
   utter_ask_for_resources:
     - text: "Here are some links: [Mental Health Resources](https://www.mentalhealth.gov), [Crisis Helplines](https://www.crisistextline.org)"
     
+  utter_anxiety_relief:
+    - text: "For anxiety, try deep breathing exercises, meditation, or progressive muscle relaxation."
+
+  utter_stress_relief:
+    - text: "For stress relief, consider trying yoga, journaling, or simply taking a short walk outside."
+
+  utter_depression_help:
+    - text: "If you're feeling depressed, reaching out to a professional can help. You can also try activities that uplift you, such as engaging in hobbies or spending time with loved ones."
+
+  utter_loneliness_support:
+    - text: "Loneliness can be tough. Try reaching out to friends, family, or a counselor. Sometimes, joining a support group can help."
+
+  utter_guilt_relief:
+    - text: "Feeling guilty can be tough. Try self-compassion exercises, or consider talking to a therapist to process your feelings."
+
+  utter_mood_tracking:
+    - text: "It's helpful to track your mood over time. You can use a mood tracker or journal your emotions daily."
+
+  utter_therapy_resources:
+    - text: "Here are some resources for finding a therapist: [Therapist Locator](https://www.psychologytoday.com/therapists)."
+
+  utter_symptom_resources:
+    - text: "Here are some resources that can help you understand mental health symptoms: [Mental Health Symptoms](https://www.nami.org/learn-more/mental-health-conditions)."
+
 actions:
   - action_log_mood
   - action_suggest_coping
@@ -98,6 +132,18 @@ actions:
   - action_save_data
   - action_ask_for_activities
   - action_ask_for_resources
+  - action_mood_tracking
+  - action_therapy_resources
+  - action_symptom_resources
+  - action_anxiety_relief
+  - action_stress_relief
+  - action_depression_help
+  - action_loneliness_support
+  - action_guilt_relief
+  - action_anxiety_resources
+  - action_find_therapy
+
+  
 
 session_config:
   session_expiration_time: 90

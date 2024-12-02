@@ -8,6 +8,8 @@ stories:
   - action: utter_greet
   - intent: mood_great
   - action: utter_happy
+  - intent: suggest_coping_mechanisms
+  - action: utter_suggest_coping_mechanisms
 
 - story: sad path 1
   steps:
@@ -27,6 +29,7 @@ stories:
   - action: utter_cheer_up
   - action: utter_did_that_help
   - intent: deny
+  - action: action_suggest_coping
   - action: utter_goodbye
 
 - story: log mood story
@@ -108,6 +111,70 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
+# New Stories for Specific Emotions
 
+- story: anxiety relief conversation
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: deny
+ #   - action: action_suggest_anxiety_relief
+    - action: utter_suggest_coping_mechanisms
+    - intent: goodbye
+    - action: utter_goodbye
 
+- story: stress relief conversation
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: deny
+ #   - action: action_suggest_stress_relief
+    - action: utter_suggest_coping_mechanisms
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: guilt relief conversation
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: deny
+ #   - action: action_suggest_guilt_relief
+    - action: utter_suggest_coping_mechanisms
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: loneliness support conversation
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: deny
+ #   - action: action_suggest_loneliness_support
+    - action: utter_suggest_coping_mechanisms
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: depression help conversation
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: deny
+ #   - action: action_suggest_depression_help
+    - action: utter_suggest_coping_mechanisms
+    - intent: goodbye
+    - action: utter_goodbye
 

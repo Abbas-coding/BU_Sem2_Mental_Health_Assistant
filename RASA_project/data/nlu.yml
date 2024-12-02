@@ -118,6 +118,10 @@ nlu:
     - I feel [down](mood)
     - I'm [frustrated](mood)
     - I'm [calm](mood)
+    - I feel [hopeful](mood)
+    - I feel [overwhelmed](mood)
+    - I feel [guilty](mood)
+    - I feel [lonely](mood
 
 - intent: suggest_coping_mechanisms
   examples: |
@@ -132,6 +136,10 @@ nlu:
     - give me advice on how to cope
     - what can I do to feel better?
     - how can I improve my mood?
+    - can you suggest ways to reduce [stress](mood)?
+    - what should I do if I feel [overwhelmed](mood)?
+    - how can I deal with [guilt](mood)?
+
 
 - intent: set_reminder
   examples: |
@@ -158,6 +166,9 @@ nlu:
     - provide helpline numbers
     - tell me where I can get professional help
     - give me resources for support
+    - I need emotional support
+    - where can I talk to a therapist
+    - give me some advice to improve my mental health
     
 - intent: ask_for_resources
   examples: |
@@ -165,6 +176,11 @@ nlu:
     - Can you provide tips for stress management?
     - Where can I learn about mindfulness?
     - Do you know any good mental health websites?
+    - Give me some resources on how to handle depression
+    - Are there any helpful books on mental health?
+    - What resources do you have for handling burnout?
+    - Tell me about some free mental health apps
+    - Can you suggest some articles or blogs on mental well-being?
  
 - intent: save_data
   examples: |
@@ -187,6 +203,9 @@ nlu:
     - Give me something to do
     - What activity can I try?
     - Help me plan my day
+    - Can you suggest a hobby I can start?
+    - What should I do to improve my mood?
+    - Recommend something productive for me to do
 
   # New Intent: Ask for Resources
 - intent: ask_for_resources
@@ -196,3 +215,58 @@ nlu:
     - I need more details
     - Give me some links to resources
     - Can you suggest helpful websites?
+
+- intent: ask_for_mood_tracking
+  examples: |
+    - How do I track my mood?
+    - Can you help me monitor my emotions?
+    - I want to keep track of how I feel each day
+    - Suggest a way for me to track my mood
+    - How can I journal about my feelings?
+
+- intent: ask_for_therapy
+  examples: |
+    - How can I find a therapist?
+    - I want to talk to a professional
+    - What should I do if I want to see a therapist?
+    - Can you help me find mental health professionals?
+    - How do I schedule therapy appointments?
+
+- intent: ask_for_symptoms
+  examples: |
+    - What are the symptoms of anxiety?
+    - How do I know if I’m depressed?
+    - What are the signs of burnout?
+    - Am I showing signs of a mental health condition?
+    - Can you tell me about the symptoms of PTSD?
+    - What should I look out for if I have bipolar disorder?
+
+- intent: ask_for_stress_relief
+  examples: |
+    - What can I do to relieve stress?
+    - How can I reduce stress naturally?
+    - Give me some stress-relief techniques
+    - What activities help relieve stress?
+    - Suggest a way to relax when I feel stressed
+
+- intent: ask_for_anxiety_relief
+  examples: |
+    - How can I reduce anxiety?
+    - What should I do when I feel anxious?
+    - How can I calm my nerves?
+    - What are some coping mechanisms for anxiety?
+    - Can you give me tips to manage anxiety?
+
+- intent: ask_for_depression_help
+  examples: |
+    - What can I do if I feel depressed?
+    - How do I get over sadness?
+    - Can you help me with my depression?
+    - I feel empty, what should I do?
+    - What should I do when I feel hopeless?
+
+- intent: ask_for_guilt_relief
+  examples: |
+    - How can I overcome guilt?
+    - I'm feeling guilty, what should I do?
+    - I need help with guilt
