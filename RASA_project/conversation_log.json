@@ -1,0 +1,49 @@
+{
+    "messages": [
+        {
+            "type": "user",
+            "text": "hello"
+        },
+        {
+            "type": "bot",
+            "text": "Hey! How are you feeling today?"
+        },
+        {
+            "type": "user",
+            "text": "i feel down"
+        },
+        {
+            "type": "bot",
+            "text": "Got it! I've logged your mood as down. Would you like some suggestions to feel better?"
+        },
+        {
+            "type": "user",
+            "text": "save data"
+        }
+    ],
+    "intents": [
+        "greet",
+        "log_mood",
+        "save_data"
+    ],
+    "entities": [
+        {
+            "entity": "mood",
+            "start": 7,
+            "end": 11,
+            "confidence_entity": 0.9238851070404053,
+            "value": "down",
+            "extractor": "DIETClassifier",
+            "processors": [
+                "EntitySynonymMapper"
+            ]
+        }
+    ],
+    "slots": {
+        "mood": "down",
+        "activity": null,
+        "time": null,
+        "resources": null,
+        "session_started_metadata": null
+    }
+}

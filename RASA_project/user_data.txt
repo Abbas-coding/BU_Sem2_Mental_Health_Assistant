@@ -1,0 +1,1 @@
+User Data: {'mood': 'sad', 'activity': None, 'time': None, 'session_started_metadata': None}
