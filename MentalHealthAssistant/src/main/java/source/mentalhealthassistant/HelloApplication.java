@@ -4,8 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import source.mentalhealthassistant.core.ChatBot;
+import source.mentalhealthassistant.core.User;
+import source.mentalhealthassistant.core.Conversation;
+import source.mentalhealthassistant.core.Message;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class HelloApplication extends Application {
     @Override
@@ -20,5 +25,38 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         //launch();
         System.out.println("Hello, World!");
+        // Create the chatbot
+        ChatBot chatBot = new ChatBot("MentalHealthBot");
+
+        // Create a user (assuming a User class exists)
+        //User user = new User("1", "John Doe", 25);
+        User user = new User("Abbas", "abbas", "abbas@gmail.com", "abbas", 18, "private");
+
+        // Create a conversation between the user and the chatbot
+        Conversation conversation = new Conversation("conv1", user, chatBot);
+
+        // Welcome message
+        System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
+
+        // Start conversation loop
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            // Get user input
+            System.out.print("You: ");
+            String userInput = scanner.nextLine();
+
+            // Exit condition
+            if ("exit".equalsIgnoreCase(userInput)) {
+                System.out.println("ChatBot: Goodbye! Take care!");
+                break;
+            }
+
+            // Handle user input and get the bot's response
+            conversation.handleUserInput(userInput);
+        }
+
+        scanner.close();
+        // close java program
     }
 }

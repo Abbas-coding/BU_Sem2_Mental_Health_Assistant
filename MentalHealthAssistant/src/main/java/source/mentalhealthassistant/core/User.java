@@ -10,9 +10,9 @@ public class User {
     private String name;
     private int age;
     private String profilePreference;
-    //private SupportNetwork supportNetwork;
-    //private ArrayList<MoodLog> moodLogs;
-    //private ArrayList<Reminder> reminders;
+    private SupportNetwork supportNetwork;
+    private ArrayList<MoodLog> moodLogs;
+    private ArrayList<Reminder> reminders;
 
     public User(String userId, String password, String email, String name, int age, String profilePreference) {
         this.userId = userId;
@@ -21,9 +21,9 @@ public class User {
         this.name = name;
         this.age = age;
         this.profilePreference = profilePreference;
-        //this.supportNetwork = new SupportNetwork();
-        //this.moodLogs = new ArrayList<MoodLog>();
-        //this.reminders = new ArrayList<Reminder>();
+        this.supportNetwork = new SupportNetwork();
+        this.moodLogs = new ArrayList<MoodLog>();
+        this.reminders = new ArrayList<Reminder>();
     }
     public String getUserId() {
         return userId;

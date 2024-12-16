@@ -11,6 +11,11 @@ module source.mentalhealthassistant {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
+    // Add these:
+    requires com.google.gson;   // Gson module
+    requires java.net.http;     // HTTP Client module
+
     opens source.mentalhealthassistant to javafx.fxml;
+    opens source.mentalhealthassistant.core to com.google.gson;
     exports source.mentalhealthassistant;
 }

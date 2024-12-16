@@ -1,6 +1,7 @@
 package source.mentalhealthassistant.core;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Conversation {
     private String conversationId;
@@ -8,21 +9,52 @@ public class Conversation {
     private ChatBot chatBot;
     private ArrayList<Message> messages;
 
-    public Conversation(String conversationId, User user, ChatBot chatBot, ArrayList<Message> messages) {
+    public Conversation(String conversationId, User user, ChatBot chatBot) {
         this.conversationId = conversationId;
         this.user = user;
         this.chatBot = chatBot;
-        this.messages = messages;
+        this.messages = new ArrayList<>();
     }
 
+    // Add a message to the conversation history
     public boolean addMessage(Message message) {
-        //TODO
+        if (message != null) {
+            messages.add(message);
+            return true;
+        }
         return false;
     }
 
+    // Get the full conversation history
     public ArrayList<Message> getConversationHistory() {
-        //TODO
         return messages;
+    }
+
+    // Handles user input and gets a response from the chatbot
+    public void handleUserInput(String userInput) {
+        // Add user message
+        Message userMessage = new Message(
+                "user-" + (messages.size() + 1),
+                userInput,
+                user.getUserId(),
+                new Date()
+        );
+        addMessage(userMessage);
+
+        // Get chatbot response
+        String botResponse = chatBot.getResponse(userInput);
+
+        // Add chatbot message
+        Message botMessage = new Message(
+                "bot-" + (messages.size() + 1),
+                botResponse,
+                chatBot.getBotName(),
+                new Date()
+        );
+        addMessage(botMessage);
+
+        // Print bot response to console
+        System.out.println("ChatBot: " + botResponse);
     }
 
     public String getConversationId() {
@@ -48,7 +80,4 @@ public class Conversation {
     public void setChatBot(ChatBot chatBot) {
         this.chatBot = chatBot;
     }
-
-
-
 }
