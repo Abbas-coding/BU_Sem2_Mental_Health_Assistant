@@ -1,0 +1,37 @@
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment variables and virtual environments
+.env
+.venv/
+env/
+venv/
+
+# Logs and temporary files
+*.log
+logs/
+results/
+
+# Database files
+*.db
+
+# Rasa-specific folders and files
+.rasa/
+models/
+*.tar.gz
+
+# Cache and backup files
+*.bak
+*.swp
+*.tmp
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS-specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
