@@ -3,33 +3,17 @@ package source.mentalhealthassistant.core;
 import java.time.LocalDateTime;
 
 public class DailyReminder extends Reminder {
-    private int hourOfDay;
-    private int minuteOfHour;
-
-    public DailyReminder(String reminderId, String message, LocalDateTime time, boolean isRecurring, int hourOfDay, int minuteOfHour) {
-        super(reminderId, message, time, isRecurring);
-        this.hourOfDay = hourOfDay;
-        this.minuteOfHour = minuteOfHour;
-    }
-
-    public int getHourOfDay() {
-        return hourOfDay;
-    }
-
-    public int getMinuteOfHour() {
-        return minuteOfHour;
-    }
-
-    public void setHourOfDay(int hourOfDay) {
-        this.hourOfDay = hourOfDay;
-    }
-
-    public void setMinuteOfHour(int minuteOfHour) {
-        this.minuteOfHour = minuteOfHour;
+    public DailyReminder(String reminderId, String message, LocalDateTime time) {
+        super(reminderId, message, time, true);
     }
 
     @Override
     public void triggerReminder() {
-        //TODO
+        System.out.println("Daily Reminder: " + getMessage() + " at " + getTime());
+    }
+
+    @Override
+    protected long getRecurrencePeriod() {
+        return 24 * 60 * 60 * 1000; // 24 hours in milliseconds
     }
 }

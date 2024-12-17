@@ -7,6 +7,11 @@ import javafx.stage.Stage;
 import source.mentalhealthassistant.core.ChatBot;
 import source.mentalhealthassistant.core.User;
 import source.mentalhealthassistant.core.Conversation;
+import source.mentalhealthassistant.core.Reminder;
+import source.mentalhealthassistant.core.DailyReminder;
+import source.mentalhealthassistant.core.WeeklyReminder;
+import source.mentalhealthassistant.core.EventReminder;
+import java.time.LocalDateTime;
 import source.mentalhealthassistant.core.Message;
 
 import java.io.IOException;
@@ -35,28 +40,60 @@ public class HelloApplication extends Application {
         // Create a conversation between the user and the chatbot
         Conversation conversation = new Conversation("conv1", user, chatBot);
 
-        // Welcome message
-        System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
+//        // Welcome message
+//        System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
+//
+//        // Start conversation loop
+//        Scanner scanner = new Scanner(System.in);
+//
+//        while (true) {
+//            // Get user input
+//            System.out.print("You: ");
+//            String userInput = scanner.nextLine();
+//
+//            // Exit condition
+//            if ("exit".equalsIgnoreCase(userInput)) {
+//                System.out.println("ChatBot: Goodbye! Take care!");
+//                break;
+//            }
+//
+//            // Handle user input and get the bot's response
+//            conversation.handleUserInput(userInput);
+//        }
+//
+//        scanner.close();
+//        // close java program
 
-        // Start conversation loop
-        Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            // Get user input
-            System.out.print("You: ");
-            String userInput = scanner.nextLine();
+        Reminder dailyReminder = new DailyReminder(
+                "1", "Take your medication", LocalDateTime.now().plusSeconds(5)
+        );
+        dailyReminder.scheduleReminder();
 
-            // Exit condition
-            if ("exit".equalsIgnoreCase(userInput)) {
-                System.out.println("ChatBot: Goodbye! Take care!");
-                break;
-            }
+        // Weekly Reminder Example
+        Reminder weeklyReminder = new WeeklyReminder(
+                "2", "Weekly team meeting", LocalDateTime.now().plusSeconds(10)
+        );
+        weeklyReminder.scheduleReminder();
 
-            // Handle user input and get the bot's response
-            conversation.handleUserInput(userInput);
+        // Event Reminder Example
+        Reminder eventReminder = new EventReminder(
+                "3", "Doctor's Appointment", LocalDateTime.now().plusSeconds(15)
+        );
+        eventReminder.scheduleReminder();
+
+        // Keep the application running to allow reminders to trigger
+        try {
+            Thread.sleep(30000); // 30 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
-        scanner.close();
-        // close java program
+        // Cancel reminders (if needed)
+        eventReminder.cancelReminder();
+        dailyReminder.cancelReminder();
+        weeklyReminder.cancelReminder();
+
+
     }
 }
