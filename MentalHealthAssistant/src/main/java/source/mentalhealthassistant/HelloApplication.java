@@ -4,67 +4,80 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import source.mentalhealthassistant.core.ChatBot;
-import source.mentalhealthassistant.core.User;
-import source.mentalhealthassistant.core.Conversation;
-import source.mentalhealthassistant.core.Reminder;
-import source.mentalhealthassistant.core.DailyReminder;
-import source.mentalhealthassistant.core.WeeklyReminder;
-import source.mentalhealthassistant.core.EventReminder;
-import java.time.LocalDateTime;
-import source.mentalhealthassistant.core.Message;
+import source.mentalhealthassistant.core.*;
 
+import java.time.LocalDateTime;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Mental Health Assistant");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
-        //launch();
+        // Ensure we run the authentication manager and reminder system first.
+        Scanner scanner = new Scanner(System.in);
+
+        // Create an instance of AuthenticationManager
+        AuthenticationManager authManager = new AuthenticationManager(scanner);
+
+        // Print Hello World before the loop starts (or if needed in the application setup)
         System.out.println("Hello, World!");
-        // Create the chatbot
-        ChatBot chatBot = new ChatBot("MentalHealthBot");
 
-        // Create a user (assuming a User class exists)
-        //User user = new User("1", "John Doe", 25);
-        User user = new User("Abbas", "abbas", "abbas@gmail.com", "abbas", 18, "private");
+        // Display a menu for the user
+        while (true) {
+            System.out.println("Welcome to the Mental Health Assistant!");
+            System.out.println("Please choose an option:");
+            System.out.println("1. Sign Up");
+            System.out.println("2. Login");
+            System.out.println("3. Recover Password");
+            System.out.println("4. Exit");
 
-        // Create a conversation between the user and the chatbot
-        Conversation conversation = new Conversation("conv1", user, chatBot);
+            String choice = scanner.nextLine().trim();
 
-//        // Welcome message
-//        System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
-//
-//        // Start conversation loop
-//        Scanner scanner = new Scanner(System.in);
-//
-//        while (true) {
-//            // Get user input
-//            System.out.print("You: ");
-//            String userInput = scanner.nextLine();
-//
-//            // Exit condition
-//            if ("exit".equalsIgnoreCase(userInput)) {
-//                System.out.println("ChatBot: Goodbye! Take care!");
-//                break;
-//            }
-//
-//            // Handle user input and get the bot's response
-//            conversation.handleUserInput(userInput);
-//        }
-//
-//        scanner.close();
-//        // close java program
+            switch (choice) {
+                case "1":
+                    // Handle Sign Up
+                    authManager.signup();
+                    break;
 
+                case "2":
+                    // Handle Login
+                    User loggedInUser = authManager.handleLogin();
+                    if (loggedInUser != null) {
+                        System.out.println("Welcome, " + loggedInUser.getName() + "!");
+                        // Additional features for logged-in users can go here
+                    }
+                    break;
 
+                case "3":
+                    // Handle Password Recovery
+                    authManager.handlePasswordRecovery();
+                    break;
+
+                case "4":
+                    // Exit the program
+                    System.out.println("Thank you for using the Mental Health Assistant. Goodbye!");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid option. Please choose a valid option.");
+                    break;
+            }
+        }
+
+        // Code below will never be executed until the loop ends
+        // (as the loop is infinite unless the user exits)
+
+        /*
         Reminder dailyReminder = new DailyReminder(
                 "1", "Take your medication", LocalDateTime.now().plusSeconds(5)
         );
@@ -93,7 +106,6 @@ public class HelloApplication extends Application {
         eventReminder.cancelReminder();
         dailyReminder.cancelReminder();
         weeklyReminder.cancelReminder();
-
-
+        */
     }
 }
