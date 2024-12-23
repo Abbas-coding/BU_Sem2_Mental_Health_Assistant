@@ -1,5 +1,8 @@
 package source.mentalhealthassistant.core;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,8 @@ public class User {
     private SupportNetwork supportNetwork;
     private ArrayList<MoodLog> moodLogs;
     private ArrayList<Reminder> reminders;
+
+    private static final String FILE_PATH = "users.txt";// File to store user data
 
     public User(String userId, String password, String email, String name, int age, String profilePreference) {
         this.userId = userId;
@@ -73,8 +78,9 @@ public class User {
     public void addMoodLog() {
         //TODO
     }
-//    public List<MoodLog> viewMoodLogs() {
-//        //TODO
-//        return null;
-//    }
+    public List<MoodLog> viewMoodLogs() {
+        //TODO
+        return null;
+    }
+
 }
