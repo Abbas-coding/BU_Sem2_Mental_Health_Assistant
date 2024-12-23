@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
@@ -29,16 +30,17 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         //launch();
+
         System.out.println("Hello, World!");
         // Create the chatbot
         ChatBot chatBot = new ChatBot("MentalHealthBot");
 
         // Create a user (assuming a User class exists)
         //User user = new User("1", "John Doe", 25);
-        User user = new User("Abbas", "abbas", "abbas@gmail.com", "abbas", 18, "private");
+//        User user = new User("Abbas", "abbas", "abbas@gmail.com", "abbas", 18, "private");
 
         // Create a conversation between the user and the chatbot
-        Conversation conversation = new Conversation("conv1", user, chatBot);
+//        Conversation conversation = new Conversation("conv1", user, chatBot);
 
 //        // Welcome message
 //        System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
