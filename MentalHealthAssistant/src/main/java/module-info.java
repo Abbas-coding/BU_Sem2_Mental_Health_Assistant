@@ -12,12 +12,10 @@ module source.mentalhealthassistant {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
-    requires java.sql;
 
     // Add these:
     requires com.google.gson;   // Gson module
-    requires java.net.http;
-    requires kotlin.stdlib;     // HTTP Client module
+    requires java.net.http;     // HTTP Client module
 
     opens source.mentalhealthassistant to javafx.fxml;
     opens source.mentalhealthassistant.core to com.google.gson;
