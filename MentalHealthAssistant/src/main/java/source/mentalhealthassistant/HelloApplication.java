@@ -36,35 +36,35 @@ public class HelloApplication extends Application {
         ChatBot chatBot = new ChatBot("MentalHealthBot");
 
         // Create a user (assuming a User class exists)
-        //User user = new User("1", "John Doe", 25);
-//        User user = new User("Abbas", "abbas", "abbas@gmail.com", "abbas", 18, "private");
+       // User user = new User("1", "John Doe", 25);
+        User user = new User("Abbas", "abbas", "abbas@gmail.com", "abbas", 18, "private");
 
-        // Create a conversation between the user and the chatbot
-//        Conversation conversation = new Conversation("conv1", user, chatBot);
+         //Create a conversation between the user and the chatbot
+        Conversation conversation = new Conversation("conv1", user, chatBot);
 
-//        // Welcome message
-//        System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
-//
-//        // Start conversation loop
-//        Scanner scanner = new Scanner(System.in);
-//
-//        while (true) {
-//            // Get user input
-//            System.out.print("You: ");
-//            String userInput = scanner.nextLine();
-//
-//            // Exit condition
-//            if ("exit".equalsIgnoreCase(userInput)) {
-//                System.out.println("ChatBot: Goodbye! Take care!");
-//                break;
-//            }
-//
-//            // Handle user input and get the bot's response
-//            conversation.handleUserInput(userInput);
-//        }
-//
-//        scanner.close();
-//        // close java program
+        // Welcome message
+        System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
+
+        // Start conversation loop
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            // Get user input
+            System.out.print("You: ");
+            String userInput = scanner.nextLine();
+
+            // Exit condition
+            if ("exit".equalsIgnoreCase(userInput)) {
+                System.out.println("ChatBot: Goodbye! Take care!");
+                break;
+            }
+
+            // Handle user input and get the bot's response
+            conversation.handleUserInput(userInput);
+        }
+
+        scanner.close();
+        // close java program
 
 
         Reminder dailyReminder = new DailyReminder(
@@ -92,9 +92,9 @@ public class HelloApplication extends Application {
         }
 
         // Cancel reminders (if needed)
-        eventReminder.cancelReminder();
-        dailyReminder.cancelReminder();
-        weeklyReminder.cancelReminder();
+//        eventReminder.cancelReminder();
+//        dailyReminder.cancelReminder();
+//        weeklyReminder.cancelReminder();
 
 
     }

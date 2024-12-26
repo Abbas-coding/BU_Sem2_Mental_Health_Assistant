@@ -63,7 +63,7 @@ public class User {
    public void setAge(int age) {
         this.age = age;
     }
-<<<<<<< HEAD
+//<<<<<<< HEAD
     public void setProfilePreference(String profilePreference) {
         this.profilePreference = profilePreference;
     }
@@ -85,7 +85,7 @@ public class User {
     }
 
 }
-=======
+//=======
 //    public void setProfilePreference(String profilePreference) {
 //        this.profilePreference = profilePreference;
 //    }
@@ -105,7 +105,7 @@ public class User {
 ////        //TODO
 ////        return null;
 ////    }
-}
+//}
 //
 //
 //
@@ -212,4 +212,4 @@ public class User {
 //    }
 //}
 //
->>>>>>> 42eeb5510b23400921b0f7b1d6d15fbc882b6289
+//>>>>>>> 42eeb5510b23400921b0f7b1d6d15fbc882b6289
