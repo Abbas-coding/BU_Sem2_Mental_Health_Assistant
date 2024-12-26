@@ -1,4 +1,5 @@
 module source.mentalhealthassistant {
+    requires java.sql;
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
