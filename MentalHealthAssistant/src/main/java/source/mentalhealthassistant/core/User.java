@@ -1,106 +1,33 @@
 package source.mentalhealthassistant.core;
 
-import java.util.ArrayList;
-import java.util.List;
-
-//public class User {
-//    private String userId;
-//    private String password;
-//    private String email;
-//    private String name;
-//    private int age;
-//    private String profilePreference;
-//    private SupportNetwork supportNetwork;
-//    private ArrayList<MoodLog> moodLogs;
-//    private ArrayList<Reminder> reminders;
-//
-//    public User(String userId, String password, String email, String name, int age, String profilePreference) {
-//        this.userId = userId;
-//        this.password = password;
-//        this.email = email;
-//        this.name = name;
-//        this.age = age;
-//        this.profilePreference = profilePreference;
-//        this.supportNetwork = new SupportNetwork();
-//        this.moodLogs = new ArrayList<MoodLog>();
-//        this.reminders = new ArrayList<Reminder>();
-//    }
-//    public String getUserId() {
-//        return userId;
-//    }
-//    public String getPassword() {
-//        return password;
-//    }
-//    public String getEmail() {
-//        return email;
-//    }
-//    public String getName() {
-//        return name;
-//    }
-//    public int getAge() {
-//        return age;
-//    }
-//    public String getProfilePreference() {
-//        return profilePreference;
-//    }
-//    public void setUserId(String userId) {
-//        this.userId = userId;
-//    }
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//    public void setAge(int age) {
-//        this.age = age;
-//    }
-//    public void setProfilePreference(String profilePreference) {
-//        this.profilePreference = profilePreference;
-//    }
-//    public void updateProfile() {
-//        //TODO
-//    }
-//    public void viewProgress() {
-//        //TODO
-//    }
-//    public void setReminder() {
-//        //TODO
-//    }
-//    public void addMoodLog() {
-//        //TODO
-//    }
-////    public List<MoodLog> viewMoodLogs() {
-////        //TODO
-////        return null;
-////    }
-//}
-
-
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
 
 public class User {
-    private static final String FILE_PATH = "users.txt"; // File to store user data
-
+    private String userId;
     private String name;
     private int age;
     private String password;
     private String email;
+    private String profilePreference;
+    private int supportNetworkId;
 
-    public User(String name, int age, String password, String email) {
-        this.name = name;
+    private static DatabaseHandler dbHandler = new DatabaseHandler(); // Shared DatabaseHandler instance
+
+    public User(String userId, String profilePreference, String password, int age, String email, int supportNetworkId) {
+        this.userId = userId;
+        this.name = userId; // Assuming 'name' is the same as 'userId' (adjust as needed)
         this.age = age;
         this.password = password;
         this.email = email;
+        this.profilePreference = profilePreference;
+        this.supportNetworkId = supportNetworkId;
     }
 
     // Getter methods
+    public String getUserId() {
+        return userId;
+    }
+
     public String getName() {
         return name;
     }
@@ -117,69 +44,86 @@ public class User {
         return email;
     }
 
-    // Save user data to a file
-    public static void saveUserToFile(User user) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
-            writer.write(user.name + "," + user.age + "," + user.password + "," + user.email);
-            writer.newLine();
-        } catch (IOException e) {
-            System.out.println("Error saving user data: " + e.getMessage());
+    public String getProfilePreference() {
+        return profilePreference;
+    }
+
+    public int getSupportNetworkId() {
+        return supportNetworkId;
+    }
+
+    // Save user to the database
+    public void saveToDatabase() {
+        String query = "INSERT INTO User (userId, name, age, password, email, profilePreference, supportNetworkId) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement statement = dbHandler.getConnection().prepareStatement(query)) {
+            statement.setString(1, userId); // Set userId
+            statement.setString(2, name);
+            statement.setInt(3, age);
+            statement.setString(4, password);
+            statement.setString(5, email);
+            statement.setString(6, profilePreference);
+            statement.setInt(7, supportNetworkId);
+            statement.executeUpdate();
+            System.out.println("User saved to database!");
+        } catch (SQLException e) {
+            System.out.println("Error saving user: " + e.getMessage());
         }
     }
 
-    // Load all users from the file
-    public static List<User> loadUsersFromFile() {
-        List<User> users = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 4) { // Updated for 4 fields (name, age, password, email)
-                    String name = parts[0];
-                    int age = Integer.parseInt(parts[1]);
-                    String password = parts[2];
-                    String email = parts[3];
-                    users.add(new User(name, age, password, email));
-                }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("No existing user data found. Starting fresh.");
-        } catch (IOException e) {
-            System.out.println("Error loading user data: " + e.getMessage());
-        }
-        return users;
-    }
-
-    // Find user by username and password
-    public static User findUser(String username, String password) {
-        List<User> users = loadUsersFromFile();
-        for (User user : users) {
-            if (user.getName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    // Find user by email and age
-    public static User findUserByEmailAndAge(String email, int age) {
-        List<User> users = loadUsersFromFile();
-        for (User user : users) {
-            if (user.getEmail().equalsIgnoreCase(email) && user.getAge() == age) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    // Check if username is already taken
-    public static boolean isUsernameTaken(String username) {
-        List<User> users = loadUsersFromFile();
-        for (User user : users) {
-            if (user.getName().equalsIgnoreCase(username)) {
-                return true;
-            }
+    // Check if userId already exists
+    public static boolean isUserIdTaken(String userId) {
+        String query = "SELECT * FROM User WHERE userId = ?";
+        try (PreparedStatement statement = dbHandler.getConnection().prepareStatement(query)) {
+            statement.setString(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next(); // If a row is returned, userId is already taken
+        } catch (SQLException e) {
+            System.out.println("Error checking userId: " + e.getMessage());
         }
         return false;
     }
+
+    // Load user from the database using userId and password
+    public static User findUser(String userId, String password) {
+        String query = "SELECT * FROM User WHERE userId = ? AND password = ?";
+        try (PreparedStatement statement = dbHandler.getConnection().prepareStatement(query)) {
+            statement.setString(1, userId);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                String email = resultSet.getString("email");
+                String profilePreference = resultSet.getString("profilePreference");
+                int supportNetworkId = resultSet.getInt("supportNetworkId");
+                return new User(userId, profilePreference, password, age, email, supportNetworkId);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error loading user: " + e.getMessage());
+        }
+        return null;
+    }
+
+    // Find user by email and age for password recovery
+    public static User findUserByEmailAndAge(String email, int age) {
+        String query = "SELECT * FROM User WHERE email = ? AND age = ?";
+        try (PreparedStatement statement = dbHandler.getConnection().prepareStatement(query)) {
+            statement.setString(1, email);
+            statement.setInt(2, age);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String userId = resultSet.getString("userId");
+                String name = resultSet.getString("name");
+                String password = resultSet.getString("password");
+                String profilePreference = resultSet.getString("profilePreference");
+                int supportNetworkId = resultSet.getInt("supportNetworkId");
+                return new User(userId, profilePreference, password, age, email, supportNetworkId);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error loading user by email and age: " + e.getMessage());
+        }
+        return null;
+    }
+
+    // Other methods as required...
 }

@@ -10,6 +10,7 @@ module source.mentalhealthassistant {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens source.mentalhealthassistant to javafx.fxml;
     exports source.mentalhealthassistant;

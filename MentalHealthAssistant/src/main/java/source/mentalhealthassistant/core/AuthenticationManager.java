@@ -13,24 +13,25 @@ public class AuthenticationManager {
     public User signup() {
         System.out.println("Sign Up");
 
-        String username;
+        String userId;
         String password;
         String confirmPassword;
         int age;
         String email;
+        String profilePreference;
 
         while (true) {
-            // Step 1: Get a valid username
-            System.out.println("Please enter a username:");
-            username = scanner.nextLine().trim();
+            // Step 1: Get a valid userId
+            System.out.println("Please enter a user ID:");
+            userId = scanner.nextLine().trim();
 
-            if (username.isEmpty()) {
-                System.out.println("Username cannot be empty. Please try again.");
+            if (userId.isEmpty()) {
+                System.out.println("User ID cannot be empty. Please try again.");
                 continue;
             }
 
-            if (User.isUsernameTaken(username)) {
-                System.out.println("This username is already taken. Please choose another.");
+            if (User.isUserIdTaken(userId)) {
+                System.out.println("This user ID is already taken. Please choose another.");
                 continue;
             }
 
@@ -71,9 +72,16 @@ public class AuthenticationManager {
                 }
             }
 
-            // Step 5: Create and save the new user
-            User newUser = new User(username, age, password, email);
-            User.saveUserToFile(newUser);
+            // Step 5: Get profile preference
+            System.out.println("Please enter your profile preference:");
+            profilePreference = scanner.nextLine().trim();
+
+            // Step 6: Get a valid support network ID (may use default for now, or query available networks)
+            int supportNetworkId = 1; // This can be modified as needed
+
+            // Step 7: Create and save the new user
+            User newUser = new User(userId, profilePreference, password, age, email, supportNetworkId);
+            newUser.saveToDatabase();
             System.out.println("Signup successful! You are now logged in.");
             return newUser;
         }
@@ -81,18 +89,18 @@ public class AuthenticationManager {
 
     public User handleLogin() {
         System.out.println("Login");
-        System.out.println("Enter your username:");
-        String username = scanner.nextLine().trim();
+        System.out.println("Enter your user ID:");
+        String userId = scanner.nextLine().trim();
 
         System.out.println("Enter your password:");
         String password = scanner.nextLine().trim();
 
-        User user = User.findUser(username, password);
+        User user = User.findUser(userId, password);
         if (user != null) {
             System.out.println("Login successful!");
             return user;
         } else {
-            System.out.println("Invalid username or password. Please try again.");
+            System.out.println("Invalid user ID or password. Please try again.");
             return null;
         }
     }
@@ -112,7 +120,7 @@ public class AuthenticationManager {
             return;
         }
 
-        // Search for the user in the file
+        // Search for the user in the database using email and age
         User user = User.findUserByEmailAndAge(email, age);
         if (user != null) {
             System.out.println("Recovery successful! Your password is: " + user.getPassword());
