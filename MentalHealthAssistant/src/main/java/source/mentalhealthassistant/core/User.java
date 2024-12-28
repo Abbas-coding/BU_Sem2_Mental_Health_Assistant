@@ -1,215 +1,128 @@
 package source.mentalhealthassistant.core;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
 
 public class User {
-  private String userId;
-   private String password;
-    private String email;
+    private String userId;
     private String name;
     private int age;
-    private String profilePreference;
-   private SupportNetwork supportNetwork;
-   private ArrayList<MoodLog> moodLogs;
-    private ArrayList<Reminder> reminders;
+    private String password;
+    private String email;
+    private String username;
 
-    private static final String FILE_PATH = "users.txt";// File to store user data
 
-    public User(String userId, String password, String email, String name, int age, String profilePreference) {
-        this.userId = userId;
+    public User(String username, String password, int age, String email, String name) {
+        this.name = userId; // Assuming 'name' is the same as 'userId' (adjust as needed)
+        this.age = age;
         this.password = password;
         this.email = email;
-       this.name = name;
-        this.age = age;
-        this.profilePreference = profilePreference;
-        this.supportNetwork = new SupportNetwork();
-        this.moodLogs = new ArrayList<MoodLog>();
-        this.reminders = new ArrayList<Reminder>();
+        this.username = username;
+        this.name = name;
+
     }
+
+    // Getter methods
     public String getUserId() {
-       return userId;
-   }
-    public String getPassword() {
-        return password;
+        return userId;
     }
-    public String getEmail() {
-        return email;
-    }
+
     public String getName() {
         return name;
     }
-   public int getAge() {
+
+    public int getAge() {
         return age;
     }
-    public String getProfilePreference() {
-        return profilePreference;
+
+    public String getPassword() {
+        return password;
     }
-    public void setUserId(String userId) {
-        this.userId = userId;
+
+    public String getEmail() {
+        return email;
     }
-    public void setPassword(String password) {
-        this.password = password;
+
+
+    // Save user to the database
+    public void saveToDatabase() throws ClassNotFoundException {
+        String query = "INSERT INTO User ( name, age, password, email, username) VALUES ( ?, ?, ?, ?, ?)";
+        try (PreparedStatement statement = DatabaseHandler.connectToDatabase().prepareStatement(query)) {
+            statement.setString(1, name);
+            statement.setInt(2, age);
+            statement.setString(3, password);
+            statement.setString(4, email);
+            statement.setString(5, username);
+
+            statement.executeUpdate();
+            System.out.println("User saved to database!");
+        } catch (SQLException e) {
+            System.out.println("Error saving user: " + e.getMessage());
+        }
     }
-    public void setEmail(String email) {
-        this.email = email;
+
+    // Check if userId already exists
+    public static boolean isUserIdTaken(String username) throws ClassNotFoundException {
+        String query = "SELECT * FROM User WHERE username = ?";
+        try (PreparedStatement statement = DatabaseHandler.connectToDatabase().prepareStatement(query)) {
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next(); // If a row is returned, userId is already taken
+        } catch (SQLException e) {
+            System.out.println("Error checking userId: " + e.getMessage());
+        }
+        return false;
     }
-    public void setName(String name) {
-        this.name = name;
-   }
-   public void setAge(int age) {
-        this.age = age;
-    }
-//<<<<<<< HEAD
-    public void setProfilePreference(String profilePreference) {
-        this.profilePreference = profilePreference;
-    }
-    public void updateProfile() {
-        //TODO
-    }
-    public void viewProgress() {
-        //TODO
-    }
-    public void setReminder() {
-        //TODO
-    }
-    public void addMoodLog() {
-        //TODO
-    }
-    public List<MoodLog> viewMoodLogs() {
-        //TODO
+
+    // Load user from the database using userId and password
+    public static User findUser(String username, String password) throws ClassNotFoundException {
+        String query = "SELECT * FROM User WHERE username = ? AND password = ?";
+        try (PreparedStatement statement = DatabaseHandler.connectToDatabase().prepareStatement(query)) {
+            statement.setString(1, username);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                String email = resultSet.getString("email");
+
+                return new User(username, password, age, email, name);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error loading user: " + e.getMessage());
+        }
         return null;
     }
 
+    // Find user by email and age for password recovery
+    public static User findUserByEmail(String email) throws ClassNotFoundException {
+        String query = "SELECT * FROM User WHERE email = ?";
+        try (PreparedStatement statement = DatabaseHandler.connectToDatabase().prepareStatement(query)) {
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String username = resultSet.getString("username");
+                String name = resultSet.getString("name");
+                String password = resultSet.getString("password");
+                int age = resultSet.getInt("age");
+                return new User(username, password, age, email, name);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error loading user by email and age: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static User updatePassword(String email, String password) throws ClassNotFoundException {
+        String query = "UPDATE User SET password = ? WHERE email = ?";
+        try (PreparedStatement statement = DatabaseHandler.connectToDatabase().prepareStatement(query)) {
+            statement.setString(1, password);
+            statement.setString(2, email);
+            statement.executeUpdate();
+            return findUserByEmail(email);
+        } catch (SQLException e) {
+            System.out.println("Error updating password: " + e.getMessage());
+        }
+        return null;
+        // Other methods as required...
+    }
 }
-//=======
-//    public void setProfilePreference(String profilePreference) {
-//        this.profilePreference = profilePreference;
-//    }
-//    public void updateProfile() {
-//        //TODO
-//    }
-//    public void viewProgress() {
-//        //TODO
-//    }
-//    public void setReminder() {
-//        //TODO
-//    }
-//    public void addMoodLog() {
-//        //TODO
-//    }
-////    public List<MoodLog> viewMoodLogs() {
-////        //TODO
-////        return null;
-////    }
-//}
-//
-//
-//
-//import java.io.*;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class User {
-//    private static final String FILE_PATH = "users.txt"; // File to store user data
-//
-//    private String name;
-//    private int age;
-//    private String password;
-//    private String email;
-//
-//    public User(String name, int age, String password, String email) {
-//        this.name = name;
-//        this.age = age;
-//        this.password = password;
-//        this.email = email;
-//    }
-//
-//    // Getter methods
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public int getAge() {
-//        return age;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    // Save user data to a file
-//    public static void saveUserToFile(User user) {
-//        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
-//            writer.write(user.name + "," + user.age + "," + user.password + "," + user.email);
-//            writer.newLine();
-//        } catch (IOException e) {
-//            System.out.println("Error saving user data: " + e.getMessage());
-//        }
-//    }
-//
-//    // Load all users from the file
-//    public static List<User> loadUsersFromFile() {
-//        List<User> users = new ArrayList<>();
-//        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] parts = line.split(",");
-//                if (parts.length == 4) { // Updated for 4 fields (name, age, password, email)
-//                    String name = parts[0];
-//                    int age = Integer.parseInt(parts[1]);
-//                    String password = parts[2];
-//                    String email = parts[3];
-//                    users.add(new User(name, age, password, email));
-//                }
-//            }
-//        } catch (FileNotFoundException e) {
-//            System.out.println("No existing user data found. Starting fresh.");
-//        } catch (IOException e) {
-//            System.out.println("Error loading user data: " + e.getMessage());
-//        }
-//        return users;
-//    }
-//
-//    // Find user by username and password
-//    public static User findUser(String username, String password) {
-//        List<User> users = loadUsersFromFile();
-//        for (User user : users) {
-//            if (user.getName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
-//                return user;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    // Find user by email and age
-//    public static User findUserByEmailAndAge(String email, int age) {
-//        List<User> users = loadUsersFromFile();
-//        for (User user : users) {
-//            if (user.getEmail().equalsIgnoreCase(email) && user.getAge() == age) {
-//                return user;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    // Check if username is already taken
-//    public static boolean isUsernameTaken(String username) {
-//        List<User> users = loadUsersFromFile();
-//        for (User user : users) {
-//            if (user.getName().equalsIgnoreCase(username)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//}
-//
-//>>>>>>> 42eeb5510b23400921b0f7b1d6d15fbc882b6289

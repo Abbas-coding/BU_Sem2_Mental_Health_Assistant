@@ -69,20 +69,26 @@ public abstract class Reminder {
 
         Runnable task = () -> {
             triggerReminder();
+
+            // Only cancel the reminder if it's non-recurring and the task was executed successfully
             if (!isRecurring) {
-                cancelReminder();
+                System.out.println("One-time reminder triggered and completed.");
+                if (scheduledTask != null && !scheduledTask.isCancelled()) {
+                    cancelReminder();
+                }
             }
         };
 
         if (isRecurring) {
             // Example recurring schedule: Daily or Weekly
-            long recurrencePeriod = getRecurrencePeriod();
+            long recurrencePeriod = getRecurrencePeriod(); // Implement this method for daily/weekly reminders
             scheduledTask = scheduler.scheduleAtFixedRate(task, delay, recurrencePeriod, TimeUnit.MILLISECONDS);
         } else {
             // One-time reminder
             scheduledTask = scheduler.schedule(task, delay, TimeUnit.MILLISECONDS);
         }
     }
+
 
     /**
      * Cancel the scheduled reminder
@@ -99,4 +105,11 @@ public abstract class Reminder {
      * Utility: Define recurrence period in subclasses
      */
     protected abstract long getRecurrencePeriod(); // Implemented in child classes
+
+    public void display(){
+        System.out.println("Reminder ID: " + reminderId);
+        System.out.println("Message: " + message);
+        System.out.println("Time: " + time);
+        System.out.println("Recurring: " + isRecurring);
+    }
 }
