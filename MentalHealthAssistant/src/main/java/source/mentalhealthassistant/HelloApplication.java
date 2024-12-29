@@ -2,6 +2,7 @@ package source.mentalhealthassistant;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import source.mentalhealthassistant.core.*;
@@ -15,17 +16,63 @@ import java.util.Scanner;
 
 public class HelloApplication extends Application {
 
+//    @Override
+//    public void start(Stage stage) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+//        stage.setTitle("Hello!");
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+
+    private static Stage primaryStage;
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage stage) throws Exception {
+        // Set the primary stage
+        primaryStage = stage;
+
+        // Load the Login.fxml initially
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
+        Parent root = loader.load();
+
+        // Create the scene
+        Scene scene = new Scene(root, 600, 400);
+
+        // Configure and display the stage
+        primaryStage.setTitle("Mental Health Assistant - Login");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    // Utility method to switch scenes
+    public static void switchScene(String fxmlFilePath) {
+        try {
+            // Load the FXML file
+
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlFilePath));
+            Parent root = loader.load();
+
+            // Set the new scene on the primary stage
+            Scene scene = new Scene(root, 600, 400); // Adjust size if needed
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void switchScene(String fxmlFilePath, int width, int height) {
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlFilePath));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root, width, height);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws ClassNotFoundException {
-        //launch();
+        launch();
 
 //        System.out.println("Hello, World!");
 //        // Create the chatbot
@@ -95,7 +142,7 @@ public class HelloApplication extends Application {
         //System.out.println("ChatBot: Hi! I'm here to assist you with your mental health queries. Type 'exit' to end the conversation.");
 
         // Start conversation loop
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
 
 //        while (true) {
 //            // Get user input
@@ -164,48 +211,48 @@ public class HelloApplication extends Application {
 
 
 
-        // Prompt for username
-        System.out.print("Please enter your username: ");
-        String username = scanner.nextLine().trim();
-
-        // Create MoodLog instance
-        MoodLog moodLog = new MoodLog(username);
-
-        boolean run = true;
-        while (run) {
-            // Display menu
-            System.out.println("\n--- Mood Tracker Menu ---");
-            System.out.println("1. Track Mood");
-            System.out.println("2. View Mood History");
-            System.out.println("3. Exit");
-            System.out.print("Choose an option: ");
-
-            int choice;
-            try {
-                choice = Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input! Please enter a number between 1 and 3.");
-                continue;
-            }
-
-            // Handle menu options
-            switch (choice) {
-                case 1:
-                    moodLog.trackMood(); // Track a new mood
-                    break;
-                case 2:
-                    moodLog.displayMoodHistory(); // View past moods
-                    break;
-                case 3:
-                    System.out.println("Goodbye! Take care of your mental health.");
-                    run = false;
-                    break;
-                default:
-                    System.out.println("Invalid option! Please try again.");
-            }
-        }
-
-        scanner.close();
+//        // Prompt for username
+//        System.out.print("Please enter your username: ");
+//        String username = scanner.nextLine().trim();
+//
+//        // Create MoodLog instance
+//        MoodLog moodLog = new MoodLog(username);
+//
+//        boolean run = true;
+//        while (run) {
+//            // Display menu
+//            System.out.println("\n--- Mood Tracker Menu ---");
+//            System.out.println("1. Track Mood");
+//            System.out.println("2. View Mood History");
+//            System.out.println("3. Exit");
+//            System.out.print("Choose an option: ");
+//
+//            int choice;
+//            try {
+//                choice = Integer.parseInt(scanner.nextLine().trim());
+//            } catch (NumberFormatException e) {
+//                System.out.println("Invalid input! Please enter a number between 1 and 3.");
+//                continue;
+//            }
+//
+//            // Handle menu options
+//            switch (choice) {
+//                case 1:
+//                    moodLog.trackMood(); // Track a new mood
+//                    break;
+//                case 2:
+//                    moodLog.displayMoodHistory(); // View past moods
+//                    break;
+//                case 3:
+//                    System.out.println("Goodbye! Take care of your mental health.");
+//                    run = false;
+//                    break;
+//                default:
+//                    System.out.println("Invalid option! Please try again.");
+//            }
+//        }
+//
+//        scanner.close();
 
     }
 }

@@ -31,8 +31,23 @@ public class DashboardController implements Initializable {
     @FXML
     private MenuItem setReminderMenuItem, viewReminderMenuItem;
 
+//    @Override
+//    public void initialize(URL location, ResourceBundle resources) {
+//        setupDrawer();
+//        setupMenuActions();
+//    }
+
+
+    private boolean isDrawerOpen = false;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Drawer starts hidden (off-screen to the left)
+        drawerPane.setTranslateX(-600);
+
+        // Overlay not visible at first
+        opacityPane.setVisible(false);
+
         setupDrawer();
         setupMenuActions();
     }
@@ -41,33 +56,83 @@ public class DashboardController implements Initializable {
         // Close the application when the exit button is clicked
         exit.setOnMouseClicked(event -> System.exit(0));
 
-        // Show the drawer and fade in opacityPane when drawerImage is clicked
+        // Toggle the drawer each time the drawerImage is clicked
         drawerImage.setOnMouseClicked(event -> {
-            opacityPane.setVisible(true);
-
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), opacityPane);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(0.15);
-            fadeIn.play();
-
-            TranslateTransition slideIn = new TranslateTransition(Duration.seconds(0.5), drawerPane);
-            slideIn.setByX(600); // Ensure the translation is enough to display the drawer
-            slideIn.play();
-        });
-
-        // Hide the drawer and fade out opacityPane when opacityPane is clicked
-        opacityPane.setOnMouseClicked(event -> {
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), opacityPane);
-            fadeOut.setFromValue(0.15);
-            fadeOut.setToValue(0);
-            fadeOut.setOnFinished(event1 -> opacityPane.setVisible(false));
-            fadeOut.play();
-
-            TranslateTransition slideOut = new TranslateTransition(Duration.seconds(0.5), drawerPane);
-            slideOut.setByX(-600);
-            slideOut.play();
+            if (!isDrawerOpen) {
+                openDrawer();
+            } else {
+                closeDrawer();
+            }
         });
     }
+
+    private void openDrawer() {
+        isDrawerOpen = true;
+
+        // Make overlay visible
+        opacityPane.setVisible(true);
+
+        // Fade overlay from 0 to 0.15
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), opacityPane);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(0.15);
+        fadeIn.play();
+
+        // Slide drawer in by +600 (since it starts at -600)
+        TranslateTransition slideIn = new TranslateTransition(Duration.seconds(0.5), drawerPane);
+        slideIn.setByX(600);
+        slideIn.play();
+    }
+
+    private void closeDrawer() {
+        isDrawerOpen = false;
+
+        // Fade overlay from 0.15 to 0
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), opacityPane);
+        fadeOut.setFromValue(0.15);
+        fadeOut.setToValue(0);
+        fadeOut.setOnFinished(event -> opacityPane.setVisible(false));
+        fadeOut.play();
+
+        // Slide drawer out by -600 (goes back to off-screen)
+        TranslateTransition slideOut = new TranslateTransition(Duration.seconds(0.5), drawerPane);
+        slideOut.setByX(-600);
+        slideOut.play();
+    }
+
+
+
+//    private void setupDrawer() {
+//        // Close the application when the exit button is clicked
+//        exit.setOnMouseClicked(event -> System.exit(0));
+//
+//        // Show the drawer and fade in opacityPane when drawerImage is clicked
+//        drawerImage.setOnMouseClicked(event -> {
+//            opacityPane.setVisible(true);
+//
+//            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), opacityPane);
+//            fadeIn.setFromValue(0);
+//            fadeIn.setToValue(0.15);
+//            fadeIn.play();
+//
+//            TranslateTransition slideIn = new TranslateTransition(Duration.seconds(0.5), drawerPane);
+//            slideIn.setByX(600); // Ensure the translation is enough to display the drawer
+//            slideIn.play();
+//        });
+//
+//        // Hide the drawer and fade out opacityPane when opacityPane is clicked
+//        opacityPane.setOnMouseClicked(event -> {
+//            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), opacityPane);
+//            fadeOut.setFromValue(0.15);
+//            fadeOut.setToValue(0);
+//            fadeOut.setOnFinished(event1 -> opacityPane.setVisible(false));
+//            fadeOut.play();
+//
+//            TranslateTransition slideOut = new TranslateTransition(Duration.seconds(0.5), drawerPane);
+//            slideOut.setByX(-600);
+//            slideOut.play();
+//        });
+//    }
 
     private void setupMenuActions() {
         // Handle "Set Reminder" menu item click

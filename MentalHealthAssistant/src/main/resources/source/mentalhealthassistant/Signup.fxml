@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.SignupController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.SignupController">
    <children>
-      <Button layoutX="269.0" layoutY="342.0" mnemonicParsing="false" text="Signup" />
+      <Button layoutX="269.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleSignup" text="Signup" />
       <Label layoutX="279.0" layoutY="37.0" text="SIGNUP" />
       <Label layoutX="67.0" layoutY="245.0" text="Password" />
       <Label layoutX="345.0" layoutY="112.0" text="Username" />
@@ -17,12 +13,12 @@
       <Label layoutX="68.0" layoutY="172.0" text="Email" />
       <Label layoutX="351.0" layoutY="168.0" text="Age" />
       <Label layoutX="67.0" layoutY="111.0" text="Full Name" />
-      <TextField layoutX="70.0" layoutY="130.0" />
-      <TextField layoutX="70.0" layoutY="191.0" />
-      <TextField layoutX="345.0" layoutY="130.0" />
-      <TextField layoutX="345.0" layoutY="191.0" />
-      <PasswordField layoutX="70.0" layoutY="264.0" />
-      <PasswordField layoutX="345.0" layoutY="263.0" />
-      <Hyperlink fx:id="loginHyperlink" layoutX="211.0" layoutY="374.0" text="Already have an Account? Login" onAction="#goToLogin" />
+      <TextField fx:id="fullNameField" layoutX="70.0" layoutY="130.0" />
+      <TextField fx:id="emailField" layoutX="70.0" layoutY="191.0" />
+      <TextField fx:id="userNameField" layoutX="345.0" layoutY="130.0" />
+      <TextField fx:id="ageField" layoutX="345.0" layoutY="191.0" />
+      <PasswordField fx:id="passwordField" layoutX="70.0" layoutY="264.0" />
+      <PasswordField fx:id="confirmPassowrdField" layoutX="345.0" layoutY="263.0" />
+      <Hyperlink fx:id="loginHyperlink" layoutX="211.0" layoutY="374.0" onAction="#goToLogin" text="Already have an Account? Login" />
    </children>
 </AnchorPane>

@@ -18,7 +18,6 @@ public class User {
         this.email = email;
         this.username = username;
         this.name = name;
-
     }
 
     // Getter methods
@@ -40,6 +39,13 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
 

@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import source.mentalhealthassistant.core.User;
 
 import java.io.IOException;
 
@@ -24,19 +25,23 @@ public class LoginController {
 
     @FXML
     private Hyperlink signupHyperlink; // Add this field to match fx:id
+
     @FXML
     private Hyperlink forgetPasswordHyperlink; // Add this field to match fx:id
 
     @FXML
     private static int failedAttempts = 0;
 
-    public void handleLogin() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        if (username.equals("admin") && password.equals("password")) {
-            System.out.println("clicked");
+    public void handleLogin() throws ClassNotFoundException {
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
+        User user = User.findUser(username, password);
+        if (user != null) {
             HelloApplication.switchScene("Dashboard.fxml", 700, 495);
             failedAttempts = 0; // Reset the counter on successful login
+        } else if (user == null ) {
+            welcomeText.setText("Invalid Username or Password!");
+            failedAttempts++;
         }
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             welcomeText.setText("Username and Password cannot be empty!");
