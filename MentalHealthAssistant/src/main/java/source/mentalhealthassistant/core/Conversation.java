@@ -31,7 +31,7 @@ public class Conversation {
     }
 
     // Handles user input and gets a response from the chatbot
-    public void handleUserInput(String userInput) {
+    public String handleUserInput(String userInput) {
         // Add user message
         Message userMessage = new Message(
                 "user-" + (messages.size() + 1),
@@ -55,6 +55,7 @@ public class Conversation {
 
         // Print bot response to console
         System.out.println("ChatBot: " + botResponse);
+        return botResponse;
     }
 
     public String getConversationId() {

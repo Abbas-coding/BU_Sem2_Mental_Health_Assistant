@@ -4,6 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import source.mentalhealthassistant.core.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.UUID;
 
 public class EventReminderController {
 
@@ -49,23 +55,47 @@ public class EventReminderController {
         boolean isDaily = repeatDailyRadioButton.isSelected();
         boolean isWeekly = repeatWeeklyRadioButton.isSelected();
 
-        // Validate input and process the reminder
+        // Validate input fields
         if (title.isEmpty() || date.isEmpty()) {
             System.out.println("Title and Date fields must not be empty.");
             return;
         }
 
-        System.out.println("Reminder set:");
-        System.out.println("Title: " + title);
-        System.out.println("Date: " + date);
+        LocalDateTime reminderTime;
+        try {
+            // Parse the date and time (e.g., "yyyy-MM-dd HH:mm" format expected)
+            reminderTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use 'yyyy-MM-dd HH:mm'.");
+            return;
+        }
+
+        // Get the currently logged-in username from the Session singleton
+        String username = Session.getInstance().getUsername();
+        if (username == null) {
+            System.out.println("No user logged in. Please log in first.");
+            return;
+        }
+
+        // Determine the type of reminder (Event, Daily, or Weekly)
+        Reminder reminder;
         if (isDaily) {
-            System.out.println("Repeats: Daily");
+            reminder = new DailyReminder(UUID.randomUUID().toString(), title, reminderTime);
         } else if (isWeekly) {
-            System.out.println("Repeats: Weekly");
+            reminder = new WeeklyReminder(UUID.randomUUID().toString(), title, reminderTime);
         } else {
-            System.out.println("Repeats: None");
+            reminder = new EventReminder(UUID.randomUUID().toString(), title, reminderTime);
+        }
+
+        // Save the reminder to the database
+        try {
+            DatabaseHandler.saveReminder(reminder, username);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error saving reminder: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
 
     // Event handler for "View Reminders" button
     @FXML

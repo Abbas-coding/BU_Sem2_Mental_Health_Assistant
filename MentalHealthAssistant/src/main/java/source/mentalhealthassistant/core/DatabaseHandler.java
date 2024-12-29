@@ -45,6 +45,7 @@ public class DatabaseHandler {
 
             stmt.executeUpdate();
             System.out.println("Reminder saved successfully.");
+            reminder.scheduleReminder();
         } catch (SQLException e) {
             e.printStackTrace();
         }

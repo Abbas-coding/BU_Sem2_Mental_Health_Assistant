@@ -6,8 +6,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import source.mentalhealthassistant.core.ChatBot;
+import source.mentalhealthassistant.core.Conversation;
+import source.mentalhealthassistant.core.User;
 
 public class ChatbotController {
+    ChatBot chatBot;
+    Conversation conversation;
+
+    public ChatbotController() throws ClassNotFoundException {
+        // Initialize the controller
+        chatBot = new ChatBot("Mental_Health_Assistant");
+        User loggedInUser = User.findUserByUsername(Session.getInstance().getUsername());
+        String convId = chatBot.getBotName() + "-" + Session.getInstance().getUsername();
+        conversation = new Conversation(convId,loggedInUser, chatBot);
+    }
 
     @FXML
     private TextField userInput; // Input field for user message
@@ -21,8 +34,11 @@ public class ChatbotController {
             // Display user's message
             addMessageToChat("You", userMessage);
 
+
             // Generate a bot response (placeholder logic for now)
-            String botResponse = generateResponse(userMessage);
+            //String botResponse = generateResponse(userMessage);
+
+            String botResponse = conversation.handleUserInput(userMessage);
             addMessageToChat("Bot", botResponse);
 
             // Clear the input field
@@ -32,6 +48,7 @@ public class ChatbotController {
 
     private String generateResponse(String userMessage) {
         // Placeholder chatbot logic
+
         return "I hear you said: " + userMessage;
     }
 

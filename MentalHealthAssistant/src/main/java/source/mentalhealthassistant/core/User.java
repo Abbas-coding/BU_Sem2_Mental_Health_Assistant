@@ -66,6 +66,26 @@ public class User {
         }
     }
 
+    public static User findUserByUsername(String username) throws ClassNotFoundException {
+        String query = "SELECT * FROM User WHERE username = ?";
+        try (PreparedStatement statement = DatabaseHandler.connectToDatabase().prepareStatement(query)) {
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                String password = resultSet.getString("password");
+                String email = resultSet.getString("email");
+
+                return new User(username, password, age, email, name);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error loading user: " + e.getMessage());
+        }
+        return null;
+
+    }
+
     // Check if userId already exists
     public static boolean isUserIdTaken(String username) throws ClassNotFoundException {
         String query = "SELECT * FROM User WHERE username = ?";
