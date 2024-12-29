@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -30,6 +31,14 @@ public class DashboardController implements Initializable {
 
     @FXML
     private MenuItem setReminderMenuItem, viewReminderMenuItem;
+
+    @FXML
+    private Pane generalContainer;
+
+    private boolean isChatbotLoaded = false;
+    private boolean isTaskReminderLoaded = false;
+    private boolean isCopingMechanismLoaded = false;
+    private boolean isEventReminderLoaded = false;
 
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {
@@ -136,13 +145,19 @@ public class DashboardController implements Initializable {
 
     private void setupMenuActions() {
         // Handle "Set Reminder" menu item click
-        setReminderMenuItem.setOnAction(event -> handleSetReminder());
+        setReminderMenuItem.setOnAction(event -> {
+            try {
+                handleSetReminder();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         // Handle "View Reminder" menu item click
         viewReminderMenuItem.setOnAction(event -> handleViewReminder());
     }
 
-    private void handleSetReminder() {
+    private void handleSetReminder() throws IOException {
         // Prompt the user to choose between Event Reminder and Task Reminder
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Set Reminder");
@@ -153,19 +168,36 @@ public class DashboardController implements Initializable {
         ButtonType taskReminderButton = new ButtonType("Task Reminder");
         ButtonType cancelButton = new ButtonType("Cancel", ButtonType.CANCEL.getButtonData());
 
+
+
         alert.getButtonTypes().setAll(eventReminderButton, taskReminderButton, cancelButton);
 
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent()) {
+        if (result.isPresent())  {
             if (result.get() == eventReminderButton) {
                 // Navigate to Event Reminder GUI
-                loadScene("EventReminder.fxml", "Event Reminder");
+//                loadScene("EventReminder.fxml", "Event Reminder");
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("EventReminder.fxml"));
+                Parent eventReminderView = loader.load();
+                generalContainer.getChildren().clear();
+                generalContainer.getChildren().add(eventReminderView);
+                generalContainer.setVisible(true);
             } else if (result.get() == taskReminderButton) {
                 // Navigate to Task Reminder GUI
-                loadScene("TaskReminder.fxml", "Task Reminder");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("TaskReminder.fxml"));
+                Parent tasReminderView = loader.load();
+                generalContainer.getChildren().clear();
+                generalContainer.getChildren().add(tasReminderView);
+                generalContainer.setVisible(true);
+            } else if (result.get() == taskReminderButton) {
             }
         }
+
+
+
+
     }
 
     private void handleViewReminder() {
@@ -192,5 +224,112 @@ public class DashboardController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }}
+
+    @FXML
+    private void toggleChatbot() {
+        System.out.println("Toggling chatbot visibility");
+
+        if(!isChatbotLoaded){
+        generalContainer.setVisible(true);
+        loadChatbot();
+        }
+
+//        if (generalContainer.isVisible()) {
+//           // System.out.println("Hiding chatbot");
+//            hideChatbotWithAnimation();
+//        } else {
+//            System.out.println("Showing chatbot");
+//            generalContainer.setVisible(true);
+//            showChatbotWithAnimation();
+//
+//
+//        }
+//        if (!isChatbotLoaded) {
+//            loadChatbot();
+//        }
+    }
+
+    @FXML
+    private void toggleCopingMechanism() {
+        System.out.println("Toggling coping mechanism visibility");
+
+        if (!isCopingMechanismLoaded) {
+            generalContainer.setVisible(true);
+            loadCopingMechanism();
+        }
+
+    }
+
+    private void loadCopingMechanism() {
+        try {
+            System.out.println("Loading CopingMechanism.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CopingMechanism.fxml"));
+            Parent copingMechanismView = loader.load();
+            generalContainer.getChildren().clear();
+            generalContainer.getChildren().add(copingMechanismView);
+            System.out.println("Coping Mechanism.fxml successfully loaded.");
+            isCopingMechanismLoaded = true;
+        } catch (IOException e) {
+            System.out.println("Error loading Coping Mechanism.fxml");
+            e.printStackTrace();
+        }
+    }
+
+//    @FXML
+//    private void toggleEventReminder() {
+//        System.out.println("Toggling coping mechanism visibility");
+//
+//        if (!isEventReminderLoaded) {
+//            generalContainer.setVisible(true);
+//            loadEventReminder();
+//        }
+//
+//    }
+
+//    private void loadEventReminder() {
+//        try {
+//            System.out.println("Loading EventReminder.fxml");
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("EventReminder.fxml"));
+//            Parent eventReminderView = loader.load();
+//            generalContainer.getChildren().clear();
+//            generalContainer.getChildren().add(eventReminderView);
+//            System.out.println("Coping Mechanism.fxml successfully loaded.");
+//            isEventReminderLoaded = true;
+//        } catch (IOException e) {
+//            System.out.println("Error loading Coping Mechanism.fxml");
+//            e.printStackTrace();
+//        }
+//    }
+
+    private void loadChatbot() {
+        try {
+            System.out.println("Loading Chatbot.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Chatbot.fxml"));
+            Parent chatbotView = loader.load();
+            generalContainer.getChildren().clear();
+            generalContainer.getChildren().add(chatbotView);
+            System.out.println("Chatbot.fxml successfully loaded.");
+            isChatbotLoaded = true;
+        } catch (IOException e) {
+            System.out.println("Error loading Chatbot.fxml");
+            e.printStackTrace();
+        }
+    }
+
+    private void showChatbotWithAnimation() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), generalContainer);
+        transition.setFromX(300);
+        transition.setToX(0); // Adjust final position
+        transition.play();
+    }
+
+    private void hideChatbotWithAnimation() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), generalContainer);
+        transition.setToX(300); // Adjust off-screen position
+        transition.setOnFinished(event -> generalContainer.setVisible(false));
+        transition.play();
+    }
+
+
 }
 

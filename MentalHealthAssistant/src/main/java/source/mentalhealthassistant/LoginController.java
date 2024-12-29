@@ -38,7 +38,7 @@ public class LoginController {
         User user = User.findUser(username, password);
         if (user != null) {
             Session.getInstance().setUsername(user.getUsername());
-            HelloApplication.switchScene("Dashboard.fxml", 700, 495);
+            HelloApplication.switchScene("Dashboard.fxml", 810, 467);
             failedAttempts = 0; // Reset the counter on successful login
         } else if (user == null ) {
             welcomeText.setText("Invalid Username or Password!");

@@ -118,11 +118,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #e6f2ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.DashboardController">
+<?import javafx.scene.control.Label?>
+<AnchorPane prefHeight="550.0" prefWidth="730.0" style="-fx-background-color: #e6f2ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.DashboardController">
     <children>
         <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #00008B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="659.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="759.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@images/cross.png" />
                     </image>
@@ -181,7 +182,7 @@
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Button>
-                        <Button alignment="BOTTOM_LEFT" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Chat with Chatbot" onAction="#chatWitChatbot" textFill="WHITE">
+                        <Button alignment="BOTTOM_LEFT" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Chat with Chatbot" onAction="#toggleChatbot" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
@@ -195,17 +196,17 @@
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </MenuButton>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Mood Log" textFill="WHITE">
+                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #0000fffb;" text="Mood Log" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Button>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Coping Mechanism" textFill="WHITE">
+                        <Button alignment="BOTTOM_LEFT" onAction="#toggleCopingMechanism" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #0000fffb;" text="Coping Mechanism" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Button>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Logout" textFill="WHITE">
+                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #0000fffb;" text="Logout" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
@@ -234,5 +235,12 @@
                 <Font name="System Bold" size="16.0" />
             </font>
         </Text>
+
+        <!-- Chatbot Container (Initially Hidden) -->
+        <AnchorPane fx:id="generalContainer" layoutX="234.0" layoutY="46.0" prefHeight="448.0" prefWidth="500.0" style="-fx-background-color: #ffffff; -fx-border-color: black;" visible="false">
+            <children>
+                <Label layoutX="10.0" layoutY="10.0" text="Chatbot Loading..." />
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

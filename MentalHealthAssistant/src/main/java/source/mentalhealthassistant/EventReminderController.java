@@ -52,8 +52,7 @@ public class EventReminderController {
     private void handleSetReminder() {
         String title = titleTextField.getText();
         String date = dateTextField.getText();
-        boolean isDaily = repeatDailyRadioButton.isSelected();
-        boolean isWeekly = repeatWeeklyRadioButton.isSelected();
+
 
         // Validate input fields
         if (title.isEmpty() || date.isEmpty()) {
@@ -79,13 +78,8 @@ public class EventReminderController {
 
         // Determine the type of reminder (Event, Daily, or Weekly)
         Reminder reminder;
-        if (isDaily) {
-            reminder = new DailyReminder(UUID.randomUUID().toString(), title, reminderTime);
-        } else if (isWeekly) {
-            reminder = new WeeklyReminder(UUID.randomUUID().toString(), title, reminderTime);
-        } else {
-            reminder = new EventReminder(UUID.randomUUID().toString(), title, reminderTime);
-        }
+        reminder = new EventReminder(UUID.randomUUID().toString(), title, reminderTime);
+
 
         // Save the reminder to the database
         try {
@@ -95,6 +89,7 @@ public class EventReminderController {
             e.printStackTrace();
         }
     }
+
 
 
     // Event handler for "View Reminders" button
