@@ -1,0 +1,167 @@
+Who developed the Mental Health Assistant?:::The Mental Health Assistant was developed by a team of dedicated software engineers and mental health professionals committed to providing accessible mental health support.
+
+Who can benefit from using the Mental Health Assistant?:::Individuals seeking to monitor their mood, access coping mechanisms, set reminders for mental health activities, and engage with a supportive chatbot can benefit from using the Mental Health Assistant.
+
+Who should I contact for support or feedback?:::You can contact our support team through the 'Help & Support' section in the app or email us at support@mentalhealthassistant.com.
+
+What is the primary purpose of the Mental Health Assistant?:::The primary purpose is to help users monitor their mental well-being, provide coping strategies, set reminders for mental health activities, and offer conversational support through an integrated chatbot.
+
+What features does the Mental Health Assistant offer?:::It offers mood tracking, viewing mood history, guided coping mechanisms, reminder settings, and a chatbot for conversational support.
+
+What platforms is the Mental Health Assistant available on?:::The Mental Health Assistant is available on Windows, macOS, and Linux operating systems.
+
+What technologies are used in the Mental Health Assistant?:::The application is built using JavaFX for the user interface, MySQL for data storage, and a Rasa server for the chatbot functionality.
+
+What data does the Mental Health Assistant collect?:::It collects mood entries, reminder settings, user interactions with the chatbot, and profile information. All data is securely stored in an encrypted MySQL database.
+
+What should I do if I encounter a bug or issue in the app?:::Please report any bugs or issues through the 'Report Issue' feature in the app or email us at support@mentalhealthassistant.com.
+
+What are coping mechanisms in the app?:::Coping mechanisms are predefined strategies and activities designed to help users manage and alleviate stress, anxiety, and other emotional challenges.
+
+What types of reminders can I set in the app?:::You can set reminders for activities such as medication, therapy sessions, daily affirmations, exercise, or any personal tasks that support your mental well-being.
+
+When should I log my mood?:::It's recommended to log your mood at least once a day to effectively track your emotional trends and patterns over time.
+
+When was the Mental Health Assistant first released?:::The Mental Health Assistant was first released in [Insert Release Date], with continuous updates to enhance features and user experience.
+
+When can I expect new features to be added?:::We regularly update the app based on user feedback. Stay tuned for announcements regarding new features in upcoming releases.
+
+Where is my data stored?:::All your data is securely stored in our encrypted MySQL database, ensuring your information remains private and protected.
+
+Where can I find the mood history?:::You can view your mood history in the 'View Moods' section of the app, which provides visual charts and detailed entries of your logged moods.
+
+Where is the FAQs file located?:::The FAQs are stored locally within the application's resources directory, typically at `src/main/resources/faqs.txt`.
+
+Why should I use the Mental Health Assistant?:::Using the Mental Health Assistant helps you monitor your mental health, provides coping strategies, sets helpful reminders, and offers a supportive conversational interface to assist you in managing your well-being.
+
+Why is my data secure?:::We prioritize your privacy and security by encrypting all data stored in our MySQL database and ensuring that it is never shared with third parties.
+
+Why might the chatbot not recognize my query?:::The chatbot relies on predefined responses and natural language understanding. If it doesn't recognize your query, it may escalate the conversation to a human professional or suggest alternative ways to seek help.
+
+Why should I regularly update the app?:::Regular updates ensure you have access to the latest features, security enhancements, and improvements based on user feedback.
+
+Who can I share my mood history with?:::You can export your mood history in CSV format and share it with healthcare providers or trusted individuals as needed.
+
+What is the Rasa server used for in the app?:::The Rasa server powers the chatbot feature, enabling it to understand and respond to user queries intelligently.
+
+What should I do if I forget to log my mood for a day?:::If you miss logging your mood for a day, simply log it the next day. Consistent logging helps in accurately tracking your emotional trends.
+
+What are guided coping mechanisms?:::Guided coping mechanisms are structured strategies provided by the app to help you manage stress, anxiety, and other emotional challenges effectively.
+
+What is the reminder feature used for?:::The reminder feature allows you to set notifications for activities that support your mental health, such as taking medication, attending therapy sessions, or practicing mindfulness exercises.
+
+What happens if I delete a mood entry?:::Deleting a mood entry will remove it from your mood history. Ensure you no longer need the entry before deleting it, as this action cannot be undone.
+
+What types of moods can I add in the app?:::You can add a variety of moods such as happy, sad, anxious, stressed, calm, excited, and more, depending on the options provided in the app's mood tracker.
+
+What if I need immediate help for a mental health crisis?:::If you are experiencing a mental health crisis, please contact a mental health professional or reach out to emergency services immediately.
+
+What is the user profile section used for?:::The user profile section allows you to manage your personal information, set preferences, and customize your experience within the app.
+
+What customization options are available for coping mechanisms?:::Currently, coping mechanisms are predefined, but we are working on adding customization options in future updates to better suit individual needs.
+
+What are the system requirements for installing the Mental Health Assistant?:::The app requires Java 11 or higher, a compatible operating system (Windows, macOS, Linux), and internet access for chatbot functionality.
+
+What kind of charts does the app provide for mood tracking?:::The app provides visual charts such as line graphs and bar charts to help you analyze your mood trends over time.
+
+What is the purpose of the conversation history in the app?:::The conversation history allows you to review past interactions with the chatbot, helping you track your mental health journey and the support you've received.
+
+Where can I find tutorials or guides on how to use the app?:::You can find tutorials and user guides in the 'Help & Support' section of the app or visit our website at www.mentalhealthassistant.com/resources.
+
+Why is mood tracking important?:::Mood tracking helps you become more aware of your emotional patterns, identify triggers, and monitor your mental health over time, facilitating better management and seeking help when needed.
+
+Who manages the Rasa server for the chatbot?:::The Rasa server is managed by our development team, ensuring it is maintained, updated, and functioning correctly to provide accurate responses.
+
+When will the app support integration with other health trackers?:::Integration with other health trackers is planned for future updates. Stay tuned for announcements regarding this feature.
+
+Why can't I find a specific feature in the app?:::If a specific feature is missing, it might be under development or requires enabling through the app's settings. Please check the latest updates or contact support for assistance.
+
+What languages does the chatbot support?:::Currently, the chatbot supports English. We are working on adding support for additional languages in future updates.
+
+Why does the chatbot sometimes provide generic responses?:::The chatbot aims to offer relevant and supportive responses based on your input. If it provides generic responses, it may not fully understand the query or lacks specific information to provide a detailed answer.
+
+What is the process for exporting my mood history?:::To export your mood history, navigate to the 'View Moods' section, click on 'Export,' choose the CSV format, and save the file to your desired location.
+
+Where can I update my app to the latest version?:::You can update the app through your system's application store or by downloading the latest version from our official website at www.mentalhealthassistant.com/download.
+
+What is the 'Add Mood' feature used for?:::The 'Add Mood' feature allows you to log your current emotional state, helping you track your mood over time and identify patterns or triggers.
+
+Why is regular mood logging beneficial?:::Regular mood logging increases self-awareness, helps in recognizing emotional patterns, and provides valuable data for managing your mental health effectively.
+
+Who ensures the accuracy of the chatbot's responses?:::Our development and mental health professional team continuously review and update the chatbot's responses to ensure accuracy and relevance.
+
+What should I do if the app crashes unexpectedly?:::If the app crashes, try restarting it. If the issue persists, report the problem through the 'Report Issue' feature or contact support at support@mentalhealthassistant.com.
+
+Why is my account information important?:::Your account information personalizes your experience, stores your mood history, reminders, and interactions with the chatbot, ensuring a tailored and secure experience.
+
+What happens to my data if I uninstall the app?:::Uninstalling the app may delete local data. However, if you have an account, your data is stored securely in our MySQL database and can be retrieved upon reinstallation and logging back in.
+
+What is the 'View Moods' section used for?:::The 'View Moods' section displays your logged moods over time, providing visual charts and detailed entries to help you analyze your emotional trends.
+
+Where can I suggest new features or improvements?:::You can suggest new features or improvements through the 'Feedback' section in the app or by contacting us at feedback@mentalhealthassistant.com.
+
+What security measures are in place to protect my data?:::We use encryption for data storage, secure authentication methods, and regularly update our security protocols to protect your data from unauthorized access.
+
+When was the last update released?:::The last update was released on [Insert Last Update Date]. Please check the app's 'About' section or our website for the latest update information.
+
+Why is it recommended to set reminders in the app?:::Setting reminders helps you stay consistent with mental health activities, ensuring you engage in practices that support your well-being regularly.
+
+What should I do if I forget my password?:::If you forget your password, go to the 'Login' screen, click on 'Forgot Password,' enter your registered email, and follow the instructions to reset your password.
+
+Where can I find information about mental health conditions in the app?:::Information about various mental health conditions is available in the 'Resources' section of the app, providing educational content and support strategies.
+
+Who can access my data?:::Only you and authorized personnel with your consent can access your data. We do not share your information with third parties without your explicit permission.
+
+What is the 'Export Mood History' feature used for?:::It allows you to download your mood entries in a CSV file format for personal records or to share with healthcare providers.
+
+What are the benefits of interacting with the chatbot?:::Interacting with the chatbot provides immediate conversational support, helps you articulate your feelings, offers coping strategies, and serves as a companion for your mental health journey.
+
+Why should I trust the chatbot for mental health support?:::The chatbot is designed by mental health professionals and continuously updated to provide accurate, supportive, and relevant responses to assist you in managing your mental well-being.
+
+What is the difference between static responses and chatbot responses?:::Static responses are predefined answers to common questions stored in the FAQs, while chatbot responses are dynamically generated based on user input through the Rasa server.
+
+Why might I receive a "No response from chatbot" message?:::This message may appear if there is an issue communicating with the Rasa server or if the chatbot cannot generate a response to your query. Please try again later or contact support.
+
+Where can I view my conversation history with the chatbot?:::Your conversation history with the chatbot is available in the 'Conversation History' section, allowing you to review past interactions and responses.
+
+What is the 'Profile' section used for?:::The 'Profile' section allows you to manage your personal information, update your preferences, and customize your app experience to better suit your needs.
+
+What should I do if I have suggestions for improving the app?:::We welcome your suggestions! Please submit them through the 'Feedback' section in the app or email us directly at feedback@mentalhealthassistant.com.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Initialize FAQManager with the path to faqs.txt
+String faqFilePath = "src/main/resources/faqs.txt";
+FAQManager faqManager = new FAQManager(faqFilePath);
+
+// Initialize ChatBot with FAQManager
+ChatBot chatBot = new ChatBot("MentalHealthBot", faqFilePath);
+
+// Initialize User
+User currentUser = new User("user123", "Jane Doe");
+
+// Initialize Conversation with the path to faqs.txt
+Conversation conversation = new Conversation("conv1", currentUser, faqFilePath);
+
+// Example user input
+String userInput = "What is the primary purpose of the Mental Health Assistant?";
+String response = conversation.handleUserInput(userInput);
+System.out.println("Response: " + response);
+// Output: The primary purpose is to help users monitor their mental well-being, provide coping strategies, set reminders for mental health activities, and offer conversational support through an integrated chatbot.
+
+

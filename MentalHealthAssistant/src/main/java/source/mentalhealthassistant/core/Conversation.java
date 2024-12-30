@@ -9,10 +9,10 @@ public class Conversation {
     private ChatBot chatBot;
     private ArrayList<Message> messages;
 
-    public Conversation(String conversationId, User user, ChatBot chatBot) {
+    public Conversation(String conversationId, User user, String faqFilePath) {
         this.conversationId = conversationId;
         this.user = user;
-        this.chatBot = chatBot;
+        this.chatBot = new ChatBot("MentalHealthBot", faqFilePath); // Pass the FAQ file path
         this.messages = new ArrayList<>();
     }
 
