@@ -27,6 +27,7 @@ package source.mentalhealthassistant;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import source.mentalhealthassistant.core.*;
@@ -35,37 +36,57 @@ import java.time.LocalDateTime;
 import java.io.IOException;
 import java.util.Scanner;
 
+
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 public class HelloApplication extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Mental Health Assistant");
-        stage.setScene(scene);
-        stage.show();
-    }
-//
-public static void main(String[] args) {
+    public void start(Stage primaryStage) {
+        try {
+            // Load the FXML file (ensure this path is correct)
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/source/mentalhealthassistant/Dashboard.fxml"));
+            Parent root = loader.load();
 
-        Scanner scanner = new Scanner(System.in);
-        CopingMechanism copingMechanism = new CopingMechanism();
+            // Set the scene
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("Mental Health Assistant Dashboard");
+            primaryStage.setScene(scene);
 
-        System.out.println("Welcome to the Coping Mechanism Assistant!");
-        System.out.println("Would you like to know some coping mechanisms? (yes/no)");
-
-        // Ask the user if they want to see coping mechanisms
-        String userResponse = scanner.nextLine().trim().toLowerCase();
-
-        if (userResponse.equals("yes")) {
-            copingMechanism.displayCopingMechanisms();
-        } else {
-            System.out.println("Alright, take care of your mental health. Feel free to ask anytime!");
+            // Show the stage
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        scanner.close();
+    public static void main(String[] args) {
+        launch(args);
     }
 }
+
+
+//        Scanner scanner = new Scanner(System.in);
+//        CopingMechanism copingMechanism = new CopingMechanism();
+//
+//        System.out.println("Welcome to the Coping Mechanism Assistant!");
+//        System.out.println("Would you like to know some coping mechanisms? (yes/no)");
+//
+//        // Ask the user if they want to see coping mechanisms
+//        String userResponse = scanner.nextLine().trim().toLowerCase();
+//
+//        if (userResponse.equals("yes")) {
+//            copingMechanism.displayCopingMechanisms();
+//        } else {
+//            System.out.println("Alright, take care of your mental health. Feel free to ask anytime!");
+//        }
+//
+//        scanner.close();
 
 //    public static void main(String[] args) {
 //        // Ensure we run the authentication manager and reminder system first.

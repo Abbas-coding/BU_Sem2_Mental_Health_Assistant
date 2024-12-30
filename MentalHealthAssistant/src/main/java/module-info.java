@@ -11,6 +11,8 @@ module source.mentalhealthassistant {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
+
 
     opens source.mentalhealthassistant to javafx.fxml;
     exports source.mentalhealthassistant;
