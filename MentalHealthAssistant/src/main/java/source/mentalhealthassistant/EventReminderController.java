@@ -15,6 +15,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.UUID;
 
+import static javafx.scene.control.Alert.AlertType.INFORMATION;
+
 public class EventReminderController {
 
     @FXML
@@ -41,7 +43,11 @@ public class EventReminderController {
         // Set initial states or listeners if needed
         System.out.println("EventReminderController initialized.");
     }
-
+    // Clear input fields after setting a reminder
+    private void clearFields() {
+        titleTextField.clear();
+        dateTextField.clear();
+    }
     // Event handler for "Set Reminder" button
     @FXML
     private void handleSetReminder() {
@@ -79,13 +85,15 @@ public class EventReminderController {
         // Save the reminder to the database
         try {
             DatabaseHandler.saveReminder(reminder, username);
+            Alert alert = new Alert(INFORMATION);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText("Your reminder has been set successfully!");
+            alert.showAndWait();
+            clearFields();
         } catch (ClassNotFoundException e) {
             System.out.println("Error saving reminder: " + e.getMessage());
             e.printStackTrace();
         }
     }
-
-
-
-
 }

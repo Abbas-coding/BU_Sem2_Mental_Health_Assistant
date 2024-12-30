@@ -3,10 +3,7 @@ package source.mentalhealthassistant;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import source.mentalhealthassistant.core.DailyReminder;
 import source.mentalhealthassistant.core.DatabaseHandler;
@@ -20,6 +17,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.UUID;
+
+import static javafx.scene.control.Alert.AlertType.INFORMATION;
 
 public class TaskReminderController {
 
@@ -48,7 +47,14 @@ public class TaskReminderController {
         // Initialization logic, if needed
         System.out.println("TaskReminder initialized.");
     }
-
+    @FXML
+    public void clearFields() {
+        taskDescriptionField.clear(); // Clear task description input
+        dateField.clear();            // Clear date input
+        timeField.clear();            // Clear time input
+        repeatDailyRadioButton.setSelected(false); // Deselect daily repeat
+        repeatWeeklyRadioButton.setSelected(false); // Deselect weekly repeat
+    }
     // Event handler for "Set Reminder" button
     @FXML
     private void handleSetReminder() {
@@ -100,6 +106,12 @@ public class TaskReminderController {
         // Save the reminder to the database
         try {
             DatabaseHandler.saveReminder(reminder, username);
+            Alert alert = new Alert(INFORMATION);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText("Your reminder has been set successfully!");
+            alert.showAndWait();
+            clearFields();
         } catch (ClassNotFoundException e) {
             System.out.println("Error saving reminder: " + e.getMessage());
             e.printStackTrace();
@@ -114,5 +126,4 @@ public class TaskReminderController {
         // Implement logic to view existing reminders (e.g., load from database or list)
 
     }
-
 }

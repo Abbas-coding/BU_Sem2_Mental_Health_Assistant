@@ -227,14 +227,15 @@ public class DashboardController implements Initializable {
 
         if (result.isPresent())  {
             if (result.get() == eventReminderButton) {
-                // Navigate to Event Reminder GUI
-//                loadScene("EventReminder.fxml", "Event Reminder");
+                //Navigate to Event Reminder GUI
+            //    loadScene("EventReminder.fxml", "Event Reminder");
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("EventReminder.fxml"));
                 Parent eventReminderView = loader.load();
                 generalContainer.getChildren().clear();
                 generalContainer.getChildren().add(eventReminderView);
                 generalContainer.setVisible(true);
+
             } else if (result.get() == taskReminderButton) {
                 // Navigate to Task Reminder GUI
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("TaskReminder.fxml"));

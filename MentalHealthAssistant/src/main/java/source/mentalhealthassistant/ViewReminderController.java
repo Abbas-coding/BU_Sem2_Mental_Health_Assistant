@@ -26,8 +26,8 @@ public class ViewReminderController implements Initializable {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/mentalhealth";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "Abbas@mysql23#*";
-
+ //   private static final String DB_PASSWORD = "Abbas@mysql23#*";
+ private static final String DB_PASSWORD = "castaway110";
     @FXML
     private TableView<Reminder> reminderTable;
 
