@@ -1,24 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.SignupController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.SignupController">
    <children>
-      <Button layoutX="269.0"  layoutY="342.0" mnemonicParsing="false" onAction="#handleSignup" text="Signup" />
-      <Label layoutX="279.0" layoutY="37.0" text="SIGNUP" />
-      <Label layoutX="67.0" layoutY="245.0" text="Password" />
-      <Label layoutX="345.0" layoutY="112.0" text="Username" />
-      <Label layoutX="348.0" layoutY="243.0" text="Confirm Password" />
-      <Label layoutX="68.0" layoutY="172.0" text="Email" />
-      <Label layoutX="351.0" layoutY="168.0" text="Age" />
-      <Label layoutX="67.0" layoutY="111.0" text="Full Name" />
-      <TextField fx:id="fullNameField" layoutX="70.0" layoutY="130.0" />
-      <TextField fx:id="emailField" layoutX="70.0" layoutY="191.0" />
-      <TextField fx:id="userNameField" layoutX="345.0" layoutY="130.0" />
-      <TextField fx:id="ageField" layoutX="345.0" layoutY="191.0" />
-      <PasswordField fx:id="passwordField" layoutX="70.0" layoutY="264.0" />
-      <PasswordField fx:id="confirmPassowrdField" layoutX="345.0" layoutY="263.0" />
-      <Hyperlink fx:id="loginHyperlink" layoutX="211.0" layoutY="374.0" onAction="#goToLogin" text="Already have an Account? Login" />
+      <Button layoutX="260.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleSignup" text="Signup" textFill="#04a104">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label layoutX="251.0" layoutY="37.0" text="SIGNUP" textFill="DARKBLUE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></Label>
+      <Label layoutX="72.0" layoutY="243.0" text="Password">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="346.0" layoutY="103.0" text="Username">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="348.0" layoutY="243.0" text="Confirm Password">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="68.0" layoutY="172.0" text="Email">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="351.0" layoutY="168.0" text="Age">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="70.0" layoutY="103.0" text="Full Name">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="fullNameField" layoutX="70.0" layoutY="130.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="emailField" layoutX="70.0" layoutY="191.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="userNameField" layoutX="345.0" layoutY="130.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="ageField" layoutX="345.0" layoutY="191.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <PasswordField fx:id="passwordField" layoutX="70.0" layoutY="264.0">
+         <effect>
+            <DropShadow />
+         </effect></PasswordField>
+      <PasswordField fx:id="confirmPassowrdField" layoutX="345.0" layoutY="263.0">
+         <effect>
+            <DropShadow />
+         </effect></PasswordField>
+      <Hyperlink fx:id="loginHyperlink" layoutX="206.0" layoutY="367.0" onAction="#goToLogin" text="Already have an Account? Login" textFill="#e10e0e">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Hyperlink>
    </children>
 </AnchorPane>

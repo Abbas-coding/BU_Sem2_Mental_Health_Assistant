@@ -77,6 +77,7 @@
 package source.mentalhealthassistant;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -113,7 +114,8 @@ public class ChatbotController {
     private TextField userInput; // Input field for user message
     @FXML
     private VBox chatPane; // Container for displaying chat messages
-
+@FXML
+private ScrollPane chatScrollPane;
     public void onHelloButtonClick() {
         String userMessage = userInput.getText().trim();
         if (!userMessage.isEmpty()) {
@@ -157,7 +159,8 @@ public class ChatbotController {
                         "-fx-font-size: 14px; " +          // Font size
                         "-fx-font-family: 'Arial';"       // Font family
         );
-
+        messageLabel.setWrapText(true); // Allow text wrapping
+        messageLabel.setMaxWidth(450); // Limit the maximum width of the label
         // Add both to the message box
         messageBox.getChildren().addAll(senderLabel, messageLabel);
 
@@ -165,6 +168,8 @@ public class ChatbotController {
 
         // Add the message box to the chat pane
         chatPane.getChildren().add(messageBox);
+        // Automatically scroll to the bottom
+        chatScrollPane.setVvalue(1.0);
     }
 
 }

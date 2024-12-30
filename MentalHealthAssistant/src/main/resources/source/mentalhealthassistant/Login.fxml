@@ -5,18 +5,54 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.LoginController">
    <children>
-      <Label layoutX="353.0" layoutY="103.0" prefHeight="12.0" prefWidth="86.0" text="Username" />
-      <PasswordField fx:id="passwordField" layoutX="353.0" layoutY="216.0" prefHeight="26.0" prefWidth="162.0" />
-      <TextField fx:id="usernameField" layoutX="353.0" layoutY="129.0" prefHeight="26.0" prefWidth="162.0" />
-      <Label layoutX="353.0" layoutY="192.0" prefHeight="12.0" prefWidth="86.0" text="Password" />
-      <Hyperlink fx:id="forgetPasswordHyperlink" layoutX="477.0" layoutY="263.0" text="Forgot Password?" onAction="#goToForgetPassword" />
-      <Button layoutX="405.0" layoutY="307.0" mnemonicParsing="false" text="Login"  onAction="#handleLogin"/>
-      <Hyperlink fx:id="signupHyperlink" layoutX="345.0" layoutY="350.0" onAction="#goToSignup" text="Create an Account? Signup" />
-      <Label layoutX="39.0" layoutY="137.0" prefHeight="97.0" prefWidth="231.0" text="Welcome to Mental Health Assistant" />
-      <Label layoutX="428.0" layoutY="26.0" prefHeight="38.0" prefWidth="46.0" text="LOGIN" />
+      <Label layoutX="325.0" layoutY="118.0" prefHeight="12.0" prefWidth="86.0" text="Username">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <PasswordField fx:id="passwordField" layoutX="328.0" layoutY="208.0" prefHeight="26.0" prefWidth="178.0">
+         <effect>
+            <DropShadow />
+         </effect></PasswordField>
+      <TextField fx:id="usernameField" layoutX="325.0" layoutY="141.0" prefHeight="26.0" prefWidth="184.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <Label layoutX="331.0" layoutY="181.0" prefHeight="12.0" prefWidth="86.0" text="Password">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Hyperlink fx:id="forgetPasswordHyperlink" layoutX="477.0" layoutY="263.0" onAction="#goToForgetPassword" text="Forgot Password?" textFill="#e81515">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Hyperlink>
+      <Button layoutX="383.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #004d80;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Hyperlink fx:id="signupHyperlink" layoutX="341.0" layoutY="342.0" onAction="#goToSignup" text="Create an Account? Signup" textFill="GREEN">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Hyperlink>
+      <Label layoutX="113.0" layoutY="20.0" prefHeight="31.0" prefWidth="374.0" text="Welcome to Mental Health Assistant" textFill="DARKBLUE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></Label>
+      <Label layoutX="384.0" layoutY="70.0" prefHeight="38.0" prefWidth="75.0" text="LOGIN" textFill="DARKBLUE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <ImageView fitHeight="165.0" fitWidth="244.0" layoutX="32.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/bot.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

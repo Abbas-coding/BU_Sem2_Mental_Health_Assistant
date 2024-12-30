@@ -11,56 +11,55 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="428.0" prefWidth="597.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.MoodLogController">
+<AnchorPane prefHeight="428.0" prefWidth="597.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.MoodLogController">
     <children>
-        <Label layoutX="179.0" layoutY="31.0" prefHeight="36.0" prefWidth="140.0" text="MOOD LOG" textFill="DARKBLUE">
+        <Label layoutX="229.0" layoutY="34.0" prefHeight="38.0" prefWidth="156.0" text="MOOD LOG" textFill="DARKBLUE">
             <font>
-                <Font name="Arial Black" size="23.0" />
+                <Font name="Arial Black" size="25.0" />
             </font>
         </Label>
-        <TextField fx:id="moodInputField" layoutX="14.0" layoutY="141.0" style="-fx-background-color: white;">
+        <TextField fx:id="moodInputField" layoutX="20.0" layoutY="141.0" promptText="happy,sad,etc" style="-fx-background-color: white;">
             <effect>
                 <DropShadow />
             </effect>
         </TextField>
-        <TextField fx:id="moodScaleField" layoutX="14.0" layoutY="217.0" prefHeight="25.0" prefWidth="149.0">
+        <TextField fx:id="moodScaleField" layoutX="19.0" layoutY="214.0" prefHeight="25.0" prefWidth="128.0" promptText="Enter a number 1-10">
             <effect>
                 <DropShadow />
             </effect>
         </TextField>
-        <TextField fx:id="moodDescriptionField" layoutX="14.0" layoutY="276.0" prefHeight="25.0" prefWidth="299.0" style="-fx-background-color: white;">
+        <TextField fx:id="moodDescriptionField" layoutX="20.0" layoutY="275.0" prefHeight="36.0" prefWidth="299.0" promptText="I feel happy because ....." style="-fx-background-color: white;">
             <effect>
                 <InnerShadow />
             </effect>
         </TextField>
-        <Text layoutX="14.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How are yoiu feeling today?">
+        <Text layoutX="19.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How are yoiu feeling today?">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Text>
-        <Text layoutX="14.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Enter your mood)" />
-        <Text layoutX="14.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="On a scale of 1 to 10 , how much are you feeling &quot;mood&quot;?">
+        <Text layoutX="20.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate Your Mood">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Text>
-        <Text layoutX="14.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Please enter a number between 1 and 10)" />
-        <Text layoutX="14.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decribe Your Mood">
+        <Text layoutX="14.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <Text layoutX="26.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decribe Your Mood">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Text>
-        <Button fx:id="saveMoodButton" layoutX="48.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #c2d1f0;" text="Save  Your Mood">
+        <Button fx:id="saveMoodButton" layoutX="48.0" layoutY="334.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #004d80;" text="Save  Your Mood" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button  onAction="#toggleMoodLogTracker" layoutX="238.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: #c2d1f0;" text="Track Your Mood History">
+        <Button layoutX="238.0" layoutY="334.0" mnemonicParsing="false" onAction="#toggleMoodLogTracker" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: #004d80;" text="Track Your Mood History" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <ImageView fitHeight="85.0" fitWidth="96.0" layoutX="337.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="105.0" fitWidth="115.0" layoutX="246.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/mood-changes.png" />
             </image>
