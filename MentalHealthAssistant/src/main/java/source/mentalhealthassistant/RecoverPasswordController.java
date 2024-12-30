@@ -68,6 +68,7 @@ public class RecoverPasswordController {
             alert.setHeaderText(null);
             alert.setContentText("Password updated successfully!");
             alert.showAndWait();
+            HelloApplication.switchScene("Login.fxml");
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

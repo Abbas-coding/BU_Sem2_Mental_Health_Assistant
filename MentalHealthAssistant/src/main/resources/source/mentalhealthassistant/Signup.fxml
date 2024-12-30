@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.SignupController">
    <children>
-      <Button layoutX="269.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleSignup" text="Signup" />
+      <Button layoutX="269.0"  layoutY="342.0" mnemonicParsing="false" onAction="#handleSignup" text="Signup" />
       <Label layoutX="279.0" layoutY="37.0" text="SIGNUP" />
       <Label layoutX="67.0" layoutY="245.0" text="Password" />
       <Label layoutX="345.0" layoutY="112.0" text="Username" />

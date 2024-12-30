@@ -88,6 +88,7 @@ public class SignupController {
 
             // Provide success feedback
             showAlert("Success", "User registered successfully!", Alert.AlertType.INFORMATION);
+            HelloApplication.switchScene("Login.fxml");
         } catch (IllegalArgumentException e) {
             // Handle validation errors
             showAlert("Validation Error", e.getMessage(), Alert.AlertType.ERROR);

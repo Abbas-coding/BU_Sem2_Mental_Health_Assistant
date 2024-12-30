@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="taskReminderContainer"  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.TaskReminderController">
+<AnchorPane fx:id="taskReminderContainer" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.TaskReminderController">
     <children>
         <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="434.0" prefWidth="625.0" />
         <AnchorPane layoutX="-1.0" prefHeight="523.0" prefWidth="697.0" style="-fx-background-color: #DBF3FA;">
             <children>
-                <Pane layoutX="35.0"  prefHeight="480.0" prefWidth="432.0" style="-fx-background-color: #DBF3FA;">
+                <Pane layoutX="35.0" prefHeight="480.0" prefWidth="432.0" style="-fx-background-color: #DBF3FA;">
                     <children>
                         <Label layoutX="35.0" layoutY="14.0" prefHeight="30.0" prefWidth="142.0" text="REMINDERS">
                             <font>
@@ -35,26 +26,25 @@
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </Label>
-                        <TextField layoutX="25.0" fx:id="taskDescriptionField" layoutY="128.0" prefHeight="30.0" prefWidth="262.0" />
+                        <TextField fx:id="taskDescriptionField" layoutX="25.0" layoutY="128.0" prefHeight="30.0" prefWidth="262.0" />
                         <Label layoutX="25.0" layoutY="172.0" prefHeight="17.0" prefWidth="40.0" text="Date">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </Label>
-                        <TextField layoutX="25.0" layoutY="189.0" prefHeight="30.0" fx:id="dateField" prefWidth="262.0" />
-                        <RadioButton layoutX="30.0" layoutY="308.0" fx:id="repeatWeeklyRadioButton" mnemonicParsing="false" text="Repeat Weekly">
+                        <TextField fx:id="dateField" layoutX="25.0" layoutY="189.0" prefHeight="30.0" prefWidth="262.0" />
+                        <RadioButton fx:id="repeatWeeklyRadioButton" layoutX="30.0" layoutY="308.0" mnemonicParsing="false" text="Repeat Weekly">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </RadioButton>
-                        <Button layoutX="175.0" layoutY="95.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="108.0" text="View Reminders " />
-                        <Button layoutX="56.0" layoutY="388.0" mnemonicParsing="false" prefHeight="25.0" onAction="#handleSetReminder" prefWidth="120.0" text="Set Reminder" />
-                        <RadioButton layoutX="30.0" layoutY="338.0" mnemonicParsing="false" fx:id="repeatDailyRadioButton" text="Repeat Daily">
+                        <Button layoutX="56.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSetReminder" prefHeight="25.0" prefWidth="120.0" text="Set Reminder" />
+                        <RadioButton fx:id="repeatDailyRadioButton" layoutX="30.0" layoutY="338.0" mnemonicParsing="false" text="Repeat Daily">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </RadioButton>
-                        <TextField layoutX="25.0" layoutY="240.0" fx:id="timeField" prefHeight="30.0" prefWidth="262.0" />
+                        <TextField fx:id="timeField" layoutX="25.0" layoutY="240.0" prefHeight="30.0" prefWidth="262.0" />
                         <Label layoutX="30.0" layoutY="223.0" prefHeight="17.0" prefWidth="47.0" text="Time">
                             <font>
                                 <Font name="System Bold" size="12.0" />

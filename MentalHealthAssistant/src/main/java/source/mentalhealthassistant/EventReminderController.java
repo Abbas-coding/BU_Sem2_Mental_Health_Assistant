@@ -33,15 +33,6 @@ public class EventReminderController {
     private TextField dateTextField;
 
     @FXML
-    private RadioButton repeatDailyRadioButton;
-
-    @FXML
-    private RadioButton repeatWeeklyRadioButton;
-
-    @FXML
-    private Button viewRemindersButton;
-
-    @FXML
     private Button setReminderButton;
 
     // Initialize method called after FXML components are loaded
@@ -95,15 +86,6 @@ public class EventReminderController {
     }
 
 
-
-    // Event handler for "View Reminders" button
-    @FXML
-    private void handleViewReminders() {
-        System.out.println("View Reminders button clicked.");
-        // Implement functionality to display existing reminders
-
-
-}
 
 
 }

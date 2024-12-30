@@ -1,6 +1,12 @@
 package source.mentalhealthassistant.core;
 
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+
 import java.time.LocalDateTime;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class EventReminder extends Reminder {
     public EventReminder(String reminderId, String message, LocalDateTime time) {
@@ -9,7 +15,14 @@ public class EventReminder extends Reminder {
 
     @Override
     public void triggerReminder() {
-        System.out.println("Event Reminder: " + getMessage() + " at " + getTime());
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Reminder");
+            alert.setHeaderText(this.getMessage());
+            alert.setContentText("Event Reminder Triggered");
+            alert.showAndWait();
+            System.out.println("Daily Reminder: " + getMessage() + " at " + getTime());
+        });
     }
 
     @Override

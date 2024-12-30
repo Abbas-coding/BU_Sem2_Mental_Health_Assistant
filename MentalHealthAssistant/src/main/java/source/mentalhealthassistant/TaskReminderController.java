@@ -39,12 +39,6 @@ public class TaskReminderController {
     private RadioButton repeatWeeklyRadioButton;
 
     @FXML
-    private Button viewRemindersButton;
-
-    @FXML
-    private Button setReminderButton;
-
-    @FXML
     private Pane generalContainer;
     private boolean isViewReminderLoaded = false;
 
