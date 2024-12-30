@@ -16,7 +16,7 @@
       <Hyperlink layoutX="477.0" layoutY="263.0" text="Forgot Password?" />
       <Button layoutX="405.0" layoutY="307.0" mnemonicParsing="false" text="Login"  onAction="#handleLogin"/>
       <Hyperlink fx:id="signupHyperlink" layoutX="345.0" layoutY="350.0" onAction="#goToSignup" text="Create an Account? Signup" />
-      <Label layoutX="39.0" layoutY="137.0" prefHeight="97.0" prefWidth="231.0" text="Welcome to Mental Health Assistant" />
+      <Label fx:id="welcomeText" layoutX="39.0" layoutY="137.0" prefHeight="97.0" prefWidth="231.0" text="Welcome to Mental Health Assistant" />
       <Label layoutX="428.0" layoutY="26.0" prefHeight="38.0" prefWidth="46.0" text="LOGIN" />
    </children>
 </AnchorPane>

@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -30,6 +31,12 @@ public class DashboardController implements Initializable {
 
     @FXML
     private MenuItem setReminderMenuItem, viewReminderMenuItem;
+
+    @FXML
+    private Pane chatbotContainer, taskReminderContainer;
+
+    private boolean isChatbotLoaded = false;
+    private boolean isTaskReminderLoaded = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -111,21 +118,119 @@ public class DashboardController implements Initializable {
         alert.setContentText("This feature will display all saved reminders.");
         alert.showAndWait();
     }
+
     @FXML
-    private void chatWitChatbot() {
-        // Switch to the Chatbot scene
-        HelloApplication.switchScene("Chatbot.fxml", 600, 400);
+    private void toggleChatbot() {
+        System.out.println("Toggling chatbot visibility");
+
+        if (chatbotContainer.isVisible()) {
+            System.out.println("Hiding chatbot");
+            hideChatbotWithAnimation();
+        } else {
+            System.out.println("Showing chatbot");
+            chatbotContainer.setVisible(true);
+            showChatbotWithAnimation();
+
+            if (!isChatbotLoaded) {
+                loadChatbot();
+            }
+        }
     }
-    private void loadScene(String fxmlFile, String title) {
+
+    private void loadChatbot() {
         try {
+            System.out.println("Loading Chatbot.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Chatbot.fxml"));
+            Parent chatbotView = loader.load();
+            chatbotContainer.getChildren().clear();
+            chatbotContainer.getChildren().add(chatbotView);
+            System.out.println("Chatbot.fxml successfully loaded.");
+            isChatbotLoaded = true;
+        } catch (IOException e) {
+            System.out.println("Error loading Chatbot.fxml");
+            e.printStackTrace();
+        }
+    }
+
+    private void showChatbotWithAnimation() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), chatbotContainer);
+        transition.setFromX(300);
+        transition.setToX(0); // Adjust final position
+        transition.play();
+    }
+
+    private void hideChatbotWithAnimation() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), chatbotContainer);
+        transition.setToX(300); // Adjust off-screen position
+        transition.setOnFinished(event -> chatbotContainer.setVisible(false));
+        transition.play();
+    }
+
+    @FXML
+    private void toggleTaskReminder() {
+        System.out.println("Toggling TaskReminder visibility");
+
+        if (taskReminderContainer.isVisible()) {
+            System.out.println("Hiding TaskReminder");
+            hideTaskReminderWithAnimation();
+        } else {
+            System.out.println("Showing TaskReminder");
+            taskReminderContainer.setVisible(true);
+            showTaskReminderWithAnimation();
+
+            if (!isTaskReminderLoaded) {
+                loadTaskReminder();
+            }
+        }
+    }
+
+    private void loadTaskReminder() {
+        try {
+            System.out.println("Loading TaskReminder.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TaskReminder.fxml"));
+            Parent taskReminderView = loader.load();
+            taskReminderContainer.getChildren().clear();
+            taskReminderContainer.getChildren().add(taskReminderView);
+            System.out.println("TaskReminder.fxml successfully loaded.");
+            isTaskReminderLoaded = true;
+        } catch (IOException e) {
+            System.out.println("Error loading TaskReminder.fxml");
+            e.printStackTrace();
+        }
+    }
+
+    private void showTaskReminderWithAnimation() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), taskReminderContainer);
+        transition.setFromX(300);
+        transition.setToX(0); // Adjust final position
+        transition.play();
+    }
+
+    private void hideTaskReminderWithAnimation() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), taskReminderContainer);
+        transition.setToX(300); // Adjust off-screen position
+        transition.setOnFinished(event -> taskReminderContainer.setVisible(false));
+        transition.play();
+    }
+
+    public void loadScene(String fxmlFile, String title) {
+        try {
+            // Load the FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
-            Stage stage = (Stage) drawerPane.getScene().getWindow(); // Get the current stage
+
+            // Get the current stage from any node (drawerPane in this case)
+            Stage stage = (Stage) drawerPane.getScene().getWindow();
+
+            // Set the new scene to the stage
             stage.setScene(new Scene(root));
             stage.setTitle(title);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }}
-}
+            System.out.println("Error: Could not load the FXML file " + fxmlFile);
+        }
+    }
 
+
+}

@@ -2,6 +2,7 @@ package source.mentalhealthassistant;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import source.mentalhealthassistant.core.ChatBot;
@@ -15,17 +16,82 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class HelloApplication extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+//    @Override
+//    public void start(Stage stage) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+//        stage.setTitle("Hello!");
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+/*@Override
+public void start(Stage stage) throws IOException {
+    // Load the Login.fxml file
+    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
+
+    // Load the FXML into a Parent node
+    Parent root = fxmlLoader.load();
+
+    // Create a scene with the loaded FXML
+    Scene scene = new Scene(root, 600, 400); // Set size based on your design
+
+    // Configure and display the stage
+    stage.setTitle("Mental Health Assistant - Login");
+    stage.setScene(scene);
+    stage.show();
+}*/
+// Declare primaryStage as an instance variable
+private static Stage primaryStage;
+@Override
+public void start(Stage stage) throws Exception {
+    // Set the primary stage
+    primaryStage = stage;
+
+    // Load the Login.fxml initially
+    FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
+    Parent root = loader.load();
+
+    // Create the scene
+    Scene scene = new Scene(root, 600, 400);
+
+    // Configure and display the stage
+    primaryStage.setTitle("Mental Health Assistant - Login");
+    primaryStage.setScene(scene);
+    primaryStage.show();
+}
+
+    // Utility method to switch scenes
+    public static void switchScene(String fxmlFilePath) {
+        try {
+            // Load the FXML file
+
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlFilePath));
+            Parent root = loader.load();
+
+            // Set the new scene on the primary stage
+            Scene scene = new Scene(root, 800, 400); // Adjust size if needed
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void switchScene(String fxmlFilePath, int width, int height) {
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlFilePath));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root, width, height);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+
+
+
     public static void main(String[] args) {
-        //launch();
+        launch();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("--- Welcome to the Mental Health Assistant ---");

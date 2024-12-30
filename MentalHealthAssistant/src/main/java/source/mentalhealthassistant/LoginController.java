@@ -33,9 +33,9 @@ public class LoginController {
     public void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        if (username.equals("admin") && password.equals("password")) {
+        if (username.equals("a") && password.equals("p")) {
             System.out.println("clicked");
-            HelloApplication.switchScene("Dashboard.fxml", 700, 495);
+            HelloApplication.switchScene("Dashboard.fxml", 815, 467);
             failedAttempts = 0; // Reset the counter on successful login
         }
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
