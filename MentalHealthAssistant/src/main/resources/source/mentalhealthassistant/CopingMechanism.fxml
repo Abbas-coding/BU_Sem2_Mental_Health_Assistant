@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="427.0" prefWidth="628.0" style="-fx-background-color: #e6ffe6;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.CopingMechanismController">
+<AnchorPane prefHeight="427.0" prefWidth="563.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.CopingMechanismController">
 <!--   <children>-->
 <!--      <Button fx:id="dashboardButton" layoutX="100" layoutY="200" text="Dashboard" />-->
 <!--      <Button fx:id="setReminderButton" layoutX="100" layoutY="300" text="Set Reminder" />-->
@@ -13,90 +12,9 @@
 <!--      <ImageView fx:id="exit1" layoutX="400" layoutY="50" />-->
 <!--   </children>-->
    <children>
-      <AnchorPane layoutX="244.0" layoutY="174.0" prefHeight="93.0" prefWidth="200.0" style="-fx-background-color: #b3ffb3;">
-         <effect>
-            <InnerShadow />
-         </effect>
-         <children>
-            <Text layoutX="26.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physical Activities">
-               <font>
-                  <Font name="Arial Black" size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="20.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Go for a walk .">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="20.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Try exercises.">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="240.0" layoutY="299.0" prefHeight="108.0" prefWidth="209.0" style="-fx-background-color: #b3ffb3;">
-         <effect>
-            <InnerShadow />
-         </effect>
-         <children>
-            <Text layoutX="29.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Social Connection">
-               <font>
-                  <Font name="Arial Black" size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Call a friend" wrappingWidth="130.998046875">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="17.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-Join Community" wrappingWidth="124.42578125">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="252.0" layoutY="51.0" prefHeight="75.0" prefWidth="184.0" style="-fx-background-color: #b3ffb3;">
-         <effect>
-            <InnerShadow />
-         </effect>
-         <children>
-            <Text layoutX="54.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Journaling">
-               <font>
-                  <Font name="Arial Black" size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="14.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-Write your feelings" wrappingWidth="142.3037109374999">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-Create a list." wrappingWidth="112.720703125">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <Text fill="#4ae148" layoutX="169.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coping Mechanism">
-         <font>
-            <Font name="Arial Black" size="27.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="75.0" fitWidth="92.0" layoutX="148.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="433.0" fitWidth="438.0" layoutX="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/journaling.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="87.0" fitWidth="103.0" layoutX="141.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/call.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="75.0" fitWidth="87.0" layoutX="141.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/exercise.jpg" />
+            <Image url="@images/copingmechanism.png" />
          </image>
       </ImageView>
    </children>

@@ -8,7 +8,8 @@ import java.util.List;
 public class DatabaseHandler {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/mentalhealth";
     private static final String USER = "root";
-    private static final String PASSWORD = "Abbas@mysql23#*";
+//    private static final String PASSWORD = "Abbas@mysql23#*";
+private static final String PASSWORD = "bismaiqbal098@";
 
     public static Connection connectToDatabase() throws SQLException, ClassNotFoundException {
         Connection connection = null;

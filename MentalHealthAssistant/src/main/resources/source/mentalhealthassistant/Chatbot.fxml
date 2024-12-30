@@ -4,32 +4,45 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="chatbotContainer" prefHeight="413.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.ChatbotController">
+<AnchorPane fx:id="chatbotContainer" prefHeight="413.0" prefWidth="579.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.ChatbotController">
    <children>
-      <AnchorPane layoutY="-6.0" prefHeight="406.0" prefWidth="577.0" style="-fx-background-color: grey;">
+      <AnchorPane layoutY="-6.0" prefHeight="406.0" prefWidth="577.0" style="-fx-background-color: white;">
          <children>
             <!-- Chat Scrollable Pane -->
-            <ScrollPane layoutY="5.0" prefHeight="413.0" prefWidth="578.0" style="-fx-background-radius: 10; -fx-border-color: #cccccc; -fx-border-radius: 10; -fx-background-color: blue;">
+            <ScrollPane prefHeight="375.0" prefWidth="578.0" style="-fx-background-radius: 10; -fx-border-color: #cccccc; -fx-border-radius: 10; -fx-background-color: blue;">
                <content>
-                  <VBox fx:id="chatPane" opacity="0.7" prefHeight="429.0" prefWidth="575.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom,#008fb3, #00ccff, #ccf5ff);" />
+                  <VBox fx:id="chatPane" opacity="0.7" prefHeight="377.0" prefWidth="575.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);">
+                     <children>
+                        <ImageView fitHeight="362.0" fitWidth="440.0" opacity="0.46" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/bg.png" />
+                           </image>
+                        </ImageView>
+                     </children></VBox>
                </content>
             </ScrollPane>
 
-            <!-- Input Text Field -->
-            <TextField fx:id="userInput" layoutX="5.0" layoutY="364.0" prefHeight="34.0" prefWidth="554.0" promptText="Type a message..." style="-fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 6, 0.5, 2, 1);">
+                                    <!-- Input Text Field -->
+            <TextField fx:id="userInput" layoutX="3.0" layoutY="375.0" prefHeight="40.0" prefWidth="572.0" promptText="Type a message..." style="-fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 6, 0.5, 2, 1);">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
 
-            <!-- Send Button -->
-            <Button layoutX="491.0" layoutY="369.0" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="22.0" prefWidth="63.0" style="-fx-background-color: #e6ffff; -fx-text-fill: green; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #008fb3;" text="SEND">
+                        <!-- Send Button -->
+            <Button layoutX="512.0" layoutY="380.0" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="29.0" prefWidth="63.0" style="-fx-background-color: #004d80; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #008fb3;" text="SEND" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
             </Button>
          </children>
       </AnchorPane>
