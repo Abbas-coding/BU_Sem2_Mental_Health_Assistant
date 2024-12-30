@@ -18,6 +18,6 @@ module source.mentalhealthassistant {
     requires java.net.http;     // HTTP Client module
 
     opens source.mentalhealthassistant to javafx.fxml;
-    opens source.mentalhealthassistant.core to com.google.gson;
+    opens source.mentalhealthassistant.core to com.google.gson , javafx.base;
     exports source.mentalhealthassistant;
 }

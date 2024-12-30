@@ -41,7 +41,7 @@ public class DatabaseHandler {
             stmt.setString(2, username); // Use username instead of userId
             stmt.setString(3, reminder.getMessage());
             stmt.setTimestamp(4, Timestamp.valueOf(reminder.getTime()));
-            stmt.setBoolean(5, reminder.getIsRecurring());
+            stmt.setBoolean(5, reminder.isRecurring());
 
             stmt.executeUpdate();
             System.out.println("Reminder saved successfully.");
@@ -59,7 +59,7 @@ public class DatabaseHandler {
 
             stmt.setString(1, reminder.getMessage());
             stmt.setTimestamp(2, Timestamp.valueOf(reminder.getTime()));
-            stmt.setBoolean(3, reminder.getIsRecurring());
+            stmt.setBoolean(3, reminder.isRecurring());
             stmt.setString(4, reminder.getReminderId());
 
             int rowsUpdated = stmt.executeUpdate();
@@ -172,6 +172,9 @@ public class DatabaseHandler {
 
         return reminders;
     }
+
+
+
 
     public static boolean doesUsernameExist(String username) throws ClassNotFoundException {
         String sql = "SELECT COUNT(*) FROM User WHERE username = ?";

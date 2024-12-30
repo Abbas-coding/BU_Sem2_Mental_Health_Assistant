@@ -1,12 +1,15 @@
 package source.mentalhealthassistant;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import source.mentalhealthassistant.core.MoodLog;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,6 +17,8 @@ public class MoodLogController implements Initializable {
 
     @FXML
     private TextField moodInputField;
+
+    private DashboardController dashboardController;
 
     @FXML
     private TextField moodScaleField;
@@ -35,7 +40,25 @@ public class MoodLogController implements Initializable {
     // Setup button actions for the Mood Log
     private void setupButtonActions() {
         saveMoodButton.setOnAction(event -> saveMood());
-        trackMoodHistoryButton.setOnAction(event -> trackMoodHistory());
+//        trackMoodHistoryButton.setOnAction(event -> {
+//            try {
+//                trackMoodHistory();
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
+    }
+
+    public void setDashboardController(DashboardController controller) {
+        this.dashboardController = controller;
+    }
+
+    @FXML
+    private void toggleMoodLogTracker() {
+        // Call the method in the DashboardController to toggle the MoodLog Tracker
+        if (dashboardController != null) {
+            dashboardController.toggleMoodLogTracker();
+        }
     }
 
     // Save the user's mood
@@ -69,9 +92,9 @@ public class MoodLogController implements Initializable {
     }
 
     // Track mood history functionality
-    private void trackMoodHistory() {
+    private void trackMoodHistory() throws IOException {
         // Logic to track and display mood history can be implemented here
-        showAlert(Alert.AlertType.INFORMATION, "Mood History", "Feature to track mood history is under development!");
+
     }
 
     // Helper method to display alerts

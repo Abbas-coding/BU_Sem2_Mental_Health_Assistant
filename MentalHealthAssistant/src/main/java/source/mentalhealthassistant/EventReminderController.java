@@ -1,11 +1,15 @@
 package source.mentalhealthassistant;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import source.mentalhealthassistant.core.*;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -97,6 +101,9 @@ public class EventReminderController {
     private void handleViewReminders() {
         System.out.println("View Reminders button clicked.");
         // Implement functionality to display existing reminders
+
+
 }
+
 
 }

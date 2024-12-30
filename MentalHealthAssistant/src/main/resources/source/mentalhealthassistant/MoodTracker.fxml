@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.control.TableColumn?>
+        <?import javafx.scene.control.TableView?>
+        <?import javafx.scene.effect.DropShadow?>
+        <?import javafx.scene.layout.AnchorPane?>
+        <?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.MoodTrackerController">
+<children>
+    <AnchorPane prefHeight="600.0" prefWidth="599.0" style="-fx-background-color: linear-gradient(to bottom,#008fb3, #00ccff, #ccf5ff);">
+        <children>
+            <Label layoutX="201.0" layoutY="35.0" prefHeight="32.0" prefWidth="202.0" text="MOOD TRACKER" textFill="WHITE">
+                <font>
+                    <Font name="Arial Black" size="23.0" />
+                </font>
+            </Label>
+            <!-- Mood History Table -->
+            <TableView fx:id="moodHistoryTable" fixedCellSize="-2.0" layoutX="28.0" layoutY="100.0" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: white;">
+                <columns>
+                    <TableColumn fx:id="columnSNo" prefWidth="53.0" style="-fx-background-color: #e6e6ff;" text="S.NO" />
+                    <TableColumn fx:id="columnMood" prefWidth="112.0" style="-fx-background-color: #e6e6ff;" text="Mood" />
+                    <TableColumn fx:id="columnDescription" prefWidth="177.0" style="-fx-background-color: #e6e6ff;" text="Description" />
+                    <TableColumn fx:id="columnScale" prefWidth="85.0" style="-fx-background-color: #e6e6ff;" text="Scale" />
+                    <TableColumn fx:id="columnDate" prefWidth="85.0" style="-fx-background-color: #e6e6ff;" text="Date" />
+                </columns>
+                <effect>
+                    <DropShadow />
+                </effect>
+            </TableView>
+
+            <!-- Mood Logs Table -->
+<!--            <TableView fx:id="moodLogsTable" fixedCellSize="-2.0" layoutX="78.0" layoutY="350.0" prefHeight="200.0" prefWidth="447.0" style="-fx-background-color: white;">-->
+<!--                <columns>-->
+<!--                    <TableColumn fx:id="logColumnSNo" prefWidth="53.0" style="-fx-background-color: #e6e6ff;" text="S.NO" />-->
+<!--                    <TableColumn fx:id="logColumnMood" prefWidth="112.0" style="-fx-background-color: #e6e6ff;" text="Mood" />-->
+<!--                    <TableColumn fx:id="logColumnTimestamp" prefWidth="177.0" style="-fx-background-color: #e6e6ff;" text="Timestamp" />-->
+<!--                </columns>-->
+<!--                <effect>-->
+<!--                    <DropShadow />-->
+<!--                </effect>-->
+<!--            </TableView>-->
+        </children>
+    </AnchorPane>
+</children>
+</AnchorPane>

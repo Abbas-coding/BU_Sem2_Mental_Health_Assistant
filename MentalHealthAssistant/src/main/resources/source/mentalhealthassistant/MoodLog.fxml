@@ -55,7 +55,7 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="trackMoodHistoryButton" layoutX="238.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: #c2d1f0;" text="Track Your Mood History">
+        <Button  onAction="#toggleMoodLogTracker" layoutX="238.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: #c2d1f0;" text="Track Your Mood History">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>

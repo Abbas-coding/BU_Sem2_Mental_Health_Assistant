@@ -165,7 +165,31 @@ public class MoodLog {
     private int rating;
     private String description;
 
-//    private static final String DB_URL = "jdbc:mysql://localhost:3306/mental_health_assistant";
+    public int getRating() {
+        return rating;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getMoodId() {
+        return moodId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getMood() {
+        return mood;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    //    private static final String DB_URL = "jdbc:mysql://localhost:3306/mental_health_assistant";
 //    private static final String DB_USER = "root"; // Replace with your MySQL username
 //    private static final String DB_PASSWORD = "castaway110"; // Replace with your MySQL password
 

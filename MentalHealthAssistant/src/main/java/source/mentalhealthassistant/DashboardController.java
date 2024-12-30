@@ -5,6 +5,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -39,6 +40,13 @@ public class DashboardController implements Initializable {
     private boolean isTaskReminderLoaded = false;
     private boolean isCopingMechanismLoaded = false;
     private boolean isMoodLogLoaded = false;
+    private boolean isViewReminderLoaded = false;
+    public static boolean isMoodLogHistoryLoaded = false;
+
+    private Node moodLogTrackerView; // Cached view for the MoodLog Tracker
+
+
+
 
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {
@@ -59,6 +67,11 @@ public class DashboardController implements Initializable {
 
         setupDrawer();
         setupMenuActions();
+//        if(isMoodLogHistoryLoaded){
+//        generalContainer.setVisible(true);
+//        loadMoodTracker();
+//
+//        }
     }
 
     private void setupDrawer() {
@@ -84,7 +97,7 @@ public class DashboardController implements Initializable {
         // Fade overlay from 0 to 0.15
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), opacityPane);
         fadeIn.setFromValue(0);
-        fadeIn.setToValue(0.15);
+        fadeIn.setToValue(0.95);
         fadeIn.play();
 
         // Slide drawer in by +600 (since it starts at -600)
@@ -98,7 +111,7 @@ public class DashboardController implements Initializable {
 
         // Fade overlay from 0.15 to 0
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), opacityPane);
-        fadeOut.setFromValue(0.15);
+        fadeOut.setFromValue(0.95);
         fadeOut.setToValue(0);
         fadeOut.setOnFinished(event -> opacityPane.setVisible(false));
         fadeOut.play();
@@ -107,6 +120,18 @@ public class DashboardController implements Initializable {
         TranslateTransition slideOut = new TranslateTransition(Duration.seconds(0.5), drawerPane);
         slideOut.setByX(-600);
         slideOut.play();
+    }
+
+    @FXML
+    private void handleDashboard(){
+        HelloApplication.switchScene("Dashboard.fxml", 810, 467);
+    }
+
+    @FXML
+    private void handleLogout(){
+        // Switch to the Login scene
+        Session.getInstance().clearSession();
+        HelloApplication.switchScene("Login.fxml", 600, 400);
     }
 
 
@@ -157,6 +182,32 @@ public class DashboardController implements Initializable {
         viewReminderMenuItem.setOnAction(event -> handleViewReminder());
     }
 
+    // This method will toggle the MoodLog Tracker inside the generalContainer
+    public void toggleMoodLogTracker() {
+        try {
+            // Check if the MoodLog Tracker view is already loaded
+            if (moodLogTrackerView == null) {
+                // Load the MoodLog Tracker view (assuming you have an FXML for the tracker)
+                System.out.println(getClass().getResource("MoodTracker.fxml"));
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodTracker.fxml"));
+                moodLogTrackerView = loader.load();
+            }
+
+            // Check if the generalContainer contains the MoodLog Tracker view
+            if (!generalContainer.getChildren().contains(moodLogTrackerView)) {
+                generalContainer.getChildren().clear(); // Clear existing content
+                generalContainer.getChildren().add(moodLogTrackerView); // Add the new view
+                generalContainer.setVisible(true); // Make the container visible
+            } else {
+                // Toggle the visibility of the view
+                generalContainer.setVisible(!generalContainer.isVisible());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void handleSetReminder() throws IOException {
         // Prompt the user to choose between Event Reminder and Task Reminder
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -202,12 +253,53 @@ public class DashboardController implements Initializable {
 
     private void handleViewReminder() {
         // Placeholder for viewing reminders functionality
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("View Reminders");
-        alert.setHeaderText(null);
-        alert.setContentText("This feature will display all saved reminders.");
-        alert.showAndWait();
+        if (!isViewReminderLoaded) {
+            generalContainer.setVisible(true);
+            loadViewReminder();
+        }
     }
+
+    private void loadViewReminder() {
+        try {
+            System.out.println("Loading moodlog.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewReminder.fxml"));
+            Parent viewReminderView = loader.load();
+            generalContainer.getChildren().clear();
+            generalContainer.getChildren().add(viewReminderView);
+            System.out.println("moodLog.fxml successfully loaded.");
+
+        } catch (IOException e) {
+            System.out.println("Error loading Coping Mechanism.fxml");
+            e.printStackTrace();
+        }
+    }
+
+//    private void handleMoodTracker() {
+//        // Placeholder for viewing reminders functionality
+//        if (!isMoodLogHistoryLoaded) {
+//            generalContainer.setVisible(true);
+//            loadMoodTracker();
+//        }
+//    }
+
+//    private void loadMoodTracker() {
+//        try {
+//            System.out.println("Loading moodlogtracker.fxml");
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodTracker.fxml"));
+//            Parent viewMoodLog = loader.load();
+//            generalContainer.getChildren().clear();
+//            generalContainer.getChildren().add(viewMoodLog);
+//            System.out.println("moodLogtracker.fxml successfully loaded.");
+//            isMoodLogHistoryLoaded = true;
+//
+//        } catch (IOException e) {
+//            System.out.println("Error loading Coping Mechanism.fxml");
+//            e.printStackTrace();
+//        }
+//    }
+
+
+
     @FXML
     private void chatWitChatbot() {
         // Switch to the Chatbot scene
@@ -268,7 +360,6 @@ public class DashboardController implements Initializable {
             generalContainer.getChildren().clear();
             generalContainer.getChildren().add(copingMechanismView);
             System.out.println("Coping Mechanism.fxml successfully loaded.");
-            isCopingMechanismLoaded = true;
         } catch (IOException e) {
             System.out.println("Error loading Coping Mechanism.fxml");
             e.printStackTrace();
@@ -289,10 +380,11 @@ public class DashboardController implements Initializable {
             System.out.println("Loading moodlog.fxml");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodLog.fxml"));
             Parent moodlogView = loader.load();
+            MoodLogController moodLogController = loader.getController();
+            moodLogController.setDashboardController(this);
             generalContainer.getChildren().clear();
             generalContainer.getChildren().add(moodlogView);
             System.out.println("moodLog.fxml successfully loaded.");
-            isMoodLogLoaded = true;
 
         } catch (IOException e) {
             System.out.println("Error loading Coping Mechanism.fxml");
@@ -334,7 +426,6 @@ public class DashboardController implements Initializable {
             generalContainer.getChildren().clear();
             generalContainer.getChildren().add(chatbotView);
             System.out.println("Chatbot.fxml successfully loaded.");
-            isChatbotLoaded = true;
         } catch (IOException e) {
             System.out.println("Error loading Chatbot.fxml");
             e.printStackTrace();

@@ -1,15 +1,19 @@
 package source.mentalhealthassistant;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import source.mentalhealthassistant.core.DailyReminder;
 import source.mentalhealthassistant.core.DatabaseHandler;
 import source.mentalhealthassistant.core.Reminder;
 import source.mentalhealthassistant.core.WeeklyReminder;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -39,6 +43,10 @@ public class TaskReminderController {
 
     @FXML
     private Button setReminderButton;
+
+    @FXML
+    private Pane generalContainer;
+    private boolean isViewReminderLoaded = false;
 
     // Initialize method called after FXML components are loaded
     @FXML
@@ -90,8 +98,7 @@ public class TaskReminderController {
             reminder = new DailyReminder(UUID.randomUUID().toString(), title, reminderDateTime);
         } else if (isWeekly) {
             reminder = new WeeklyReminder(UUID.randomUUID().toString(), title, reminderDateTime);
-        }
-        else {
+        } else {
             reminder = new DailyReminder(UUID.randomUUID().toString(), title, reminderDateTime);
         }
 
@@ -111,5 +118,7 @@ public class TaskReminderController {
     private void handleViewReminders() {
         System.out.println("View Reminders button clicked.");
         // Implement logic to view existing reminders (e.g., load from database or list)
-}
+
+    }
+
 }
