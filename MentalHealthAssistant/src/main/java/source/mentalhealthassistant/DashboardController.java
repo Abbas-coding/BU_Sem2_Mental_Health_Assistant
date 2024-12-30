@@ -38,7 +38,7 @@ public class DashboardController implements Initializable {
     private boolean isChatbotLoaded = false;
     private boolean isTaskReminderLoaded = false;
     private boolean isCopingMechanismLoaded = false;
-    private boolean isEventReminderLoaded = false;
+    private boolean isMoodLogLoaded = false;
 
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {
@@ -269,6 +269,31 @@ public class DashboardController implements Initializable {
             generalContainer.getChildren().add(copingMechanismView);
             System.out.println("Coping Mechanism.fxml successfully loaded.");
             isCopingMechanismLoaded = true;
+        } catch (IOException e) {
+            System.out.println("Error loading Coping Mechanism.fxml");
+            e.printStackTrace();
+        }
+    }@FXML
+    private void toggleMoodLog() {
+        System.out.println("Toggling coping mechanism visibility");
+
+        if (!isMoodLogLoaded) {
+            generalContainer.setVisible(true);
+            loadMoodLog();
+        }
+
+    }
+
+    private void loadMoodLog() {
+        try {
+            System.out.println("Loading moodlog.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodLog.fxml"));
+            Parent moodlogView = loader.load();
+            generalContainer.getChildren().clear();
+            generalContainer.getChildren().add(moodlogView);
+            System.out.println("moodLog.fxml successfully loaded.");
+            isMoodLogLoaded = true;
+
         } catch (IOException e) {
             System.out.println("Error loading Coping Mechanism.fxml");
             e.printStackTrace();

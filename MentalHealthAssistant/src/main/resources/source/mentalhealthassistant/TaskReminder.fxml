@@ -18,7 +18,7 @@
         <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="434.0" prefWidth="625.0" />
         <AnchorPane layoutX="-1.0" prefHeight="523.0" prefWidth="697.0" style="-fx-background-color: #DBF3FA;">
             <children>
-                <Pane layoutX="35.0" layoutY="42.0" prefHeight="480.0" prefWidth="432.0" style="-fx-background-color: #DBF3FA;">
+                <Pane layoutX="35.0"  prefHeight="480.0" prefWidth="432.0" style="-fx-background-color: #DBF3FA;">
                     <children>
                         <Label layoutX="35.0" layoutY="14.0" prefHeight="30.0" prefWidth="142.0" text="REMINDERS">
                             <font>
@@ -62,58 +62,7 @@
                         </Label>
                     </children>
                 </Pane>
-                <VBox layoutX="70.0" layoutY="63.0" prefHeight="318.0" prefWidth="179.0" spacing="20.0">
-                    <children>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Dashboard" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Button>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Chat" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Button>
-                        <MenuButton alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: #00008B;" text="Reminders" textFill="WHITE">
-                            <items>
-                                <MenuItem fx:id="setReminderMenuItem" mnemonicParsing="false" text="Set Reminder" />
-                                <MenuItem fx:id="viewReminderMenuItem" mnemonicParsing="false" text="View Reminder" />
-                            </items>
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </MenuButton>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Mood Log" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Button>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Coping Mechanism" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Button>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Logout" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </VBox>
-                <AnchorPane prefHeight="46.0" prefWidth="697.0" style="-fx-background-color: #00008B;">
-                    <children>
-                        <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="659.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/cross.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fx:id="drawerImage" fitHeight="32.0" fitWidth="32.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/stack.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </AnchorPane>
+
             </children>
         </AnchorPane>
 

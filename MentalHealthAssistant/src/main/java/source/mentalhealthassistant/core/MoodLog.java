@@ -149,6 +149,8 @@
 //}
 package source.mentalhealthassistant.core;
 
+import source.mentalhealthassistant.Session;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -204,7 +206,7 @@ public class MoodLog {
         }
 
         // Save to database
-        saveMoodToDatabase(mood, rating, description);
+        saveMoodToDatabase(Session.getInstance().getUsername(),mood, rating, description);
         System.out.println("Mood saved! Thank you for sharing.");
     }
 
@@ -232,7 +234,7 @@ public class MoodLog {
         return rating;
     }
 
-    private void saveMoodToDatabase(String mood, int rating, String description) throws ClassNotFoundException {
+    public static void saveMoodToDatabase(String username,String mood, int rating, String description) throws ClassNotFoundException {
         String insertQuery = "INSERT INTO moodlog (username, mood, rating, description, date) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseHandler.connectToDatabase();
              PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
