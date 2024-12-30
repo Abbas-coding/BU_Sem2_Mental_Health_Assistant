@@ -92,10 +92,21 @@ public class ChatbotController {
 
     public ChatbotController() throws ClassNotFoundException {
         // Initialize the controller
-        chatBot = new ChatBot("Mental_Health_Assistant");
+        chatBot = new ChatBot("Mental_Health_Assistant","src/main/java/source/mentalhealthassistant/faqs.txt");
         User loggedInUser = User.findUserByUsername(Session.getInstance().getUsername());
         String convId = chatBot.getBotName() + "-" + Session.getInstance().getUsername();
-        conversation = new Conversation(convId,loggedInUser, chatBot);
+        conversation = new Conversation(convId,loggedInUser, "src/main/java/source/mentalhealthassistant/faqs.txt");
+
+//        // Assuming faqs.txt is located in the 'resources' folder
+//        String faqFilePath = "src/main/resources/faqs.txt";
+//        User currentUser = new User("user123", "John Doe"); // Example user
+//        Conversation conversation = new Conversation("conv1", currentUser, faqFilePath);
+//
+//// Example user input
+//        String userInput = "How can I add a mood in the app?";
+//        String response = conversation.handleUserInput(userInput);
+//        System.out.println("Response: " + response);
+
     }
 
     @FXML
