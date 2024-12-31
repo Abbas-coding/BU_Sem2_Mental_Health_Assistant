@@ -26,8 +26,8 @@ public class ViewReminderController implements Initializable {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/mentalhealth";
     private static final String DB_USER = "root";
- //   private static final String DB_PASSWORD = "Abbas@mysql23#*";
- private static final String DB_PASSWORD = "castaway110";
+    private static final String DB_PASSWORD = "Abbas@mysql23#*";
+ //private static final String DB_PASSWORD = "castaway110";
     @FXML
     private TableView<Reminder> reminderTable;
 
@@ -77,9 +77,6 @@ public class ViewReminderController implements Initializable {
 
     }
 
-    // Setup table columns
-
-
     private List<Reminder> fetchRemindersFromDatabase() {
         List<Reminder> reminderList = new ArrayList<>();
         // Connect to the database and fetch reminders
@@ -110,8 +107,6 @@ public class ViewReminderController implements Initializable {
         return reminderList;
     }
 
-
-
     // Load reminders into the table
     private void loadReminders() {
         ObservableList<Reminder> reminders = FXCollections.observableArrayList();
@@ -128,7 +123,6 @@ public class ViewReminderController implements Initializable {
 
         reminderTable.setItems(reminders);
     }
-
 
     // Delete a reminder
     private void deleteReminder(Reminder reminder) {

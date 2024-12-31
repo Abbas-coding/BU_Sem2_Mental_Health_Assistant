@@ -41,19 +41,8 @@ public class DashboardController implements Initializable {
     private boolean isCopingMechanismLoaded = false;
     private boolean isMoodLogLoaded = false;
     private boolean isViewReminderLoaded = false;
-    public static boolean isMoodLogHistoryLoaded = false;
 
     private Node moodLogTrackerView; // Cached view for the MoodLog Tracker
-
-
-
-
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//        setupDrawer();
-//        setupMenuActions();
-//    }
-
 
     private boolean isDrawerOpen = false;
 
@@ -67,11 +56,6 @@ public class DashboardController implements Initializable {
 
         setupDrawer();
         setupMenuActions();
-//        if(isMoodLogHistoryLoaded){
-//        generalContainer.setVisible(true);
-//        loadMoodTracker();
-//
-//        }
     }
 
     private void setupDrawer() {
@@ -133,40 +117,6 @@ public class DashboardController implements Initializable {
         Session.getInstance().clearSession();
         HelloApplication.switchScene("Login.fxml", 600, 400);
     }
-
-
-
-//    private void setupDrawer() {
-//        // Close the application when the exit button is clicked
-//        exit.setOnMouseClicked(event -> System.exit(0));
-//
-//        // Show the drawer and fade in opacityPane when drawerImage is clicked
-//        drawerImage.setOnMouseClicked(event -> {
-//            opacityPane.setVisible(true);
-//
-//            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), opacityPane);
-//            fadeIn.setFromValue(0);
-//            fadeIn.setToValue(0.15);
-//            fadeIn.play();
-//
-//            TranslateTransition slideIn = new TranslateTransition(Duration.seconds(0.5), drawerPane);
-//            slideIn.setByX(600); // Ensure the translation is enough to display the drawer
-//            slideIn.play();
-//        });
-//
-//        // Hide the drawer and fade out opacityPane when opacityPane is clicked
-//        opacityPane.setOnMouseClicked(event -> {
-//            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), opacityPane);
-//            fadeOut.setFromValue(0.15);
-//            fadeOut.setToValue(0);
-//            fadeOut.setOnFinished(event1 -> opacityPane.setVisible(false));
-//            fadeOut.play();
-//
-//            TranslateTransition slideOut = new TranslateTransition(Duration.seconds(0.5), drawerPane);
-//            slideOut.setByX(-600);
-//            slideOut.play();
-//        });
-//    }
 
     private void setupMenuActions() {
         // Handle "Set Reminder" menu item click
@@ -275,49 +225,6 @@ public class DashboardController implements Initializable {
         }
     }
 
-//    private void handleMoodTracker() {
-//        // Placeholder for viewing reminders functionality
-//        if (!isMoodLogHistoryLoaded) {
-//            generalContainer.setVisible(true);
-//            loadMoodTracker();
-//        }
-//    }
-
-//    private void loadMoodTracker() {
-//        try {
-//            System.out.println("Loading moodlogtracker.fxml");
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodTracker.fxml"));
-//            Parent viewMoodLog = loader.load();
-//            generalContainer.getChildren().clear();
-//            generalContainer.getChildren().add(viewMoodLog);
-//            System.out.println("moodLogtracker.fxml successfully loaded.");
-//            isMoodLogHistoryLoaded = true;
-//
-//        } catch (IOException e) {
-//            System.out.println("Error loading Coping Mechanism.fxml");
-//            e.printStackTrace();
-//        }
-//    }
-
-
-
-    @FXML
-    private void chatWitChatbot() {
-        // Switch to the Chatbot scene
-        HelloApplication.switchScene("Chatbot.fxml", 600, 400);
-    }
-    private void loadScene(String fxmlFile, String title) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent root = loader.load();
-            Stage stage = (Stage) drawerPane.getScene().getWindow(); // Get the current stage
-            stage.setScene(new Scene(root));
-            stage.setTitle(title);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }}
-
     @FXML
     private void toggleChatbot() {
         System.out.println("Toggling chatbot visibility");
@@ -327,19 +234,6 @@ public class DashboardController implements Initializable {
         loadChatbot();
         }
 
-//        if (generalContainer.isVisible()) {
-//           // System.out.println("Hiding chatbot");
-//            hideChatbotWithAnimation();
-//        } else {
-//            System.out.println("Showing chatbot");
-//            generalContainer.setVisible(true);
-//            showChatbotWithAnimation();
-//
-//
-//        }
-//        if (!isChatbotLoaded) {
-//            loadChatbot();
-//        }
     }
 
     @FXML
@@ -393,31 +287,6 @@ public class DashboardController implements Initializable {
         }
     }
 
-//    @FXML
-//    private void toggleEventReminder() {
-//        System.out.println("Toggling coping mechanism visibility");
-//
-//        if (!isEventReminderLoaded) {
-//            generalContainer.setVisible(true);
-//            loadEventReminder();
-//        }
-//
-//    }
-
-//    private void loadEventReminder() {
-//        try {
-//            System.out.println("Loading EventReminder.fxml");
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("EventReminder.fxml"));
-//            Parent eventReminderView = loader.load();
-//            generalContainer.getChildren().clear();
-//            generalContainer.getChildren().add(eventReminderView);
-//            System.out.println("Coping Mechanism.fxml successfully loaded.");
-//            isEventReminderLoaded = true;
-//        } catch (IOException e) {
-//            System.out.println("Error loading Coping Mechanism.fxml");
-//            e.printStackTrace();
-//        }
-//    }
 
     private void loadChatbot() {
         try {
@@ -431,20 +300,6 @@ public class DashboardController implements Initializable {
             System.out.println("Error loading Chatbot.fxml");
             e.printStackTrace();
         }
-    }
-
-    private void showChatbotWithAnimation() {
-        TranslateTransition transition = new TranslateTransition(Duration.millis(300), generalContainer);
-        transition.setFromX(300);
-        transition.setToX(0); // Adjust final position
-        transition.play();
-    }
-
-    private void hideChatbotWithAnimation() {
-        TranslateTransition transition = new TranslateTransition(Duration.millis(300), generalContainer);
-        transition.setToX(300); // Adjust off-screen position
-        transition.setOnFinished(event -> generalContainer.setVisible(false));
-        transition.play();
     }
 
 

@@ -1,79 +1,3 @@
-//package source.mentalhealthassistant;
-//
-//import javafx.fxml.FXML;
-//import javafx.scene.control.TextField;
-//import javafx.scene.layout.VBox;
-//import javafx.scene.control.Label;
-//import javafx.scene.layout.HBox;
-//import javafx.scene.layout.Pane;
-//import source.mentalhealthassistant.core.ChatBot;
-//import source.mentalhealthassistant.core.Conversation;
-//import source.mentalhealthassistant.core.User;
-//
-//public class ChatbotController {
-//    ChatBot chatBot;
-//    Conversation conversation;
-//
-//    public ChatbotController() throws ClassNotFoundException {
-//        // Initialize the controller
-//        chatBot = new ChatBot("Mental_Health_Assistant");
-//        User loggedInUser = User.findUserByUsername(Session.getInstance().getUsername());
-//        String convId = chatBot.getBotName() + "-" + Session.getInstance().getUsername();
-//        conversation = new Conversation(convId,loggedInUser, chatBot);
-//    }
-//
-//    @FXML
-//    private TextField userInput; // Input field for user message
-//    @FXML
-//    private VBox chatPane; // Container for displaying chat messages
-//
-//    @FXML
-//    public void onHelloButtonClick() {
-//        String userMessage = userInput.getText().trim();
-//        if (!userMessage.isEmpty()) {
-//            // Display user's message
-//            addMessageToChat("You", userMessage);
-//
-//
-//            // Generate a bot response (placeholder logic for now)
-//            //String botResponse = generateResponse(userMessage);
-//
-//            String botResponse = conversation.handleUserInput(userMessage);
-//            addMessageToChat("Bot", botResponse);
-//
-//            // Clear the input field
-//            userInput.clear();
-//        }
-//    }
-//
-//    private String generateResponse(String userMessage) {
-//        // Placeholder chatbot logic
-//
-//        return "I hear you said: " + userMessage;
-//    }
-//
-//    private void addMessageToChat(String sender, String message) {
-//        // Create a horizontal box for the sender and message
-//        HBox messageBox = new HBox();
-//        messageBox.setSpacing(10);
-//
-//        // Add the sender's name
-//        Label senderLabel = new Label(sender + ":");
-//        senderLabel.setStyle("-fx-font-weight: bold;");
-//
-//        // Add the message content
-//        Label messageLabel = new Label(message);
-//        messageLabel.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5; -fx-background-radius: 5;");
-//
-//        // Add both to the message box
-//        messageBox.getChildren().addAll(senderLabel, messageLabel);
-//
-//        // Add the message box to the chat pane
-//        chatPane.getChildren().add(messageBox);
-//    }
-//}
-
-
 package source.mentalhealthassistant;
 
 import javafx.fxml.FXML;
@@ -98,16 +22,6 @@ public class ChatbotController {
         String convId = chatBot.getBotName() + "-" + Session.getInstance().getUsername();
         conversation = new Conversation(convId,loggedInUser, "src/main/java/source/mentalhealthassistant/faqs.txt");
 
-//        // Assuming faqs.txt is located in the 'resources' folder
-//        String faqFilePath = "src/main/resources/faqs.txt";
-//        User currentUser = new User("user123", "John Doe"); // Example user
-//        Conversation conversation = new Conversation("conv1", currentUser, faqFilePath);
-//
-//// Example user input
-//        String userInput = "How can I add a mood in the app?";
-//        String response = conversation.handleUserInput(userInput);
-//        System.out.println("Response: " + response);
-
     }
 
     @FXML
@@ -122,10 +36,6 @@ private ScrollPane chatScrollPane;
             // Display user's message
             addMessageToChat("You", userMessage);
 
-
-            // Generate a bot response (placeholder logic for now)
-            //String botResponse = generateResponse(userMessage);
-
             String botResponse = conversation.handleUserInput(userMessage);
             addMessageToChat("Bot", botResponse);
 
@@ -134,10 +44,6 @@ private ScrollPane chatScrollPane;
         }
     }
 
-    private String generateResponse(String userMessage) {
-        // Placeholder chatbot logic
-        return "I hear you said: " + userMessage;
-    }
 
     private void addMessageToChat(String sender, String message) {
         // Create a horizontal box for the sender and message
