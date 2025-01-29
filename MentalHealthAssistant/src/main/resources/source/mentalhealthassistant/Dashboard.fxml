@@ -111,125 +111,112 @@
 </AnchorPane>
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="550.0" prefWidth="730.0" style="-fx-background-color: #e6f2ff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.DashboardController">
+<AnchorPane prefHeight="471.0" prefWidth="734.0" style="-fx-background-color: linear-gradient(    from 0% 100% to 0% 0%,     #002e4d 0%,  /* Dark blue at the bottom */    #004d80 30%, /* Lighter blue for a smooth transition */    #66a3cc 60%, /* Light blue for further blending */    #ffffff 100%  /* Solid white at the top */);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.DashboardController">
     <children>
-        <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #00008B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <children>
-                <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="759.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@images/cross.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="drawerImage" fitHeight="32.0" fitWidth="32.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@images/stack.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </AnchorPane>
-        <AnchorPane fx:id="drawerPane" layoutY="46.0" prefHeight="387.0" prefWidth="47.0" style="-fx-background-color: #e6f2ff;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0">
-            <children>
-                <VBox alignment="TOP_CENTER" layoutX="2.0" layoutY="95.0" prefHeight="336.0" prefWidth="45.0" spacing="25.0" AnchorPane.topAnchor="95.0">
-                    <children>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/chat.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/alarm.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/mood.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/coping.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/logout.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </VBox>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="8.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+      <Text fill="WHITE" layoutX="315.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Mental Health Companion" wrappingWidth="324.78826904296875">
+         <font>
+            <Font name="Brush Script MT Italic" size="30.0" />
+         </font>
+      </Text>
+        <AnchorPane fx:id="drawerPane" blendMode="SRC_ATOP" layoutX="-0.8" layoutY="9.0" prefHeight="480.0" prefWidth="46.0" style="-fx-background-color: #002e4d; -fx-background-radius: 5;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="-0.8">
+         <children>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="3.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
                       <image>
-                          <Image url="@images/home.png" />
+                          <Image url="@images/alarm.png" />
                       </image>
                   </ImageView>
-            </children>
+                  <ImageView fitHeight="38.0" fitWidth="47.0" layoutX="2.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@images/coping.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="2.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@images/mood.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="7.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@images/logout.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="5.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@images/chat.png" />
+                      </image>
+                  </ImageView>
+                <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="5.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/home.png" />
+                    </image>
+                </ImageView>
+         </children>
         </AnchorPane>
-        <AnchorPane fx:id="opacityPane" layoutX="46.0" layoutY="45.0" prefHeight="454.0" prefWidth="179.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="46.0">
+        <AnchorPane fx:id="opacityPane" layoutX="44.0" layoutY="44.0" prefHeight="506.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(    from 0% 100% to 0% 0%,     #002e4d 0%,  /* Dark blue at the bottom */    #004d80 30%, /* Lighter blue for a smooth transition */    #66a3cc 60%, /* Light blue for further blending */    #ffffff 100%  /* Solid white at the top */);" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="44.0">
             <children>
-                <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
-                    <children>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Dashboard" textFill="WHITE">
+                <VBox layoutX="0.8" layoutY="8.6" prefHeight="492.0" prefWidth="183.0" spacing="20.0" style="-fx-background-color: linear-gradient(    from 0% 100% to 0% 0%,     #002e4d 0%,  /* Dark blue at the bottom */    #004d80 30%, /* Lighter blue for a smooth transition */    #66a3cc 60%, /* Light blue for further blending */    #ffffff 100%  /* Solid white at the top */);" AnchorPane.bottomAnchor="5.800000000000011" AnchorPane.leftAnchor="0.8" AnchorPane.rightAnchor="-0.8000000000000114" AnchorPane.topAnchor="8.6">
+               <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="42.0" prefWidth="179.0" style="-fx-background-color: #002e4d;" text="Dashboard" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="Constantia Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button alignment="BOTTOM_LEFT" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#toggleChatbot" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Chat with Chatbot" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Button>
-                        <MenuButton alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: #00008B;" text="Reminders" textFill="WHITE">
+                  <MenuButton alignment="CENTER" mnemonicParsing="false"  prefHeight="23.0" prefWidth="179.0" style="-fx-background-color: #002e4d;" text="Chat" textFill="WHITE">
+                     <items>
+                        <MenuItem fx:id="newChat" onAction="#toggleChatbot" mnemonicParsing="false" text="New Chat" />
+                        <MenuItem fx:id="viewChats" onAction="#toggleViewChats" mnemonicParsing="false" text="View Chats" />
+                     </items>
+                     <font>
+                        <Font name="Constantia Bold" size="18.0" />
+                     </font>
+                  </MenuButton>
+                        <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="179.0" style="-fx-background-color: #002e4d;" text="Reminders" textFill="WHITE">
                             <items>
                                 <MenuItem fx:id="setReminderMenuItem" mnemonicParsing="false" text="Set Reminder" />
                                 <MenuItem fx:id="viewReminderMenuItem" mnemonicParsing="false" text="View Reminder" />
                             </items>
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="Constantia Bold" size="18.0" />
                             </font>
                         </MenuButton>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#toggleMoodLog" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Mood Log" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#toggleMoodLog" prefHeight="24.0" prefWidth="179.0" style="-fx-background-color: #002e4d;" text="Mood Log" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="Constantia Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#toggleCopingMechanism" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Coping Mechanism" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#toggleCopingMechanism" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #002e4d;" text="Coping Mechanism" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="Constantia Bold" size="17.0" />
                             </font>
                         </Button>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#handleLogout" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #00008B;" text="Logout" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogout" prefHeight="14.0" prefWidth="179.0" style="-fx-background-color: #002e4d;" text="Logout" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="Constantia Bold" size="18.0" />
                             </font>
                         </Button>
-                    </children>
+               </children>
                 </VBox>
             </children>
         </AnchorPane>
-        <ImageView fitHeight="156.0" fitWidth="228.0" layoutX="338.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="337.0" fitWidth="307.0" layoutX="319.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/c2.jpg" />
+                <Image url="@images/c2.png" />
             </image>
         </ImageView>
-        <Text fill="#0000fffb" layoutX="313.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mental Health Assistant" wrappingWidth="310.0">
+        <Text fill="#0000a6f5" layoutX="319.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat | Log | Remind | Explore ">
             <font>
-                <Font name="Arial Black" size="23.0" />
-            </font>
-        </Text>
-        <Text fill="#0000fff5" layoutX="322.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat ,Log ,Remind ,Explore: Your Mental Health Companion">
-            <font>
-                <Font name="Arial Black" size="8.0" />
-            </font>
-        </Text>
-        <Text fill="#0000fff2" layoutX="422.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="92.0">
-            <font>
-                <Font name="System Bold" size="16.0" />
+                <Font name="Constantia" size="24.0" />
             </font>
         </Text>
 
@@ -237,6 +224,25 @@
         <AnchorPane fx:id="generalContainer" layoutX="234.0" layoutY="46.0" prefHeight="448.0" prefWidth="500.0" style="-fx-background-color: #ffffff; -fx-border-color: black;" visible="false">
             <children>
                 <Label layoutX="10.0" layoutY="10.0" text="Chatbot Loading..." />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="696.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/cross.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="drawerImage" fitHeight="32.0" fitWidth="47.0" layoutX="9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/stack.png" />
+                    </image>
+                </ImageView>
+              <Text fill="#000073fa" layoutX="49.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mental Health Assistant" wrappingWidth="248.39996337890625">
+                  <font>
+                      <Font name="Constantia" size="23.0" />
+                  </font>
+              </Text>
             </children>
         </AnchorPane>
     </children>

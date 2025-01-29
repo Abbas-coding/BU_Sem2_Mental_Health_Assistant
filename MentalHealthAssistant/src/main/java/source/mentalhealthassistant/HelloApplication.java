@@ -36,7 +36,7 @@ public class HelloApplication extends Application {
         Parent root = loader.load();
 
         // Create the scene
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 600, 350);
 
         // Configure and display the stage
         primaryStage.setTitle("Mental Health Assistant - Login");

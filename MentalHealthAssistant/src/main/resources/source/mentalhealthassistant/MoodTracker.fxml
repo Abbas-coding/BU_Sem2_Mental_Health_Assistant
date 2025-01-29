@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.scene.control.Label?>
-        <?import javafx.scene.control.TableColumn?>
-        <?import javafx.scene.control.TableView?>
-        <?import javafx.scene.effect.DropShadow?>
-        <?import javafx.scene.layout.AnchorPane?>
-        <?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.MoodTrackerController">
+<AnchorPane prefHeight="440.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.MoodTrackerController">
 <children>
-    <AnchorPane prefHeight="600.0" prefWidth="599.0" style="-fx-background-color: linear-gradient(to bottom,#008fb3, #00ccff, #ccf5ff);">
+    <AnchorPane layoutX="-13.0" layoutY="-7.0" prefHeight="447.0" prefWidth="612.0" style="-fx-background-color: linear-gradient(    from 0% 100% to 0% 0%,     #002e4d 0%,  /* Dark blue at the bottom */    #004d80 30%, /* Lighter blue for a smooth transition */    #66a3cc 60%, /* Light blue for further blending */    #ffffff 100%  /* Solid white at the top */);">
         <children>
-            <Label layoutX="201.0" layoutY="35.0" prefHeight="32.0" prefWidth="202.0" text="MOOD TRACKER" textFill="WHITE">
-                <font>
-                    <Font name="Arial Black" size="23.0" />
-                </font>
-            </Label>
             <!-- Mood History Table -->
-            <TableView fx:id="moodHistoryTable" fixedCellSize="-2.0" layoutX="28.0" layoutY="100.0" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: white;">
+            <TableView fx:id="moodHistoryTable" fixedCellSize="-2.0" layoutX="15.0" layoutY="204.0" prefHeight="206.0" prefWidth="562.0" style="-fx-background-color: #ccf2ff;">
                 <columns>
                     <TableColumn fx:id="columnSNo" prefWidth="53.0" style="-fx-background-color: #e6e6ff;" text="S.NO" />
-                    <TableColumn fx:id="columnMood" prefWidth="112.0" style="-fx-background-color: #e6e6ff;" text="Mood" />
-                    <TableColumn fx:id="columnDescription" prefWidth="177.0" style="-fx-background-color: #e6e6ff;" text="Description" />
-                    <TableColumn fx:id="columnScale" prefWidth="85.0" style="-fx-background-color: #e6e6ff;" text="Scale" />
-                    <TableColumn fx:id="columnDate" prefWidth="85.0" style="-fx-background-color: #e6e6ff;" text="Date" />
+                    <TableColumn fx:id="columnMood" prefWidth="112.0" style="-fx-background-color: #e6e6ff;" text="MOOD" />
+                    <TableColumn fx:id="columnDescription" prefWidth="177.0" style="-fx-background-color: #e6e6ff;" text="DESCRIPTION" />
+                    <TableColumn fx:id="columnScale" prefWidth="85.0" style="-fx-background-color: #e6e6ff;" text="SCALE" />
+                    <TableColumn fx:id="columnDate" prefWidth="85.0" style="-fx-background-color: #e6e6ff;" text="DATE" />
                 </columns>
-                <effect>
-                    <DropShadow />
-                </effect>
             </TableView>
+            <PieChart fx:id="moodPieChart" layoutX="14.0" layoutY="12.0" prefHeight="192.0" prefWidth="572.0" />
+            <Text blendMode="MULTIPLY" fill="#21007b" layoutX="237.0" layoutY="26.0" stroke="#9e0000" strokeType="OUTSIDE" strokeWidth="0.0" text="Mood Tracker" wrappingWidth="172.1102294921875">
+               <font>
+                  <Font name="Constantia Italic" size="24.0" />
+               </font>
+            </Text>
 
             <!-- Mood Logs Table -->
 <!--            <TableView fx:id="moodLogsTable" fixedCellSize="-2.0" layoutX="78.0" layoutY="350.0" prefHeight="200.0" prefWidth="447.0" style="-fx-background-color: white;">-->

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="575.0" style="-fx-background-color: linear-gradient(    from 0% 100% to 0% 0%,     #002e4d 0%,  /* Dark blue at the bottom */    #004d80 30%, /* Lighter blue for a smooth transition */    #66a3cc 60%, /* Light blue for further blending */    #ffffff 100%  /* Solid white at the top */);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="10.0" layoutY="42.0" prefHeight="383.0" prefWidth="554.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="S. No." />
+          <TableColumn prefWidth="298.4000244140625" text="Conversation Name" />
+            <TableColumn prefWidth="76.0" />
+            <TableColumn prefWidth="67.99993896484375" />
+        </columns>
+      </TableView>
+      <Text fill="#00197b" layoutX="224.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Previous Chats">
+         <font>
+            <Font name="Constantia Bold" size="18.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

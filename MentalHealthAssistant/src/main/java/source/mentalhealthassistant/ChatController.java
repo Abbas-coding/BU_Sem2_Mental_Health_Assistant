@@ -87,11 +87,11 @@ import source.mentalhealthassistant.core.ChatBot;
 import source.mentalhealthassistant.core.Conversation;
 import source.mentalhealthassistant.core.User;
 
-public class ChatbotController {
+public class ChatController {
     ChatBot chatBot;
     Conversation conversation;
 
-    public ChatbotController() throws ClassNotFoundException {
+    public ChatController() throws ClassNotFoundException {
         // Initialize the controller
         chatBot = new ChatBot("Mental_Health_Assistant","src/main/java/source/mentalhealthassistant/faqs.txt");
         User loggedInUser = User.findUserByUsername(Session.getInstance().getUsername());
@@ -114,8 +114,8 @@ public class ChatbotController {
     private TextField userInput; // Input field for user message
     @FXML
     private VBox chatPane; // Container for displaying chat messages
-@FXML
-private ScrollPane chatScrollPane;
+    @FXML
+    private ScrollPane chatScrollPane;
     public void onHelloButtonClick() {
         String userMessage = userInput.getText().trim();
         if (!userMessage.isEmpty()) {

@@ -1,21 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="427.0" prefWidth="563.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.CopingMechanismController">
-<!--   <children>-->
-<!--      <Button fx:id="dashboardButton" layoutX="100" layoutY="200" text="Dashboard" />-->
-<!--      <Button fx:id="setReminderButton" layoutX="100" layoutY="300" text="Set Reminder" />-->
-<!--      <Button fx:id="viewReminderButton" layoutX="250" layoutY="300" text="View Reminders" />-->
-<!--      <ImageView fx:id="exit1" layoutX="400" layoutY="50" />-->
-<!--   </children>-->
+<AnchorPane prefHeight="427.0" prefWidth="563.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.CopingMechanismController">
    <children>
-      <ImageView fitHeight="392.0" fitWidth="433.0" layoutX="96.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="296.0" fitWidth="305.0" layoutX="133.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/copingmechanism.png" />
+            <Image url="@images/success.jpg" />
          </image>
+         <effect>
+            <DropShadow height="62.03" radius="30.5175" spread="0.22" width="62.04">
+               <color>
+                  <Color red="0.19312866032123566" green="0.030701754614710808" blue="0.4736842215061188" />
+               </color>
+            </DropShadow>
+         </effect>
       </ImageView>
+      <Text fill="#0b0b97" layoutX="117.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COPING MECHANISM" underline="true" wrappingWidth="304.62646484375">
+         <font>
+            <Font name="Arial Black" size="25.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Text>
+      <ImageView fitHeight="72.0" fitWidth="118.0" layoutX="448.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/journaling.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="454.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/cycling.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="79.0" fitWidth="94.0" layoutX="38.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/gymnastics.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="79.0" layoutX="26.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/exercise.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Text layoutX="62.0" layoutY="220.0" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="18.0" />
+         </font>
+         <effect>
+            <Lighting bumpInput="$null">
+               <light>
+                  <Light.Distant azimuth="78.1">
+                     <color>
+                        <Color red="0.6447368264198303" green="0.026864035055041313" blue="0.026864035055041313" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect>
+      </Text>
+      <Text layoutX="444.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Journalling">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="33.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercise">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="459.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cycling">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="21.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gymnastic">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="18.0" />
+         </font>
+      </Text>
    </children>
+   <cursor>
+      <Cursor fx:constant="S_RESIZE" />
+   </cursor>
+   <effect>
+      <InnerShadow choke="0.76" height="29.79" radius="16.595" width="38.59">
+         <color>
+            <Color red="0.008771929889917374" green="0.11725146323442459" blue="0.4736842215061188" />
+         </color>
+      </InnerShadow>
+   </effect>
 </AnchorPane>

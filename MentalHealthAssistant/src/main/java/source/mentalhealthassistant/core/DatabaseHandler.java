@@ -1,9 +1,17 @@
 package source.mentalhealthassistant.core;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+import source.mentalhealthassistant.MoodTrackerController;
+import source.mentalhealthassistant.Session;
+
 import java.sql.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseHandler {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/mentalhealth";
@@ -199,4 +207,29 @@ private static final String PASSWORD = "castaway110";
         // To be implemented later
         return null;
     }
+
+    public static Map<String, Integer> getMoodData(String userId) {
+        Map<String, Integer> moodData = new HashMap<>();
+        String query = "SELECT mood, COUNT(*) AS moodCount FROM MoodLog WHERE username = ? GROUP BY mood";
+
+        try (Connection conn = connectToDatabase();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String mood = rs.getString("mood");
+                int count = rs.getInt("moodCount");
+                moodData.put(mood, count);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return moodData;
+    }
+
+
 }
