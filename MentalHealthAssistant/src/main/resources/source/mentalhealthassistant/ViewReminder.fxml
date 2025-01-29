@@ -60,7 +60,7 @@
                 <DropShadow />
             </effect>
         </ImageView>
-        <Text fill="#eb0d0d" layoutX="19.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Your mental health matters. Take a moment to reflect and recharge. 💙&quot;" wrappingWidth="561.13671875">
+        <Text fill="#150089" layoutX="19.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Your mental health matters. Take a moment to reflect and recharge. 💙&quot;" wrappingWidth="561.13671875">
             <font>
                 <Font name="Berlin Sans FB Demi Bold" size="17.0" />
             </font>

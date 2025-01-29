@@ -39,7 +39,6 @@ public class TaskReminderController {
 
     @FXML
     private Pane generalContainer;
-    private boolean isViewReminderLoaded = false;
 
     // Initialize method called after FXML components are loaded
     @FXML
@@ -118,12 +117,4 @@ public class TaskReminderController {
         }
     }
 
-
-    // Event handler for "View Reminders" button
-    @FXML
-    private void handleViewReminders() {
-        System.out.println("View Reminders button clicked.");
-        // Implement logic to view existing reminders (e.g., load from database or list)
-
-    }
 }

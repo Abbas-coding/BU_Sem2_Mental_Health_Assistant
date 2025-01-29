@@ -40,13 +40,6 @@ public class MoodLogController implements Initializable {
     // Setup button actions for the Mood Log
     private void setupButtonActions() {
         saveMoodButton.setOnAction(event -> saveMood());
-//        trackMoodHistoryButton.setOnAction(event -> {
-//            try {
-//                trackMoodHistory();
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
     }
 
     public void setDashboardController(DashboardController controller) {
@@ -91,11 +84,6 @@ public class MoodLogController implements Initializable {
         }
     }
 
-    // Track mood history functionality
-    private void trackMoodHistory() throws IOException {
-        // Logic to track and display mood history can be implemented here
-
-    }
 
     // Helper method to display alerts
     private void showAlert(Alert.AlertType alertType, String title, String content) {

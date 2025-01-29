@@ -86,19 +86,6 @@ public class User {
 
     }
 
-    // Check if userId already exists
-    public static boolean isUserIdTaken(String username) throws ClassNotFoundException {
-        String query = "SELECT * FROM User WHERE username = ?";
-        try (PreparedStatement statement = DatabaseHandler.connectToDatabase().prepareStatement(query)) {
-            statement.setString(1, username);
-            ResultSet resultSet = statement.executeQuery();
-            return resultSet.next(); // If a row is returned, userId is already taken
-        } catch (SQLException e) {
-            System.out.println("Error checking userId: " + e.getMessage());
-        }
-        return false;
-    }
-
     // Load user from the database using userId and password
     public static User findUser(String username, String password) throws ClassNotFoundException {
         String query = "SELECT * FROM User WHERE username = ? AND password = ?";
