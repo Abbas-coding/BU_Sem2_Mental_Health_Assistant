@@ -4,52 +4,63 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="375.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.EventReminderController">
    <children>
-      <Pane prefHeight="428.0" prefWidth="581.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);">
+      <Pane layoutY="-6.0" prefHeight="450.0" prefWidth="584.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);">
          <children>
-            <ImageView fitHeight="428.0" fitWidth="393.0" layoutX="94.0" opacity="0.28" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="393.0" fitWidth="399.0" layoutX="77.0" layoutY="12.0" opacity="0.28" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/bell.png" />
                </image>
             </ImageView>
-            <Label layoutX="220.0" layoutY="11.0" prefHeight="30.0" prefWidth="142.0" text="REMINDERS" textFill="#0b0b97">
+            <Label layoutX="204.0" layoutY="14.0" prefHeight="37.0" prefWidth="170.0" text="REMINDERS" textFill="#0b0b97" underline="true">
                <font>
-                  <Font name="Arial Black" size="21.0" />
+                  <Font name="Arial Black" size="24.0" />
+               </font>
+               <effect>
+                  <Lighting bumpInput="$null">
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Label>
+            <Label layoutX="253.0" layoutY="62.0" prefHeight="31.0" prefWidth="79.0" text="EVENT" textFill="#351e80">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="255.0" layoutY="53.0" prefHeight="31.0" prefWidth="73.0" text="EVENT" textFill="#351e80">
+            <Label layoutX="73.0" layoutY="133.0" prefHeight="27.0" prefWidth="57.0" text="Title">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="Arial Black" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="160.0" layoutY="151.0" prefHeight="27.0" prefWidth="57.0" text="Title">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="titleTextField" layoutX="160.0" layoutY="178.0" prefHeight="30.0" prefWidth="262.0" promptText="Enter  Task">
+            <TextField fx:id="titleTextField" layoutX="77.0" layoutY="169.0" prefHeight="37.0" prefWidth="213.0" promptText="Enter  Task">
                <effect>
                   <DropShadow />
                </effect>
             </TextField>
-            <Label layoutX="161.0" layoutY="239.0" prefHeight="17.0" prefWidth="40.0" text="Date">
+            <Label layoutX="78.0" layoutY="214.0" prefHeight="24.0" prefWidth="48.0" text="Date">
                <font>
-                  <Font name="Arial Black" size="15.0" />
+                  <Font name="Arial Black" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="dateTextField" layoutX="161.0" layoutY="268.0" prefHeight="30.0" prefWidth="262.0" promptText=" YYYY-MM-DD  (HH:MM)">
+            <TextField fx:id="dateTextField" layoutX="77.0" layoutY="244.0" prefHeight="37.0" prefWidth="213.0" promptText=" YYYY-MM-DD  (HH:MM)">
                <effect>
                   <DropShadow />
                </effect>
             </TextField>
-            <Button fx:id="setReminderButton" layoutX="231.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleSetReminder" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #004d80;" text="Set Reminder" textFill="WHITE">
+            <Button fx:id="setReminderButton" layoutX="199.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleSetReminder" prefHeight="46.0" prefWidth="180.0" style="-fx-background-color: #004d80;" text="Set Reminder" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -57,7 +68,31 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
+            <ImageView fitHeight="46.0" fitWidth="48.0" layoutX="259.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/dont-forget.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="202.0" fitWidth="187.0" layoutX="332.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/rem1.jpg" />
+               </image>
+               <effect>
+                  <DropShadow height="53.24" radius="24.655" spread="0.07" width="47.38">
+                     <color>
+                        <Color red="0.09167885035276413" green="0.031067252159118652" blue="0.3947368562221527" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
          </children>
+         <effect>
+            <InnerShadow choke="0.15" height="59.11" radius="26.122500000000002" width="47.38">
+               <color>
+                  <Color red="0.10726121068000793" green="0.03210282698273659" blue="0.40789473056793213" />
+               </color>
+            </InnerShadow>
+         </effect>
       </Pane>
    </children>
 </AnchorPane>

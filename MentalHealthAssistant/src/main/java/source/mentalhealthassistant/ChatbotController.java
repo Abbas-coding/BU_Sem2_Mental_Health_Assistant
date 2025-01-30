@@ -58,8 +58,10 @@ private ScrollPane chatScrollPane;
         // Add the message content with a blue background and rounded corners
         Label messageLabel = new Label(message);
         messageLabel.setStyle(
-                "-fx-background-color: #ADD8E6; " +  // Light blue background
-                        "-fx-text-fill: #000000; " +        // Black text color
+//                "-fx-background-color: #ADD8E6; " +  // Light blue background
+//                        "-fx-text-fill: #000000; " +        // Black text color
+                "-fx-background-color:  #004d80; " +
+                        "-fx-text-fill:  white; " +
                         "-fx-padding: 5 10 5 10; " +       // Padding inside the label
                         "-fx-background-radius: 15; " +   // Rounded corners
                         "-fx-font-size: 14px; " +          // Font size

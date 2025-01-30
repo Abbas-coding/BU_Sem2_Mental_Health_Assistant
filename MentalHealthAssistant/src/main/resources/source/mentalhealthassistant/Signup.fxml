@@ -7,11 +7,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.SignupController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(    from 0% 100% to 0% 0%,     #002e4d 0%,  /* Dark blue at the bottom */    #004d80 30%, /* Lighter blue for a smooth transition */    #66a3cc 60%, /* Light blue for further blending */    #ffffff 100%  /* Solid white at the top */);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.SignupController">
    <children>
-      <Button layoutX="260.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleSignup" text="Signup" textFill="#04a104">
+      <Button layoutX="260.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSignup" text="Signup" textFill="#04a104">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
@@ -22,24 +25,40 @@
       <Label layoutX="72.0" layoutY="243.0" text="Password">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label layoutX="346.0" layoutY="103.0" text="Username">
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+      <Label layoutX="346.0" layoutY="103.0" text="Username" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="348.0" layoutY="243.0" text="Confirm Password">
+      <Label layoutX="348.0" layoutY="243.0" text="Confirm Password" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="68.0" layoutY="172.0" text="Email">
+      <Label layoutX="68.0" layoutY="172.0" text="Email" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="351.0" layoutY="168.0" text="Age">
+      <Label layoutX="351.0" layoutY="168.0" text="Age" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="70.0" layoutY="103.0" text="Full Name">
+      <Label layoutX="70.0" layoutY="103.0" text="Full Name" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
@@ -67,7 +86,7 @@
          <effect>
             <DropShadow />
          </effect></PasswordField>
-      <Hyperlink fx:id="loginHyperlink" layoutX="206.0" layoutY="367.0" onAction="#goToLogin" text="Already have an Account? Login" textFill="#e10e0e">
+      <Hyperlink fx:id="loginHyperlink" layoutX="205.0" layoutY="361.0" onAction="#goToLogin" text="Already have an Account? Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Hyperlink>

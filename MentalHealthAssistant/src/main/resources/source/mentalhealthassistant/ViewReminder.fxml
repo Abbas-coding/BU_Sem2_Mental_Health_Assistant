@@ -1,41 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="349.0" prefWidth="541.0" style="-fx-background-color: linear-gradient(to bottom,#008fb3, #00ccff, #ccf5ff);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.ViewReminderController">
+<AnchorPane prefHeight="349.0" prefWidth="541.0" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="source.mentalhealthassistant.ViewReminderController">
     <children>
-        <Label layoutX="205.0" layoutY="25.0" prefHeight="29.0" prefWidth="157.0" text="REMINDERS" textFill="WHITE">
+        <Label layoutX="217.0" layoutY="20.0" prefHeight="37.0" prefWidth="167.0" text="REMINDERS" textFill="#371aab" underline="true">
             <font>
-                <Font name="Arial Black" size="22.0" />
+                <Font name="Arial Black" size="24.0" />
             </font>
         </Label>
-<!--        <TableView fx:id="remindersTable" layoutX="48.0" layoutY="77.0" prefHeight="245.0" prefWidth="445.0">-->
-<!--            <columns>-->
-<!--                <TableColumn fx:id="columnSNo" prefWidth="40.0" style="-fx-background-color: #e6e6ff;" text="S.NO" />-->
-<!--                <TableColumn fx:id="columnTitle" prefWidth="107.0" style="-fx-background-color: #e6e6ff;" text="Title" />-->
-<!--                <TableColumn fx:id="columnDate" prefWidth="59.0" style="-fx-background-color: #e6e6ff;" text="Date" />-->
-<!--                <TableColumn fx:id="columnTime" prefWidth="62.0" style="-fx-background-color: #e6e6ff;" text="Time" />-->
-<!--                <TableColumn fx:id="columnRepeat" prefWidth="61.0" style="-fx-background-color: #e6e6ff;" text="Repeat" />-->
-<!--                <TableColumn fx:id="columnDelete" prefWidth="102.0" style="-fx-background-color: #e6e6ff;" text="Delete" />-->
-<!--            </columns>-->
-<!--            <effect>-->
-<!--                <DropShadow />-->
-<!--            </effect>-->
-<!--        </TableView>-->
-        <TableView fx:id="reminderTable" prefWidth="600" prefHeight="400">
+        <!--        <TableView fx:id="remindersTable" layoutX="48.0" layoutY="77.0" prefHeight="245.0" prefWidth="445.0">-->
+        <!--            <columns>-->
+        <!--                <TableColumn fx:id="columnSNo" prefWidth="40.0" style="-fx-background-color: #e6e6ff;" text="S.NO" />-->
+        <!--                <TableColumn fx:id="columnTitle" prefWidth="107.0" style="-fx-background-color: #e6e6ff;" text="Title" />-->
+        <!--                <TableColumn fx:id="columnDate" prefWidth="59.0" style="-fx-background-color: #e6e6ff;" text="Date" />-->
+        <!--                <TableColumn fx:id="columnTime" prefWidth="62.0" style="-fx-background-color: #e6e6ff;" text="Time" />-->
+        <!--                <TableColumn fx:id="columnRepeat" prefWidth="61.0" style="-fx-background-color: #e6e6ff;" text="Repeat" />-->
+        <!--                <TableColumn fx:id="columnDelete" prefWidth="102.0" style="-fx-background-color: #e6e6ff;" text="Delete" />-->
+        <!--            </columns>-->
+        <!--            <effect>-->
+        <!--                <DropShadow />-->
+        <!--            </effect>-->
+        <!--        </TableView>-->
+        <TableView fx:id="reminderTable" layoutY="165.0" prefHeight="235.0" prefWidth="600">
             <columns>
-                <TableColumn fx:id="sNoColumn" text="S. No" prefWidth="50" />
-                <TableColumn fx:id="messageColumn" text="Message" prefWidth="200" />
-                <TableColumn fx:id="timeColumn" text="Time" prefWidth="200" />
-                <TableColumn fx:id="deleteColumn" text="Delete" prefWidth="100" />
+                <TableColumn fx:id="sNoColumn" prefWidth="50" text="S. No" />
+                <TableColumn fx:id="messageColumn" prefWidth="200" text="Message" />
+                <TableColumn fx:id="timeColumn" prefWidth="200" text="Time" />
+                <TableColumn fx:id="deleteColumn" prefWidth="100" text="Delete" />
             </columns>
+            <effect>
+                <InnerShadow choke="0.17" height="38.59" radius="20.9925" width="47.38">
+                    <color>
+                        <Color red="0.2027595043182373" green="0.06396199017763138" blue="0.46052631735801697" />
+                    </color>
+                </InnerShadow>
+            </effect>
         </TableView>
+        <Label layoutX="266.0" layoutY="57.0" prefHeight="32.0" prefWidth="69.0" text="View" textFill="#371aab">
+            <font>
+                <Font name="Berlin Sans FB Bold" size="20.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="98.0" fitWidth="100.0" layoutX="56.0" layoutY="24.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/reminder1.png" />
+            </image>
+            <effect>
+                <DropShadow />
+            </effect>
+        </ImageView>
+        <Text fill="#150089" layoutX="19.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Your mental health matters. Take a moment to reflect and recharge. 💙&quot;" wrappingWidth="561.13671875">
+            <font>
+                <Font name="Berlin Sans FB Demi Bold" size="17.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="98.0" fitWidth="100.0" layoutX="442.0" layoutY="24.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/reminder1.png" />
+            </image>
+            <effect>
+                <DropShadow />
+            </effect>
+        </ImageView>
 
     </children>
+    <effect>
+        <InnerShadow choke="0.06" height="50.31" radius="21.725" width="38.59">
+            <color>
+                <Color red="0.10054824501276016" green="0.02302631549537182" blue="0.3552631437778473" />
+            </color>
+        </InnerShadow>
+    </effect>
 </AnchorPane>

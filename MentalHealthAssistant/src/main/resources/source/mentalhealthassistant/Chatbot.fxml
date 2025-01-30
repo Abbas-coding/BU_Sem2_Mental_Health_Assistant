@@ -15,7 +15,7 @@
             <!-- Chat Scrollable Pane -->
             <ScrollPane fx:id="chatScrollPane" fitToWidth="true" prefHeight="375.0" prefWidth="578.0" style="-fx-background-radius: 10; -fx-border-color: #cccccc; -fx-border-radius: 10; -fx-background-color: blue;">
                <content>
-                  <VBox fx:id="chatPane" opacity="0.7" prefHeight="377.0" prefWidth="575.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);">
+                  <VBox fx:id="chatPane" prefHeight="377.0" prefWidth="575.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);">
                      <children>
                         <!--<ImageView fitHeight="362.0" fitWidth="440.0" opacity="0.46" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -31,6 +31,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="Constantia Bold" size="14.0" />
+               </font>
             </TextField>
 
                         <!-- Send Button -->

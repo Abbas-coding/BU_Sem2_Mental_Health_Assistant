@@ -1,3 +1,4 @@
+/*
 package source.mentalhealthassistant;
 
 import javafx.fxml.FXML;
@@ -74,5 +75,78 @@ public class LoginController {
         // Get the current stage and set the new scene
         Stage stage = (Stage) forgetPasswordHyperlink.getScene().getWindow();
         stage.setScene(scene);
+    }
+}
+*/
+package source.mentalhealthassistant;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import source.mentalhealthassistant.core.User;
+
+import java.io.IOException;
+
+public class LoginController {
+
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Label welcomeText;
+
+    @FXML
+    private Hyperlink signupHyperlink;
+
+    @FXML
+    private Hyperlink forgetPasswordHyperlink;
+
+    @FXML
+    private static int failedAttempts = 0;
+
+    public void handleLogin() throws ClassNotFoundException {
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
+
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+            welcomeText.setText("Username and Password cannot be empty!");
+            return;
+        }
+
+        User user = User.findUser(username, password);
+        if (user != null) {
+            Session.getInstance().setUsername(user.getUsername());
+            HelloApplication.switchScene("Dashboard.fxml", 800, 467);
+            failedAttempts = 0; // Reset the counter on successful login
+        } else {
+            failedAttempts++;
+            if (failedAttempts >= 3) {
+                welcomeText.setText("Too many failed attempts. Please try again later.");
+            } else {
+                welcomeText.setText("Invalid Username or Password!");
+            }
+        }
+    }
+
+    private void switchScene(String fxmlFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) signupHyperlink.getScene().getWindow();
+        stage.setScene(scene);
+    }
+
+    @FXML
+    private void goToSignup() throws IOException {
+        switchScene("Signup.fxml");
+    }
+
+    @FXML
+    private void goToForgetPassword() throws IOException {
+        switchScene("RecoverPassword.fxml");
     }
 }

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -11,10 +12,9 @@ import source.mentalhealthassistant.core.DatabaseHandler;
 import source.mentalhealthassistant.core.MoodLog;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MoodTrackerController implements Initializable {
@@ -32,14 +32,25 @@ public class MoodTrackerController implements Initializable {
     private TableColumn<MoodLog, Integer> columnScale;
     @FXML
     private TableColumn<MoodLog, Date> columnDate;
-
+    @FXML
+    private PieChart moodPieChart;
     // ObservableList for Table Data
     private ObservableList<MoodLog> moodLogList;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setupMoodHistoryTable();
         loadMoodHistory();
+       moodPieChart();
+       /* ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Happy", 10),
+                new PieChart.Data("Sad", 20),
+                new PieChart.Data("Neutral", 30)
+        );
+
+        moodPieChart.setData(pieChartData);
+        moodPieChart.setTitle("Mood Distribution");*/
     }
 
     // Set up Mood History Table
@@ -80,5 +91,17 @@ public class MoodTrackerController implements Initializable {
         }
 
         moodHistoryTable.setItems(moodLogList);
+    }
+
+    public void moodPieChart()
+    {
+        String userId = Session.getInstance().getUsername(); // Assuming user is logged in
+        Map<String, Integer> moodData = DatabaseHandler.getMoodData(userId);
+
+        // Convert Map data to PieChart.Data
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        moodData.forEach((mood, count) -> pieChartData.add(new PieChart.Data(mood, count)));
+
+        moodPieChart.setData(pieChartData);
     }
 }
