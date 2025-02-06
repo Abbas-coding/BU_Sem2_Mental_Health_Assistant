@@ -12,15 +12,15 @@ import source.mentalhealthassistant.core.Conversation;
 import source.mentalhealthassistant.core.User;
 
 public class ChatbotController {
-    ChatBot chatBot;
-    Conversation conversation;
+    private ChatBot chatBot;
+    private Conversation conversation;
+    private int convId;
+    private String conversationName;
 
     public ChatbotController() throws ClassNotFoundException {
         // Initialize the controller
-        chatBot = new ChatBot("Mental_Health_Assistant","src/main/java/source/mentalhealthassistant/faqs.txt");
-        User loggedInUser = User.findUserByUsername(Session.getInstance().getUsername());
-        String convId = chatBot.getBotName() + "-" + Session.getInstance().getUsername();
-        conversation = new Conversation(convId,loggedInUser, "src/main/java/source/mentalhealthassistant/faqs.txt");
+//        chatBot = new ChatBot("Mental_Health_Assistant","src/main/java/source/mentalhealthassistant/faqs.txt");
+        this.conversation = new Conversation(convId, conversationName);
 
     }
 
@@ -30,13 +30,13 @@ public class ChatbotController {
     private VBox chatPane; // Container for displaying chat messages
 @FXML
 private ScrollPane chatScrollPane;
-    public void onHelloButtonClick() {
+    public void onHelloButtonClick() throws ClassNotFoundException {
         String userMessage = userInput.getText().trim();
         if (!userMessage.isEmpty()) {
             // Display user's message
             addMessageToChat("You", userMessage);
 
-            String botResponse = conversation.handleUserInput(userMessage);
+            String botResponse = conversation.handleUserInput(convId,conversationName,userMessage);
             addMessageToChat("Bot", botResponse);
 
             // Clear the input field
@@ -80,4 +80,16 @@ private ScrollPane chatScrollPane;
         chatScrollPane.setVvalue(1.0);
     }
 
+    public void setConversationName(String conversationName) {
+        this.conversationName = conversationName;
+    }
+    public String getConversationName() {
+        return conversationName;
+    }
+    public void setConvId(int convId) {
+        this.convId = convId;
+    }
+    public int getConvId() {
+        return convId;
+    }
 }

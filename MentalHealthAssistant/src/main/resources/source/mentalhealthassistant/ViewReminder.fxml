@@ -19,19 +19,7 @@
                 <Font name="Arial Black" size="24.0" />
             </font>
         </Label>
-        <!--        <TableView fx:id="remindersTable" layoutX="48.0" layoutY="77.0" prefHeight="245.0" prefWidth="445.0">-->
-        <!--            <columns>-->
-        <!--                <TableColumn fx:id="columnSNo" prefWidth="40.0" style="-fx-background-color: #e6e6ff;" text="S.NO" />-->
-        <!--                <TableColumn fx:id="columnTitle" prefWidth="107.0" style="-fx-background-color: #e6e6ff;" text="Title" />-->
-        <!--                <TableColumn fx:id="columnDate" prefWidth="59.0" style="-fx-background-color: #e6e6ff;" text="Date" />-->
-        <!--                <TableColumn fx:id="columnTime" prefWidth="62.0" style="-fx-background-color: #e6e6ff;" text="Time" />-->
-        <!--                <TableColumn fx:id="columnRepeat" prefWidth="61.0" style="-fx-background-color: #e6e6ff;" text="Repeat" />-->
-        <!--                <TableColumn fx:id="columnDelete" prefWidth="102.0" style="-fx-background-color: #e6e6ff;" text="Delete" />-->
-        <!--            </columns>-->
-        <!--            <effect>-->
-        <!--                <DropShadow />-->
-        <!--            </effect>-->
-        <!--        </TableView>-->
+
         <TableView fx:id="reminderTable" layoutY="165.0" prefHeight="235.0" prefWidth="600">
             <columns>
                 <TableColumn fx:id="sNoColumn" prefWidth="50" text="S. No" />

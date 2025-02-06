@@ -3,7 +3,7 @@ package source.mentalhealthassistant.core;
 import java.sql.*;
 
 public class User {
-    private String userId;
+    private int userId;
     private String name;
     private int age;
     private String password;
@@ -12,7 +12,15 @@ public class User {
 
 
     public User(String username, String password, int age, String email, String name) {
-        this.name = userId; // Assuming 'name' is the same as 'userId' (adjust as needed)
+         // Assuming 'name' is the same as 'userId' (adjust as needed)
+        this.age = age;
+        this.password = password;
+        this.email = email;
+        this.username = username;
+        this.name = name;
+    }
+    public User(int id, String username, String password, int age, String email, String name) {
+        this.userId = id;// Assuming 'name' is the same as 'userId' (adjust as needed)
         this.age = age;
         this.password = password;
         this.email = email;
@@ -21,7 +29,7 @@ public class User {
     }
 
     // Getter methods
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -94,11 +102,12 @@ public class User {
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                int id = resultSet.getInt("userId");
                 String name = resultSet.getString("name");
                 int age = resultSet.getInt("age");
                 String email = resultSet.getString("email");
 
-                return new User(username, password, age, email, name);
+                return new User(id, username, password, age, email, name);
             }
         } catch (SQLException e) {
             System.out.println("Error loading user: " + e.getMessage());

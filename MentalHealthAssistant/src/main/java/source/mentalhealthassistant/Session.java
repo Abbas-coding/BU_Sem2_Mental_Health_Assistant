@@ -3,6 +3,7 @@ package source.mentalhealthassistant;
 public class Session {
     private static Session instance;
     private String username;
+    private int userId;
 
     private Session() {
         // Private constructor to prevent instantiation
@@ -21,6 +22,14 @@ public class Session {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public void clearSession() {

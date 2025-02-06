@@ -43,6 +43,7 @@ public class SignupController {
 
         // Get the current stage and set the new scene
         Stage stage = (Stage) loginHyperlink.getScene().getWindow();
+        HelloApplication.setTitle("Mental Health Assistant - Login");
         stage.setScene(scene);
     }
 

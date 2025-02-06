@@ -77,19 +77,23 @@
 package source.mentalhealthassistant;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import source.mentalhealthassistant.core.ChatBot;
-import source.mentalhealthassistant.core.Conversation;
-import source.mentalhealthassistant.core.User;
+import source.mentalhealthassistant.core.*;
 
-public class ChatController {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class ChatController implements Initializable {
     ChatBot chatBot;
     Conversation conversation;
+    private int convId;
 
     public ChatController() throws ClassNotFoundException {
         // Initialize the controller
@@ -97,46 +101,15 @@ public class ChatController {
         User loggedInUser = User.findUserByUsername(Session.getInstance().getUsername());
         String convId = chatBot.getBotName() + "-" + Session.getInstance().getUsername();
         conversation = new Conversation(convId,loggedInUser, "src/main/java/source/mentalhealthassistant/faqs.txt");
-
-//        // Assuming faqs.txt is located in the 'resources' folder
-//        String faqFilePath = "src/main/resources/faqs.txt";
-//        User currentUser = new User("user123", "John Doe"); // Example user
-//        Conversation conversation = new Conversation("conv1", currentUser, faqFilePath);
-//
-//// Example user input
-//        String userInput = "How can I add a mood in the app?";
-//        String response = conversation.handleUserInput(userInput);
-//        System.out.println("Response: " + response);
-
     }
 
-    @FXML
-    private TextField userInput; // Input field for user message
     @FXML
     private VBox chatPane; // Container for displaying chat messages
     @FXML
     private ScrollPane chatScrollPane;
-    public void onHelloButtonClick() {
-        String userMessage = userInput.getText().trim();
-        if (!userMessage.isEmpty()) {
-            // Display user's message
-            addMessageToChat("You", userMessage);
 
-
-            // Generate a bot response (placeholder logic for now)
-            //String botResponse = generateResponse(userMessage);
-
-            String botResponse = conversation.handleUserInput(userMessage);
-            addMessageToChat("Bot", botResponse);
-
-            // Clear the input field
-            userInput.clear();
-        }
-    }
-
-    private String generateResponse(String userMessage) {
-        // Placeholder chatbot logic
-        return "I hear you said: " + userMessage;
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("ChatController initialized. Waiting for conversation ID...");
     }
 
     private void addMessageToChat(String sender, String message) {
@@ -174,4 +147,25 @@ public class ChatController {
         chatScrollPane.setVvalue(1.0);
     }
 
+    private void loadMessages() throws ClassNotFoundException {
+        System.out.println("Loading messages for conversation ID: " + convId);
+        List<Message> messages = DatabaseHandler.getMessagesByConversationId(convId);
+        System.out.println("Messages loaded: " + messages.size());
+        for (Message message : messages) {
+            String sender = message.getSenderName();
+            String content = message.getContent();
+            addMessageToChat(sender, content);
+        }
+        System.out.println("Messages loaded successfully.");
+    }
+
+    public int getConvId() {
+        return convId;
+    }
+
+    public void setConvId(int convId) throws ClassNotFoundException {
+        this.convId = convId;
+        System.out.println("Conversation ID set to: " + convId);
+        loadMessages();
+    }
 }

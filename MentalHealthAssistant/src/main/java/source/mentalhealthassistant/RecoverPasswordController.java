@@ -30,6 +30,7 @@ public class RecoverPasswordController {
 
         // Get the current stage and set the new scene
         Stage stage = (Stage) emailField.getScene().getWindow();
+        HelloApplication.setTitle("Mental Health Assistant - Login");
         stage.setScene(scene);
     }
 

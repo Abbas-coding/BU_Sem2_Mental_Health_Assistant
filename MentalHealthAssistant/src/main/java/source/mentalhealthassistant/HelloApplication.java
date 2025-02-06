@@ -44,16 +44,21 @@ public class HelloApplication extends Application {
             e.printStackTrace();
         }
     }
-    public static void switchScene(String fxmlFilePath, int width, int height) {
+    public static void switchScene(String fxmlFilePath, int width, int height, String title) {
         try {
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlFilePath));
             Parent root = loader.load();
 
             Scene scene = new Scene(root, width, height);
+            primaryStage.setTitle(title);
             primaryStage.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void setTitle(String title){
+        primaryStage.setTitle(title);
     }
 
     public static void main(String[] args) throws ClassNotFoundException {

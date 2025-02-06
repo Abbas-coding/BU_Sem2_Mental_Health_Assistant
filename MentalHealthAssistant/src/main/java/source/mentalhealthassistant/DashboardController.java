@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import source.mentalhealthassistant.core.DatabaseHandler;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,9 +52,12 @@ public class DashboardController implements Initializable {
     private boolean isMoodLogLoaded = false;
     private boolean isViewReminderLoaded = false;
     private boolean isViewChatsLoaded = false;
+    private int convId;
+    private String convName;
 
 
     private Node moodLogTrackerView; // Cached view for the MoodLog Tracker
+    private Node viewChatView; // Cached view for the View Chat
 
     private boolean isDrawerOpen = false;
 
@@ -119,14 +123,14 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void handleDashboard(){
-        HelloApplication.switchScene("Dashboard.fxml", 810, 467);
+        HelloApplication.switchScene("Dashboard.fxml", 810, 467,"Mental Health Assistant - Dashboard");
     }
 
     @FXML
     private void handleLogout(){
         // Switch to the Login scene
         Session.getInstance().clearSession();
-        HelloApplication.switchScene("Login.fxml", 600, 350);
+        HelloApplication.switchScene("Login.fxml", 600, 350, "Mental Health Assistant - Login");
     }
 
     private void setupMenuActions() {
@@ -147,6 +151,9 @@ public class DashboardController implements Initializable {
                 handleChats();
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         });
 
@@ -170,6 +177,36 @@ public class DashboardController implements Initializable {
             if (!generalContainer.getChildren().contains(moodLogTrackerView)) {
                 generalContainer.getChildren().clear(); // Clear existing content
                 generalContainer.getChildren().add(moodLogTrackerView); // Add the new view
+                HelloApplication.setTitle("Mental Health Assistant - Moodlog Stats");
+                generalContainer.setVisible(true); // Make the container visible
+            } else {
+                // Toggle the visibility of the view
+                generalContainer.setVisible(!generalContainer.isVisible());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void toggleViewChat(int convId){
+        try {
+            System.out.println("conversation id in dashboard toggle is: " + convId);
+            // Check if the MoodLog Tracker view is already loaded
+            if (viewChatView == null) {
+                // Load the MoodLog Tracker view (assuming you have an FXML for the tracker)
+                System.out.println(getClass().getResource("Chat.fxml"));
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Chat.fxml"));
+                viewChatView = loader.load();
+                ChatController chatController = loader.getController();
+                chatController.setConvId(convId);
+            }
+
+            // Check if the generalContainer contains the MoodLog Tracker view
+            if (!generalContainer.getChildren().contains(viewChatView)) {
+                generalContainer.getChildren().clear(); // Clear existing content
+                generalContainer.getChildren().add(viewChatView); // Add the new view
+                HelloApplication.setTitle("Mental Health Assistant - Chat");
                 generalContainer.setVisible(true); // Make the container visible
             } else {
                 // Toggle the visibility of the view
@@ -206,6 +243,7 @@ public class DashboardController implements Initializable {
                 Parent eventReminderView = loader.load();
                 generalContainer.getChildren().clear();
                 generalContainer.getChildren().add(eventReminderView);
+                HelloApplication.setTitle("Mental Health Assistant - Event Reminder");
                 generalContainer.setVisible(true);
 
             } else if (result.get() == taskReminderButton) {
@@ -214,6 +252,7 @@ public class DashboardController implements Initializable {
                 Parent tasReminderView = loader.load();
                 generalContainer.getChildren().clear();
                 generalContainer.getChildren().add(tasReminderView);
+                HelloApplication.setTitle("Mental Health Assistant - Task Reminder");
                 generalContainer.setVisible(true);
             } else if (result.get() == taskReminderButton) {
             }
@@ -238,6 +277,7 @@ public class DashboardController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewReminder.fxml"));
             Parent viewReminderView = loader.load();
             generalContainer.getChildren().clear();
+            HelloApplication.setTitle("Mental Health Assistant - View Reminder");
             generalContainer.getChildren().add(viewReminderView);
             System.out.println("moodLog.fxml successfully loaded.");
 
@@ -247,14 +287,13 @@ public class DashboardController implements Initializable {
         }
     }
 
-
-
     @FXML
     private void toggleCopingMechanism() {
         System.out.println("Toggling coping mechanism visibility");
 
         if (!isCopingMechanismLoaded) {
             generalContainer.setVisible(true);
+            HelloApplication.setTitle("Mental Health Assistant - Coping Mechanism");
             loadCopingMechanism();
         }
 
@@ -273,11 +312,13 @@ public class DashboardController implements Initializable {
             e.printStackTrace();
         }
     }@FXML
+
     private void toggleMoodLog() {
         System.out.println("Toggling coping mechanism visibility");
 
         if (!isMoodLogLoaded) {
             generalContainer.setVisible(true);
+            HelloApplication.setTitle("Mental Health Assistant - Moodlog");
             loadMoodLog();
         }
 
@@ -306,6 +347,7 @@ public class DashboardController implements Initializable {
 
         if(!isChatbotLoaded){
             generalContainer.setVisible(true);
+            HelloApplication.setTitle("Mental Health Assistant - Chatbot");
             loadChatbot();
         }
 
@@ -316,7 +358,11 @@ public class DashboardController implements Initializable {
             System.out.println("Loading Chatbot.fxml");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Chatbot.fxml"));
             Parent chatbotView = loader.load();
+            ChatbotController chatbotController = loader.getController();
+            chatbotController.setConversationName(convName);
+            chatbotController.setConvId(convId);
             generalContainer.getChildren().clear();
+            HelloApplication.setTitle("Mental Health Assistant - Chatbot");
             generalContainer.getChildren().add(chatbotView);
             System.out.println("Chatbot.fxml successfully loaded.");
         } catch (IOException e) {
@@ -340,6 +386,8 @@ public class DashboardController implements Initializable {
             System.out.println("Loading Chatbot.fxml");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewChats.fxml"));
             Parent chatbotView = loader.load();
+            ViewChatController viewChatController = loader.getController();
+            viewChatController.setDashboardController(this);
             generalContainer.getChildren().clear();
             generalContainer.getChildren().add(chatbotView);
             System.out.println("Chatbot.fxml successfully loaded.");
@@ -348,7 +396,7 @@ public class DashboardController implements Initializable {
             e.printStackTrace();
         }
     }
-    private void handleChats() throws IOException {
+    private void handleChats() throws IOException, ClassNotFoundException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("New Chat");
         alert.setHeaderText("Name your conversation");
@@ -373,9 +421,18 @@ public class DashboardController implements Initializable {
             String chatName = conversationName.getText().trim();
             if (!chatName.isEmpty()) {
                 System.out.println("Chat name: " + chatName);
+                int isCreated = DatabaseHandler.createConversation(Session.getInstance().getUsername(), 1, chatName);
                 // Save the chat name in a variable
                 // You can store it in a field or use it as needed
-                toggleChatbot();
+                if(isCreated != -1) {
+                    System.out.println("Conversation created successfully.");
+                    this.convId = isCreated;
+                    this.convName = chatName;
+                    toggleChatbot();
+                }
+                else {
+                    System.out.println("Error creating conversation.");
+                }
             } else {
                 System.out.println("No chat name entered.");
             }

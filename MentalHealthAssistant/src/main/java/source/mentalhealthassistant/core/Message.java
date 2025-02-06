@@ -1,19 +1,31 @@
 package source.mentalhealthassistant.core;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Message {
     private String messageId;
     private String content;
-    private String senderId;
-    private Date timestamp;
+    private int conversationId;
+    private int senderId;
+    private String senderName;
+    private LocalDateTime timestamp;
 
-    public Message(String messageId, String content, String senderId, Date timestamp) {
+    public Message(String messageId,int conversationId , String content, int senderId, String senderName, LocalDateTime timestamp) {
+        this.messageId = messageId;
+        this.conversationId = conversationId;
+        this.content = content;
+        this.senderId = senderId;
+        this.senderName = senderName;
+        this.timestamp = timestamp;
+    }
+
+    public Message(String messageId, String content, int senderId, Date timestamp) {
         this.messageId = messageId;
         this.content = content;
         this.senderId = senderId;
-        this.timestamp = timestamp;
     }
+
 
     public String getMessageId() {
         return messageId;
@@ -23,11 +35,11 @@ public class Message {
         return content;
     }
 
-    public String getSenderId() {
+    public int getSenderId() {
         return senderId;
     }
 
-    public Date getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
@@ -39,13 +51,15 @@ public class Message {
         this.content = content;
     }
 
-    public void setSenderId(String senderId) {
+    public void setSenderId(int senderId) {
         this.senderId = senderId;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
-
+    public String getSenderName() {
+        return senderName;
+    }
 }

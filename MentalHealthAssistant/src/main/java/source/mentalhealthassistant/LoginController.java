@@ -121,7 +121,8 @@ public class LoginController {
         User user = User.findUser(username, password);
         if (user != null) {
             Session.getInstance().setUsername(user.getUsername());
-            HelloApplication.switchScene("Dashboard.fxml", 800, 467);
+            Session.getInstance().setUserId(user.getUserId());
+            HelloApplication.switchScene("Dashboard.fxml", 800, 467, "Mental Health Assistant - Dashboard");
             failedAttempts = 0; // Reset the counter on successful login
         } else {
             failedAttempts++;
@@ -133,20 +134,21 @@ public class LoginController {
         }
     }
 
-    private void switchScene(String fxmlFile) throws IOException {
+    private void switchScene(String fxmlFile, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) signupHyperlink.getScene().getWindow();
+        stage.setTitle(title);
         stage.setScene(scene);
     }
 
     @FXML
     private void goToSignup() throws IOException {
-        switchScene("Signup.fxml");
+        switchScene("Signup.fxml", "Mental Health Assistant - Signup");
     }
 
     @FXML
     private void goToForgetPassword() throws IOException {
-        switchScene("RecoverPassword.fxml");
+        switchScene("RecoverPassword.fxml", "Mental Health Assistant - Forgot Password");
     }
 }
