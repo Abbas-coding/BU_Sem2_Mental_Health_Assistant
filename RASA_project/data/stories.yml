@@ -108,6 +108,46 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
+- story: Handle stress and memory concerns
+  steps:
+  - intent: ask_memory_stress
+  - action: utter_memory_stress
+  - intent: express_overwhelm
+  - action: utter_acknowledge_stress
+  - intent: mention_deadlines
+  - action: utter_break_down_tasks
+  - intent: mention_overthinking
+  - action: utter_study_strategy
+  - intent: express_relief
+  - action: utter_encouragement
+
+- story: Handle financial stress
+  steps:
+  - intent: ask_financial_stress
+  - action: utter_financial_stress
+  - intent: express_financial_worry
+  - action: utter_financial_aid
+  - intent: express_uncertainty
+  - action: utter_focus_on_control
+  - intent: express_lack_of_direction
+  - action: utter_start_with_options
+  - intent: express_stuck
+  - action: utter_reassure_not_alone
+  - intent: express_willingness_to_try
+  - action: utter_financial_encouragement
+
+- story: Handle social anxiety
+  steps:
+  - intent: ask_social_anxiety
+  - action: utter_social_anxiety
+  - intent: express_loneliness
+  - action: utter_suggest_groups
+  - intent: express_anxiety_meeting_people
+  - action: utter_start_small
+  - intent: express_fear_of_judgment
+  - action: utter_reframe_judgment
+  - intent: express_willingness_to_try
+  - action: utter_social_encouragement
 
 
 

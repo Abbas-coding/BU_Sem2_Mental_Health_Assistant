@@ -12,6 +12,22 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: Respond to stress & memory question
+  steps:
+  - intent: ask_memory_stress
+  - action: utter_memory_stress
+
+- rule: Respond to financial stress question
+  steps:
+  - intent: ask_financial_stress
+  - action: utter_financial_stress
+
+- rule: Respond to social anxiety question
+  steps:
+  - intent: ask_social_anxiety
+  - action: utter_social_anxiety
+
+
 
 
 

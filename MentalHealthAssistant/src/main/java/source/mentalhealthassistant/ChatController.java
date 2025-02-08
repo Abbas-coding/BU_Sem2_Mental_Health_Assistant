@@ -76,14 +76,15 @@
 
 package source.mentalhealthassistant;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import source.mentalhealthassistant.core.*;
 
 import java.net.URL;
@@ -112,49 +113,104 @@ public class ChatController implements Initializable {
         System.out.println("ChatController initialized. Waiting for conversation ID...");
     }
 
-    private void addMessageToChat(String sender, String message) {
-        // Create a horizontal box for the sender and message
-        HBox messageBox = new HBox();
-        messageBox.setSpacing(10);
-        messageBox.setStyle("-fx-padding: 3;"); // Add some padding around the box for spacing
+//    private void addMessageToChat(String sender, String message) {
+//        // Create a horizontal box for the sender and message
+//        HBox messageBox = new HBox();
+//        messageBox.setSpacing(10);
+//        messageBox.setStyle("-fx-padding: 3;"); // Add some padding around the box for spacing
+//
+//        // Add the sender's name
+//        Label senderLabel = new Label(sender + ":");
+//        senderLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #333333; -fx-font-size: 14px;");
+//
+//        // Add the message content with a blue background and rounded corners
+//        Label messageLabel = new Label(message);
+//        messageLabel.setStyle(
+////                "-fx-background-color: #ADD8E6; " +  // Light blue background
+////                        "-fx-text-fill: #000000; " +        // Black text color
+//                "-fx-background-color:  #004d80; " +
+//                        "-fx-text-fill:  white; " +
+//                        "-fx-padding: 5 10 5 10; " +       // Padding inside the label
+//                        "-fx-background-radius: 15; " +   // Rounded corners
+//                        "-fx-font-size: 14px; " +          // Font size
+//                        "-fx-font-family: 'Arial';"       // Font family
+//        );
+//        messageLabel.setWrapText(true); // Allow text wrapping
+//        messageLabel.setMaxWidth(450); // Limit the maximum width of the label
+//        // Add both to the message box
+//        messageBox.getChildren().addAll(senderLabel, messageLabel);
+//
+//
+//
+//        // Add the message box to the chat pane
+//        chatPane.getChildren().add(messageBox);
+//        // Automatically scroll to the bottom
+//        chatScrollPane.setVvalue(1.0);
+//    }
 
-        // Add the sender's name
-        Label senderLabel = new Label(sender + ":");
-        senderLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #333333; -fx-font-size: 14px;");
+private void addMessageToChat(String sender, String message) {
+    HBox messageBox = new HBox();
+    messageBox.setSpacing(5);
+    messageBox.setStyle("-fx-padding: 5;");
 
-        // Add the message content with a blue background and rounded corners
-        Label messageLabel = new Label(message);
-        messageLabel.setStyle(
-//                "-fx-background-color: #ADD8E6; " +  // Light blue background
-//                        "-fx-text-fill: #000000; " +        // Black text color
-                "-fx-background-color:  #004d80; " +
-                        "-fx-text-fill:  white; " +
-                        "-fx-padding: 5 10 5 10; " +       // Padding inside the label
-                        "-fx-background-radius: 15; " +   // Rounded corners
-                        "-fx-font-size: 14px; " +          // Font size
-                        "-fx-font-family: 'Arial';"       // Font family
-        );
-        messageLabel.setWrapText(true); // Allow text wrapping
-        messageLabel.setMaxWidth(450); // Limit the maximum width of the label
-        // Add both to the message box
-        messageBox.getChildren().addAll(senderLabel, messageLabel);
+    // Sender Label (Fixed Width)
+    Label senderLabel = new Label(sender + ":");
+    senderLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #333333; -fx-font-size: 14px;");
+    senderLabel.setMinWidth(Region.USE_PREF_SIZE);
+    senderLabel.setMaxWidth(100);
 
+    // Message Text inside TextFlow
+    Text text = new Text(message);
+    text.setStyle("-fx-fill: white; -fx-font-size: 14px; -fx-font-family: 'Arial';");
 
+    TextFlow messageTextFlow = new TextFlow(text);
+    messageTextFlow.setStyle(
+            "-fx-background-color: #004d80; " +
+                    "-fx-padding: 5 10 5 10; " +
+                    "-fx-background-radius: 15;"
+    );
 
-        // Add the message box to the chat pane
-        chatPane.getChildren().add(messageBox);
-        // Automatically scroll to the bottom
+    // ✅ Ensure TextFlow wraps properly
+    messageTextFlow.setMaxWidth(400);  // Ensures wrapping at 400px max width
+    messageTextFlow.setPrefWidth(Region.USE_COMPUTED_SIZE);
+    messageTextFlow.setMinWidth(100);
+
+    // Allow text to wrap by setting preferred width dynamically
+    messageTextFlow.setLineSpacing(2);
+
+    // Wrap TextFlow inside an HBox and allow it to expand
+    HBox messageContainer = new HBox(messageTextFlow);
+    messageContainer.setMaxWidth(400);
+    HBox.setHgrow(messageContainer, Priority.ALWAYS);
+
+    // Add sender label and message content to messageBox
+    messageBox.getChildren().addAll(senderLabel, messageContainer);
+
+    // Ensure chatPane expands dynamically
+    chatPane.getChildren().add(messageBox);
+    chatPane.setFillWidth(true);
+
+    // ✅ Prevent horizontal scroll
+    chatScrollPane.setFitToWidth(true);
+    chatScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Never show horizontal scroll
+
+    // Scroll to the bottom after adding a new message
+    Platform.runLater(() -> {
         chatScrollPane.setVvalue(1.0);
-    }
+        messageTextFlow.setMaxWidth(chatPane.getWidth() - 120); // Adjust dynamically
+    });
+}
 
-    private void loadMessages() throws ClassNotFoundException {
+
+    public void loadMessages() throws ClassNotFoundException {
         System.out.println("Loading messages for conversation ID: " + convId);
         List<Message> messages = DatabaseHandler.getMessagesByConversationId(convId);
         System.out.println("Messages loaded: " + messages.size());
         for (Message message : messages) {
             String sender = message.getSenderName();
             String content = message.getContent();
-            addMessageToChat(sender, content);
+            // Ensure JavaFX UI updates occur sequentially
+            Platform.runLater(() -> addMessageToChat(sender, content));
         }
         System.out.println("Messages loaded successfully.");
     }

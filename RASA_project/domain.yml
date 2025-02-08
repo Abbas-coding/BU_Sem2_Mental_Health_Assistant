@@ -15,6 +15,21 @@ intents:
   - ask_for_resources
   - save_data
   - ask_for_activities
+  - ask_memory_stress
+  - express_overwhelm
+  - mention_deadlines
+  - mention_overthinking
+  - express_relief
+  - ask_financial_stress
+  - express_financial_worry
+  - express_uncertainty
+  - express_lack_of_direction
+  - express_stuck
+  - express_willingness_to_try
+  - ask_social_anxiety
+  - express_loneliness
+  - express_anxiety_meeting_people
+  - express_fear_of_judgment
  
 entities:
   - mood
@@ -90,6 +105,55 @@ responses:
  
   utter_ask_for_resources:
     - text: "Here are some links: [Mental Health Resources](https://www.mentalhealth.gov), [Crisis Helplines](https://www.crisistextline.org)"
+  
+  utter_memory_stress:
+    - text: "Yes, too much stress can make it harder to focus and remember things. What’s on your mind?"
+
+  utter_acknowledge_stress:
+    - text: "I hear you. That’s a lot to handle. What’s stressing you the most?"
+
+  utter_break_down_tasks:
+    - text: "Let’s break it down. What’s one small task you can start with?"
+
+  utter_study_strategy:
+    - text: "Try short study sessions with breaks. It helps with focus."
+
+  utter_encouragement:
+    - text: "Great! One step at a time. You’ve got this!"
+
+  utter_financial_stress:
+    - text: "Yes, financial worries can cause anxiety and impact overall well-being. What’s on your mind?"
+
+  utter_financial_aid:
+    - text: "That sounds tough. It’s understandable to feel this way. Have you explored any financial aid options?"
+
+  utter_focus_on_control:
+    - text: "Uncertainty can be stressful. Try focusing on what you can control—small steps like budgeting or seeking scholarships."
+
+  utter_start_with_options:
+    - text: "You don’t have to figure it all out at once. Maybe start by listing possible options and talking to a financial advisor?"
+
+  utter_reassure_not_alone:
+    - text: "It’s okay to feel that way. You’re not alone. Take it step by step, and remember to care for yourself too."
+
+  utter_financial_encouragement:
+    - text: "That’s a great step forward! You’re doing your best, and that’s enough."
+
+  utter_social_anxiety:
+    - text: "Yes, many students experience social anxiety. You’re not alone in this. What’s on your mind?"
+
+  utter_suggest_groups:
+    - text: "That sounds really tough. Social anxiety can make it hard to connect. Have you tried joining any groups or activities?"
+
+  utter_start_small:
+    - text: "That’s completely understandable. Starting small can help—maybe talking to one person at a time or joining an online group first?"
+
+  utter_reframe_judgment:
+    - text: "It’s natural to feel that way. But most people are more focused on themselves than judging others. Being yourself is enough."
+
+  utter_social_encouragement:
+    - text: "That’s a great step! You’re not alone in this, and you’re doing your best."
+
     
 actions:
   - action_log_mood
@@ -98,6 +162,9 @@ actions:
   - action_save_data
   - action_ask_for_activities
   - action_ask_for_resources
+  - action_break_down_tasks
+  - action_financial_advice
+  - action_connect_people
 
 session_config:
   session_expiration_time: 90

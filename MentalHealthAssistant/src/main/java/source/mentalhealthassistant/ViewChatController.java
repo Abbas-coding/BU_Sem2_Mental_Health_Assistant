@@ -47,6 +47,7 @@ public class ViewChatController implements Initializable  {
                 viewButton.setOnAction(event -> {
                     Conversation conversation = getTableView().getItems().get(getIndex());
                     System.out.println("Viewing conversation_id: " + conversation.getId());
+                    System.out.println("Clicked on view button");
                     toggleViewChat(conversation.getId()); // Call a delete method
                 });
             }

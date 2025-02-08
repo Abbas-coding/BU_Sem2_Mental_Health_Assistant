@@ -58,6 +58,7 @@ public class DashboardController implements Initializable {
 
     private Node moodLogTrackerView; // Cached view for the MoodLog Tracker
     private Node viewChatView; // Cached view for the View Chat
+    public ChatController chatController;
 
     private boolean isDrawerOpen = false;
 
@@ -75,7 +76,7 @@ public class DashboardController implements Initializable {
 
     private void setupDrawer() {
         // Close the application when the exit button is clicked
-        exit.setOnMouseClicked(event -> System.exit(0));
+//        exit.setOnMouseClicked(event -> System.exit(0));
 
         // Toggle the drawer each time the drawerImage is clicked
         drawerImage.setOnMouseClicked(event -> {
@@ -190,31 +191,21 @@ public class DashboardController implements Initializable {
 
     public void toggleViewChat(int convId){
         try {
-            System.out.println("conversation id in dashboard toggle is: " + convId);
-            // Check if the MoodLog Tracker view is already loaded
-            if (viewChatView == null) {
-                // Load the MoodLog Tracker view (assuming you have an FXML for the tracker)
-                System.out.println(getClass().getResource("Chat.fxml"));
+            System.out.println("Conversation ID in Dashboard toggle is: " + convId);
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Chat.fxml"));
-                viewChatView = loader.load();
-                ChatController chatController = loader.getController();
-                chatController.setConvId(convId);
-            }
+            // Always reload the chat to ensure new conversation is displayed
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Chat.fxml"));
+            Parent viewChatView = loader.load();
+            ChatController chatController = loader.getController();
+            chatController.setConvId(convId);  // Pass conversation ID to load specific messages
 
-            // Check if the generalContainer contains the MoodLog Tracker view
-            if (!generalContainer.getChildren().contains(viewChatView)) {
-                generalContainer.getChildren().clear(); // Clear existing content
-                generalContainer.getChildren().add(viewChatView); // Add the new view
-                HelloApplication.setTitle("Mental Health Assistant - Chat");
-                generalContainer.setVisible(true); // Make the container visible
-            } else {
-                // Toggle the visibility of the view
-                generalContainer.setVisible(!generalContainer.isVisible());
-            }
+            // Clear and update generalContainer with the new chat session
+            generalContainer.getChildren().clear();
+            generalContainer.getChildren().add(viewChatView);
+            HelloApplication.setTitle("Mental Health Assistant - Chat");
+            generalContainer.setVisible(true);
         } catch (Exception e) {
-            e.printStackTrace();
-        }
+            e.printStackTrace();}
     }
 
     private void handleSetReminder() throws IOException {

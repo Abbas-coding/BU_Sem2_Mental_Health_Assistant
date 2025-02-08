@@ -30,6 +30,9 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - Thanks, bye.
+    - Goodbye.
+    - See you later.
 
 - intent: affirm
   examples: |
@@ -42,6 +45,8 @@ nlu:
     - Absolutely
     - Definitely
     - Of course
+    - Yes, that makes sense.
+    - Yeah, I think so.
 
 - intent: deny
   examples: |
@@ -53,6 +58,9 @@ nlu:
     - no way
     - not really
     - Nope
+    - I don’t think so.
+    - No, I’m not sure.
+    - I’m still struggling.
 
 - intent: mood_great
   examples: |
@@ -196,3 +204,85 @@ nlu:
     - I need more details
     - Give me some links to resources
     - Can you suggest helpful websites?
+
+- intent: ask_memory_stress
+  examples: |
+    - Hi, do high levels of stress affect memory?
+    - Does stress impact memory?
+    - Can stress make it harder to remember things?
+
+- intent: express_overwhelm
+  examples: |
+    - I’m overwhelmed
+    - Too much work to do
+    - I have too many assignments, quizzes, projects, and exams
+
+- intent: mention_deadlines
+  examples: |
+    - The deadlines are stressing me out
+    - Everything is due at the same time
+    - Too many deadlines back to back
+
+- intent: mention_overthinking
+  examples: |
+    - I keep overthinking
+    - My thoughts won’t stop
+    - I overanalyze everything
+
+- intent: express_relief
+  examples: |
+    - That sounds doable
+    - That helps
+    - I think I can manage now
+
+- intent: ask_financial_stress
+  examples: |
+    - Hi, does financial stress affect mental health?
+    - Can financial worries cause anxiety?
+
+- intent: express_financial_worry
+  examples: |
+    - I’m really stressed about my finances
+    - I don’t know how I’ll pay for next semester’s fees
+
+- intent: express_uncertainty
+  examples: |
+    - I have, but I’m not sure if I’ll get any
+    - The uncertainty is making me anxious
+
+- intent: express_lack_of_direction
+  examples: |
+    - I don’t even know where to start
+    - I have no idea what to do first
+
+- intent: express_stuck
+  examples: |
+    - That might help. I just feel really stuck
+    - I feel trapped and don’t know what to do
+
+- intent: express_willingness_to_try
+  examples: |
+    - Thanks, I’ll try that
+    - I’ll give it a shot
+    - I never thought of it like that. Ill try to start small
+
+- intent: ask_social_anxiety
+  examples: |
+    - Hi, is social anxiety common among university students?
+    - Do a lot of students have social anxiety?
+
+- intent: express_loneliness
+  examples: |
+    - I feel really lonely at university
+    - I struggle to make friends and feel isolated
+
+- intent: express_anxiety_meeting_people
+  examples: |
+    - I want to, but I get really anxious around new people
+    - Meeting new people makes me nervous
+
+- intent: express_fear_of_judgment
+  examples: |
+    - I’m afraid of being judged
+    - I worry too much about what others think of me
+

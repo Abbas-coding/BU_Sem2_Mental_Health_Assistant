@@ -110,3 +110,26 @@ class ActionAskForResources(Action):
         dispatcher.utter_message(text="Here are some links: [Mental Health Resources](https://www.mentalhealth.gov), [Crisis Helplines](https://www.crisistextline.org)")
         return []
 
+class ActionBreakDownTasks(Action):
+    def name(self):
+        return "action_break_down_tasks"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="Let’s break it down. What’s one small task you can start with?")
+        return []
+
+class ActionFinancialAdvice(Action):
+    def name(self):
+        return "action_financial_advice"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="Try focusing on what you *can* control—small steps like budgeting or seeking scholarships.")
+        return []
+
+class ActionConnectPeople(Action):
+    def name(self):
+        return "action_connect_people"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="Starting small can help—maybe talking to one person at a time or joining an online group first?")
+        return []

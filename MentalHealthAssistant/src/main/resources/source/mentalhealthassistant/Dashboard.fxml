@@ -228,11 +228,11 @@
         </AnchorPane>
         <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="696.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@images/cross.png" />
-                    </image>
-                </ImageView>
+<!--                <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="696.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                    <image>-->
+<!--                        <Image url="@images/cross.png" />-->
+<!--                    </image>-->
+<!--                </ImageView>-->
                 <ImageView fx:id="drawerImage" fitHeight="32.0" fitWidth="47.0" layoutX="9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@images/stack.png" />
