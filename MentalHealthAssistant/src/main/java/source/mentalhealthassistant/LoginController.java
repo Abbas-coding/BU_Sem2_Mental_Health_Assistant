@@ -144,11 +144,11 @@ public class LoginController {
 
     @FXML
     private void goToSignup() throws IOException {
-        switchScene("Signup.fxml", "Mental Health Assistant - Signup");
+        HelloApplication.switchScene("Signup.fxml", 800,467, "Mental Health Assistant - Signup");
     }
 
     @FXML
     private void goToForgetPassword() throws IOException {
-        switchScene("RecoverPassword.fxml", "Mental Health Assistant - Forgot Password");
+        HelloApplication.switchScene("RecoverPassword.fxml",800,467, "Mental Health Assistant - Forgot Password");
     }
 }

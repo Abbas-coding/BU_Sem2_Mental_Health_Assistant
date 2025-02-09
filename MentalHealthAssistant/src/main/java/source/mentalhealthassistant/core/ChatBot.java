@@ -1,4 +1,3 @@
-
 package source.mentalhealthassistant.core;
 
 import com.google.gson.Gson;

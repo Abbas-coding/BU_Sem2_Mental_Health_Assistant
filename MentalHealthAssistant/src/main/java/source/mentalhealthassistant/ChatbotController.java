@@ -10,7 +10,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import source.mentalhealthassistant.core.ChatBot;
 import source.mentalhealthassistant.core.Conversation;
-import source.mentalhealthassistant.core.User;
 
 public class ChatbotController {
     private ChatBot chatBot;

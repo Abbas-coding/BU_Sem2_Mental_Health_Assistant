@@ -112,7 +112,7 @@ public class ViewChatController implements Initializable  {
         ObservableList<Conversation> conversations = FXCollections.observableArrayList();
 
         // Fetch reminders from the database or any other source
-        List<Conversation> conversationList = DatabaseHandler.getAllConversations();
+        List<Conversation> conversationList = DatabaseHandler.getConversationsByUsername(Session.getInstance().getUsername());
 
         // Populate serial numbers
         int serialNumber = 1;

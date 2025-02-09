@@ -37,14 +37,6 @@ public class User {
         return name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public String getEmail() {
         return email;
     }

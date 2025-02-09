@@ -29,16 +29,7 @@
             </Text>
 
             <!-- Mood Logs Table -->
-<!--            <TableView fx:id="moodLogsTable" fixedCellSize="-2.0" layoutX="78.0" layoutY="350.0" prefHeight="200.0" prefWidth="447.0" style="-fx-background-color: white;">-->
-<!--                <columns>-->
-<!--                    <TableColumn fx:id="logColumnSNo" prefWidth="53.0" style="-fx-background-color: #e6e6ff;" text="S.NO" />-->
-<!--                    <TableColumn fx:id="logColumnMood" prefWidth="112.0" style="-fx-background-color: #e6e6ff;" text="Mood" />-->
-<!--                    <TableColumn fx:id="logColumnTimestamp" prefWidth="177.0" style="-fx-background-color: #e6e6ff;" text="Timestamp" />-->
-<!--                </columns>-->
-<!--                <effect>-->
-<!--                    <DropShadow />-->
-<!--                </effect>-->
-<!--            </TableView>-->
+
         </children>
     </AnchorPane>
 </children>

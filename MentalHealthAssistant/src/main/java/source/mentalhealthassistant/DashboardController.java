@@ -131,7 +131,7 @@ public class DashboardController implements Initializable {
     private void handleLogout(){
         // Switch to the Login scene
         Session.getInstance().clearSession();
-        HelloApplication.switchScene("Login.fxml", 600, 350, "Mental Health Assistant - Login");
+        HelloApplication.switchScene("Login.fxml", 790, 471, "Mental Health Assistant - Login");
     }
 
     private void setupMenuActions() {

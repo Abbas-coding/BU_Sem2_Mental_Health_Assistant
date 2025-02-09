@@ -77,42 +77,45 @@ public class ViewReminderController implements Initializable {
 
     }
 
-    private List<Reminder> fetchRemindersFromDatabase() {
-        List<Reminder> reminderList = new ArrayList<>();
-        // Connect to the database and fetch reminders
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-             Statement statement = connection.createStatement()) {
+private List<Reminder> fetchRemindersFromDatabase(String username) {
+    List<Reminder> reminderList = new ArrayList<>();
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM reminder");
-            while (resultSet.next()) {
-                String id = resultSet.getString("reminderId");
-                String message = resultSet.getString("message");
-                LocalDateTime time = resultSet.getTimestamp("time").toLocalDateTime();
-                boolean isRecurring = resultSet.getBoolean("isRecurring");
+    String query = "SELECT * FROM reminder WHERE username = ?";
 
-                // Determine reminder type and instantiate accordingly
-                Reminder reminder;
-                if (isRecurring) {
-                    reminder = new DailyReminder(id, message, time); // Example: Replace with the correct subclass
-                } else {
-                    reminder = new EventReminder(id, message, time);
-                }
+    try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-                reminderList.add(reminder);
+        preparedStatement.setString(1, username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            String id = resultSet.getString("reminderId");
+            String message = resultSet.getString("message");
+            LocalDateTime time = resultSet.getTimestamp("time").toLocalDateTime();
+            boolean isRecurring = resultSet.getBoolean("isRecurring");
+
+            Reminder reminder;
+            if (isRecurring) {
+                reminder = new DailyReminder(id, message, time);
+            } else {
+                reminder = new EventReminder(id, message, time);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        return reminderList;
+            reminderList.add(reminder);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    return reminderList;
+}
 
     // Load reminders into the table
     private void loadReminders() {
         ObservableList<Reminder> reminders = FXCollections.observableArrayList();
 
         // Fetch reminders from the database or any other source
-        List<Reminder> reminderList = fetchRemindersFromDatabase();
+        List<Reminder> reminderList = fetchRemindersFromDatabase(Session.getInstance().getUsername());
 
         // Populate serial numbers
         int serialNumber = 1;

@@ -21,7 +21,7 @@ public class HelloApplication extends Application {
         Parent root = loader.load();
 
         // Create the scene
-        Scene scene = new Scene(root, 600, 350);
+        Scene scene = new Scene(root, 800, 470);
 
         // Configure and display the stage
         primaryStage.setTitle("Mental Health Assistant - Login");
@@ -38,7 +38,7 @@ public class HelloApplication extends Application {
             Parent root = loader.load();
 
             // Set the new scene on the primary stage
-            Scene scene = new Scene(root, 600, 400); // Adjust size if needed
+            Scene scene = new Scene(root, 790, 471); // Adjust size if needed
             primaryStage.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();

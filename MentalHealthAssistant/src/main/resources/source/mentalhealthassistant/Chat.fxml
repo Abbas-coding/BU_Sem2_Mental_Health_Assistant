@@ -12,11 +12,7 @@
                     <content>
                         <VBox fx:id="chatPane" prefHeight="415.0" prefWidth="560.0" spacing="10" style="-fx-background-color: linear-gradient(to bottom, #A1C6EA, #F5F5DC, #D0E8F7);">
                             <children>
-                                <!--<ImageView fitHeight="362.0" fitWidth="440.0" opacity="0.46" pickOnBounds="true" preserveRatio="true">
-                                   <image>
-                                      <Image url="@images/bg.png" />
-                                   </image>
-                                </ImageView>-->
+
                             </children></VBox>
                     </content>
                 </ScrollPane>

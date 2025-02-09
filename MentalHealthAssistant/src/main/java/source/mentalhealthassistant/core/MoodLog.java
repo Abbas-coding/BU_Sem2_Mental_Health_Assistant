@@ -40,9 +40,6 @@ public class MoodLog {
         return username;
     }
 
-    //    private static final String DB_URL = "jdbc:mysql://localhost:3306/mental_health_assistant";
-//    private static final String DB_USER = "root"; // Replace with your MySQL username
-//    private static final String DB_PASSWORD = "castaway110"; // Replace with your MySQL password
 
     public MoodLog(int moodId, String username, Date date, String mood, int rating, String description) {
         this.moodId = moodId;

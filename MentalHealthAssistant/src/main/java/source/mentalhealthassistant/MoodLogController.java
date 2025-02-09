@@ -78,7 +78,7 @@ public class MoodLogController implements Initializable {
             MoodLog.saveMoodToDatabase(Session.getInstance().getUsername(),mood, scale, moodDescription);
             showAlert(Alert.AlertType.INFORMATION, "Mood Saved", "Your mood has been saved successfully.");
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Invalid Input", "Mood scale must be a valid number.");
+            showAlert(Alert.AlertType.ERROR, "Invalid Input", "Mood scale must be a valid whole number.");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

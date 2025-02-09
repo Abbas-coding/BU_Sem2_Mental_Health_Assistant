@@ -4,7 +4,6 @@ import javafx.scene.control.Button;
 import source.mentalhealthassistant.Session;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Conversation {
     private String conversationId;
