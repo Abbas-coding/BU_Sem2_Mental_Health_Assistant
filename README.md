@@ -19,7 +19,7 @@ The **Mental Health Assistant** is a JavaFX-based desktop application designed t
 ## Features
 - 🌿 **Mood Tracking** – Log, view, and manage mood entries.
 - 🛎 **Reminders** – Set personalized reminders for self-care.
-- 🤖 **AI Chatbot (Rasa)** – Engage in conversations for mental health support.
+- 🤖 **AI Chatbot (Rasa)** – Engage in conversations for mental health support and revisit past conversations in an interactive UI.
 - 🔍 **Coping Mechanisms** – View strategies for managing stress and anxiety.
 - 🔒 **Secure Authentication** – User login and data protection.
 - 📊 **Data Storage** – Persist user data using **MySQL**.
@@ -120,21 +120,22 @@ Using Command Line:
 mvn clean install
 mvn javafx:run
 ```
-Using IntelliJ IDEA:
+Using IntelliJ IDEA (Recommended):
 - Reload the project to ensure all dependencies are installed.
 - Run the application directly from the IDE.
 
 ## Usage 
-- Log in with a secure account.
-- Chat with the assistant for guidance.
-- Track moods and view past entries.
-- Set reminders for self-care and well-being.
-- Explore coping strategies to improve mental health.
+- Login/Register: Secure authentication to access the dashboard.
+- Chatbot: Start chatting with the AI assistant.
+- Mood Tracking: Log moods and analyze patterns with the Pie Chart.
+- Set Reminders: Schedule tasks and events with one-time or recurring options.
+- Chat History: Browse and open previous conversations in a modern card layout.
+- Explore Coping Mechanisms: Learn self-care techniques and stress-management strategies.
 
 ## Disclaimer
 🚨 This project is a prototype and should not be used for commercial purposes.
 - The chatbot is trained on a limited dataset and can only handle basic interactions.
-- It is not a substitute for professional mental health advice.
+- Users should consult licensed professionals for serious mental health concerns.
 
 ## Contributors
 - Mahnoor Zahra ([GitHub Profile](https://github.com/mahra110))
